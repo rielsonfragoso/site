@@ -6,6 +6,8 @@ OUT = "/home/claude/site-repo"; HERE = os.path.dirname(os.path.abspath(__file__)
 WA = "https://wa.me/5521964446262?text=" + quote("Oi, Rielson! Vim pelo site.")
 YT = "https://www.youtube.com/@AcademiaMatem%C3%A1ticarj"; TG = "https://t.me/rielsonfragoso"; LT = "https://linktr.ee/academiamatematicarj"
 IEF = "https://go.hotmart.com/E108477851B"
+EMAIL = "academiamatematica.rj@gmail.com"
+FORM_ENDPOINT = "https://formsubmit.co/ajax/" + EMAIL
 
 def src(url, tag):
     if "hotmart" not in url and "hotm.art" not in url: return url
@@ -69,7 +71,7 @@ FOOT = f'''<footer>
         <p>Material sério, bem explicado, para quem estuda por conta própria.</p>
         <p class="hand" style="color:var(--yellow)">Dúvida sobre um material? Me chama.</p></div>
       <div><h3>Contato</h3><ul>
-        <li><a href="{WA}" target="_blank" rel="noopener">WhatsApp · (21) 96444-6262</a></li>
+        <li><a href="mailto:{EMAIL}">E-mail · {EMAIL}</a></li>
         <li><a href="{TG}" target="_blank" rel="noopener">Telegram · avisos de materiais</a></li>
         <li><a href="{YT}" target="_blank" rel="noopener">YouTube · Academia Matemática RJ</a></li>
         <li><a href="{LT}" target="_blank" rel="noopener">Todos os links</a></li></ul></div>
@@ -189,7 +191,7 @@ def home():
     {METHOD}
     <h3 style="margin-top:8px">Alguns simulados</h3>
     <div class="cards">{feat}</div>
-    <div><a class="btn" href="/concursos/">Ver todos os 13 materiais →</a></div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="/concursos/">Ver todos os 13 materiais →</a><a class="btn line" href="/concursos/#pedir">Pedir o simulado do meu concurso</a></div>
   </div>
 </section>
 
@@ -246,6 +248,24 @@ CONC_CSS = METHOD_CSS + '''
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .filters button[aria-pressed="true"]{border-color:var(--yellow)}
  :root:not([data-theme="light"]) .filters button[aria-pressed="true"]::before{background:var(--yellow);border-color:var(--yellow)}}
 .empty{color:var(--muted)}
+.ask{background:var(--yellow-soft);border-radius:var(--r);padding:clamp(20px,4vw,36px);display:flex;flex-direction:column;gap:20px;scroll-margin-top:90px}
+.pform{display:flex;flex-direction:column;gap:14px}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.f2>*{min-width:0}
+.pform label{display:flex;flex-direction:column;gap:6px;font-family:var(--display);font-weight:600;font-size:.9rem}
+.pform input,.pform textarea{font:inherit;font-family:var(--body);font-weight:400;font-size:1rem;color:var(--ink);background:var(--surface);border:1.5px solid var(--line);border-radius:10px;padding:11px 12px;width:100%}
+.pform input:focus,.pform textarea:focus{outline:none;border-color:var(--navy);box-shadow:0 0 0 3px color-mix(in srgb,var(--yellow) 55%,transparent)}
+.pform input[aria-invalid="true"]{border-color:var(--red)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.factions{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center}
+.factions .btn{border:0;cursor:pointer;font-size:1rem}
+.factions .btn[disabled]{opacity:.6;cursor:wait}
+.fnote{font-size:.88rem;color:var(--muted)}
+.fmsg{font-weight:700;padding:12px 14px;border-radius:10px;background:var(--surface);border-left:4px solid var(--green)}
+.fmsg.err{border-left-color:var(--red)}
+.alt{font-size:.95rem;color:var(--muted)}
+.alt a{color:var(--ink)}
+@media (max-width:640px){.f2{grid-template-columns:1fr}}
 .tg{background:var(--yellow-soft);border-radius:var(--r);padding:22px;display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;justify-content:space-between}
 .tg p{flex:1 1 280px;min-width:0}
 '''
@@ -266,8 +286,29 @@ def concursos():
     ['ebooks','simulados'].forEach(function(id){var s=document.getElementById(id);
       var vis=s.querySelectorAll('[data-banca]:not([hidden])').length; s.querySelector('.empty').hidden=vis>0;});
   });});
+  var f=document.getElementById('form-pedido'), msg=document.getElementById('fmsg');
+  if(f){f.addEventListener('submit',function(ev){
+    ev.preventDefault();
+    var req=[f.concurso,f.cargo], ok=true;
+    req.forEach(function(i){var bad=!i.value.trim(); i.setAttribute('aria-invalid',bad?'true':'false'); if(bad&&ok){i.focus();ok=false;}});
+    if(!ok){show('Preencha o concurso e o cargo, por favor.',true);return;}
+    if(f._honey.value){return;}
+    var data={}; [].forEach.call(f.elements,function(el){if(el.name&&el.name!=='_honey')data[el.name]=el.value.trim();});
+    data._subject='Pedido de simulado: '+data.concurso+' · '+data.cargo;
+    data._template='table'; data._captcha='false'; data.origem='rielsonfragoso.com.br/concursos';
+    var btn=f.querySelector('button[type=submit]'); btn.disabled=true; btn.textContent='Enviando…';
+    fetch('__ENDPOINT__',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)})
+      .then(function(r){return r.json().then(function(j){if(!r.ok||String(j.success)==='false')throw new Error(j.message||'erro');});})
+      .then(function(){f.reset();show('Pedido enviado! Obrigado. Se você deixou um contato, eu aviso quando o simulado sair.',false);})
+      .catch(function(){
+        var body='Concurso: '+data.concurso+'%0ACargo: '+data.cargo+'%0ABanca: '+data.banca+'%0AData da prova: '+data.data_prova+'%0ANome: '+data.nome+'%0AContato: '+data.contato+'%0A%0A'+data.mensagem;
+        msg.innerHTML='Não consegui enviar por aqui. <a href="mailto:__EMAIL__?subject='+encodeURIComponent(data._subject)+'&body='+body.replace(/ /g,'%20')+'">Toque aqui para mandar por e-mail</a> ou escreva para __EMAIL__.';
+        msg.className='fmsg err'; msg.hidden=false;})
+      .then(function(){btn.disabled=false;btn.textContent='Enviar pedido';});
+  });}
+  function show(t,err){msg.textContent=t;msg.className='fmsg'+(err?' err':'');msg.hidden=false;}
 })();
-</script>'''
+</script>'''.replace('__ENDPOINT__', FORM_ENDPOINT).replace('__EMAIL__', EMAIL)
     return head("Concursos · Simulados e e-books de matemática | Rielson Fragoso",
                 "Simulados montados a partir do edital com questões reais da banca e e-books de matemática e raciocínio lógico comentados.",
                 "/concursos/", extra_css=CONC_CSS) + nav("/concursos/") + f'''
@@ -290,8 +331,37 @@ def concursos():
     <div class="stack" style="gap:10px"><span class="eyebrow">Filtrar por banca</span><div class="filters" role="group" aria-label="Filtrar por banca">{chips}</div></div>
     <div class="stack" id="simulados"><h2>Simulados</h2><div class="cards">{sims}</div><p class="empty" hidden>Nenhum simulado desta banca por enquanto.</p></div>
     <div class="stack" id="ebooks"><h2>E-books de questões comentadas</h2><p class="lead">Soluções passo a passo, com o meu jeito de explicar.</p><div class="cards">{ebs}</div><p class="empty" hidden>Nenhum e-book desta banca por enquanto.</p></div>
-    <div class="tg"><p><b>Seu concurso não está aqui?</b> Entre no canal do Telegram para saber quando sair um novo simulado, ou me chame no WhatsApp.</p>
-      <div class="row" style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="{TG}" target="_blank" rel="noopener">Entrar no Telegram</a><a class="btn line" href="{WA}" target="_blank" rel="noopener">WhatsApp</a></div></div>
+    <div class="ask" id="pedir">
+      <div class="stack" style="gap:10px">
+        <span class="eyebrow">Seu concurso não está aqui?</span>
+        <h2>Peça o simulado do seu concurso</h2>
+        <p class="lead">Me diga qual concurso e cargo você vai fazer. Os pedidos mostram onde está a procura, e os concursos mais pedidos ganham simulado primeiro. Se você deixar um contato, eu aviso quando o seu sair.</p>
+        <p class="hand" style="color:var(--red)">quanto mais gente pedir, mais rápido sai!</p>
+      </div>
+      <form id="form-pedido" class="pform" novalidate>
+        <div class="f2">
+          <label>Concurso / órgão *<input name="concurso" required maxlength="120" placeholder="Ex.: Prefeitura de Maricá 2026"></label>
+          <label>Cargo *<input name="cargo" required maxlength="120" placeholder="Ex.: Assistente Administrativo"></label>
+        </div>
+        <div class="f2">
+          <label>Banca (se souber)<input name="banca" maxlength="60" placeholder="Ex.: Consulplan"></label>
+          <label>Data da prova (se souber)<input name="data_prova" maxlength="40" placeholder="Ex.: março de 2027"></label>
+        </div>
+        <div class="f2">
+          <label>Seu nome<input name="nome" maxlength="80" autocomplete="name"></label>
+          <label>E-mail ou WhatsApp para eu te avisar<input name="contato" maxlength="120" autocomplete="email"></label>
+        </div>
+        <label>Quer comentar algo? (opcional)<textarea name="mensagem" rows="3" maxlength="800" placeholder="Ex.: quero focar em matemática e raciocínio lógico"></textarea></label>
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true">
+        <div class="factions">
+          <button class="btn" type="submit">Enviar pedido</button>
+          <span class="fnote">Seu contato é usado só para avisar sobre esse material.</span>
+        </div>
+        <p class="fmsg" id="fmsg" role="status" hidden></p>
+      </form>
+      <p class="alt">Prefere outro canal? Escreva para <a href="mailto:{EMAIL}">{EMAIL}</a> ou entre no <a href="{TG}" target="_blank" rel="noopener">canal do Telegram</a> para saber dos lançamentos.</p>
+    </div>
+
   </div>
 </section>
 </main>
@@ -379,7 +449,7 @@ def sobre():
       <a class="card" href="/concursos/" style="text-decoration:none"><span class="banca">Concursos</span><h3>Simulados e e-books de matemática</h3><p class="meta">Para quem vai fazer prova de concurso e quer treinar com o estilo real da banca.</p><span class="go" style="font-family:var(--display);font-weight:600;margin-top:auto">Ver materiais →</span></a>
       <a class="card" href="/ingles-em-familia/" style="text-decoration:none"><span class="banca">Família</span><h3>Inglês em Família</h3><p class="meta">Para pais e filhos que querem começar o inglês juntos, mesmo sem saber nada.</p><span class="go" style="font-family:var(--display);font-weight:600;margin-top:auto">Conhecer →</span></a>
     </div>
-    <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="{WA}" target="_blank" rel="noopener">Falar comigo no WhatsApp</a><a class="btn line" href="{YT}" target="_blank" rel="noopener">Ver o canal no YouTube</a></div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="mailto:{EMAIL}">Falar comigo por e-mail</a><a class="btn line" href="{YT}" target="_blank" rel="noopener">Ver o canal no YouTube</a></div>
   </div>
 </section>
 </main>

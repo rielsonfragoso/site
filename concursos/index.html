@@ -35,6 +35,24 @@
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .filters button[aria-pressed="true"]{border-color:var(--yellow)}
  :root:not([data-theme="light"]) .filters button[aria-pressed="true"]::before{background:var(--yellow);border-color:var(--yellow)}}
 .empty{color:var(--muted)}
+.ask{background:var(--yellow-soft);border-radius:var(--r);padding:clamp(20px,4vw,36px);display:flex;flex-direction:column;gap:20px;scroll-margin-top:90px}
+.pform{display:flex;flex-direction:column;gap:14px}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.f2>*{min-width:0}
+.pform label{display:flex;flex-direction:column;gap:6px;font-family:var(--display);font-weight:600;font-size:.9rem}
+.pform input,.pform textarea{font:inherit;font-family:var(--body);font-weight:400;font-size:1rem;color:var(--ink);background:var(--surface);border:1.5px solid var(--line);border-radius:10px;padding:11px 12px;width:100%}
+.pform input:focus,.pform textarea:focus{outline:none;border-color:var(--navy);box-shadow:0 0 0 3px color-mix(in srgb,var(--yellow) 55%,transparent)}
+.pform input[aria-invalid="true"]{border-color:var(--red)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.factions{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center}
+.factions .btn{border:0;cursor:pointer;font-size:1rem}
+.factions .btn[disabled]{opacity:.6;cursor:wait}
+.fnote{font-size:.88rem;color:var(--muted)}
+.fmsg{font-weight:700;padding:12px 14px;border-radius:10px;background:var(--surface);border-left:4px solid var(--green)}
+.fmsg.err{border-left-color:var(--red)}
+.alt{font-size:.95rem;color:var(--muted)}
+.alt a{color:var(--ink)}
+@media (max-width:640px){.f2{grid-template-columns:1fr}}
 .tg{background:var(--yellow-soft);border-radius:var(--r);padding:22px;display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;justify-content:space-between}
 .tg p{flex:1 1 280px;min-width:0}
 </style>
@@ -65,8 +83,37 @@
     <div class="stack" style="gap:10px"><span class="eyebrow">Filtrar por banca</span><div class="filters" role="group" aria-label="Filtrar por banca"><button type="button" aria-pressed="true" data-f="*">Todas</button><button type="button" aria-pressed="false" data-f="Consulplan">Consulplan</button><button type="button" aria-pressed="false" data-f="FCC">FCC</button><button type="button" aria-pressed="false" data-f="IAN">IAN</button><button type="button" aria-pressed="false" data-f="IBDO">IBDO</button><button type="button" aria-pressed="false" data-f="IDECAN">IDECAN</button><button type="button" aria-pressed="false" data-f="IDIB">IDIB</button><button type="button" aria-pressed="false" data-f="Instituto Seleção">Instituto Seleção</button><button type="button" aria-pressed="false" data-f="Selecon">Selecon</button><button type="button" aria-pressed="false" data-f="Outras">Outras</button></div></div>
     <div class="stack" id="simulados"><h2>Simulados</h2><div class="cards"><article class="card" data-banca="IBDO"><span class="banca">IBDO</span><h3>PRODERJ 2026</h3><p class="meta">Assistente Administrativo</p><a class="go" href="https://go.hotmart.com/W104324926I?src=site_concursos" target="_blank" rel="noopener">Ver simulado</a></article><article class="card" data-banca="FCC"><span class="banca">FCC</span><h3>TRT RJ 2025</h3><p class="meta">Conhecimentos Gerais · 35 questões · todos os cargos</p><a class="go" href="https://go.hotmart.com/C98694845P?dp=1&amp;src=site_concursos" target="_blank" rel="noopener">Ver simulado</a></article><article class="card" data-banca="Outras"><span class="banca">Simulado</span><h3>UNIRIO 2025</h3><p class="meta">Assistente em Administração</p><a class="go" href="https://go.hotmart.com/C103584769A?dp=1&amp;src=site_concursos" target="_blank" rel="noopener">Ver simulado</a></article><article class="card" data-banca="Consulplan"><span class="banca">Consulplan</span><h3>Nova Iguaçu 2025 · 2º simulado</h3><p class="meta">Técnico de Controle Interno</p><a class="go" href="https://hotmart.com/pt-br/marketplace/produtos/2o-simulado-tecnico-de-controle-interno-2025-nova-iguacu-rj-instituto-consulplan/N98062683H?src=site_concursos" target="_blank" rel="noopener">Ver simulado</a></article><article class="card" data-banca="Consulplan"><span class="banca">Consulplan</span><h3>Nova Iguaçu 2025</h3><p class="meta">Técnico de Controle Interno</p><a class="go" href="https://go.hotmart.com/H97645608B?src=site_concursos" target="_blank" rel="noopener">Ver simulado</a></article><article class="card" data-banca="Consulplan"><span class="banca">Consulplan</span><h3>Nova Iguaçu 2025</h3><p class="meta">Analista de Controle Interno Jurídico</p><a class="go" href="https://go.hotmart.com/C98331270U?dp=1&amp;src=site_concursos" target="_blank" rel="noopener">Ver simulado</a></article><article class="card" data-banca="Consulplan"><span class="banca">Consulplan</span><h3>Duque de Caxias 2025</h3><p class="meta">Agente de Combate às Endemias</p><a class="go" href="https://hotmart.com/pt-br/marketplace/produtos/simulado-agente-de-combate-as-endemias-duque-de-caxias-rj-2025-instituto-consulplan/O98049432J?src=site_concursos" target="_blank" rel="noopener">Ver simulado</a></article><article class="card" data-banca="IAN"><span class="banca">IAN</span><h3>Magé 2025</h3><p class="meta">Professor II</p><a class="go" href="https://go.hotmart.com/K97786315U?dp=1&amp;src=site_concursos" target="_blank" rel="noopener">Ver simulado</a></article><article class="card" data-banca="Selecon"><span class="banca">Selecon</span><h3>Niterói 2025</h3><p class="meta">Guarda Municipal · 100 questões</p><a class="go" href="https://go.hotmart.com/W97110610T?src=site_concursos" target="_blank" rel="noopener">Ver simulado</a></article></div><p class="empty" hidden>Nenhum simulado desta banca por enquanto.</p></div>
     <div class="stack" id="ebooks"><h2>E-books de questões comentadas</h2><p class="lead">Soluções passo a passo, com o meu jeito de explicar.</p><div class="cards"><article class="card" data-banca="Instituto Seleção"><span class="banca">Instituto Seleção</span><h3>Mapa do RLM · Volume 1</h3><p class="meta">Raciocínio lógico com questões comentadas passo a passo</p><a class="go" href="https://go.hotmart.com/H104483701D?src=site_concursos" target="_blank" rel="noopener">Ver e-book</a></article><article class="card" data-banca="IBDO"><span class="banca">IBDO</span><h3>Mapa do RLM · Volume 2</h3><p class="meta">Raciocínio lógico com questões comentadas passo a passo</p><a class="go" href="https://mapa-rlm-i4juerxq.manus.space" target="_blank" rel="noopener">Ver e-book</a></article><article class="card" data-banca="IDIB"><span class="banca">IDIB</span><h3>Quebrando a Banca #1</h3><p class="meta">51 questões de matemática comentadas</p><a class="go" href="https://hotm.art/idib-matematica?src=site_concursos" target="_blank" rel="noopener">Ver e-book</a></article><article class="card" data-banca="IDECAN"><span class="banca">IDECAN</span><h3>Quebrando a Banca · Matemática Básica</h3><p class="meta">Questões de matemática básica comentadas</p><a class="go" href="https://hotmart.com/pt-br/marketplace/produtos/quebrando-a-banca-idecan-matematica-basica/G101803984M?src=site_concursos" target="_blank" rel="noopener">Ver e-book</a></article></div><p class="empty" hidden>Nenhum e-book desta banca por enquanto.</p></div>
-    <div class="tg"><p><b>Seu concurso não está aqui?</b> Entre no canal do Telegram para saber quando sair um novo simulado, ou me chame no WhatsApp.</p>
-      <div class="row" style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="https://t.me/rielsonfragoso" target="_blank" rel="noopener">Entrar no Telegram</a><a class="btn line" href="https://wa.me/5521964446262?text=Oi%2C%20Rielson%21%20Vim%20pelo%20site." target="_blank" rel="noopener">WhatsApp</a></div></div>
+    <div class="ask" id="pedir">
+      <div class="stack" style="gap:10px">
+        <span class="eyebrow">Seu concurso não está aqui?</span>
+        <h2>Peça o simulado do seu concurso</h2>
+        <p class="lead">Me diga qual concurso e cargo você vai fazer. Os pedidos mostram onde está a procura, e os concursos mais pedidos ganham simulado primeiro. Se você deixar um contato, eu aviso quando o seu sair.</p>
+        <p class="hand" style="color:var(--red)">quanto mais gente pedir, mais rápido sai!</p>
+      </div>
+      <form id="form-pedido" class="pform" novalidate>
+        <div class="f2">
+          <label>Concurso / órgão *<input name="concurso" required maxlength="120" placeholder="Ex.: Prefeitura de Maricá 2026"></label>
+          <label>Cargo *<input name="cargo" required maxlength="120" placeholder="Ex.: Assistente Administrativo"></label>
+        </div>
+        <div class="f2">
+          <label>Banca (se souber)<input name="banca" maxlength="60" placeholder="Ex.: Consulplan"></label>
+          <label>Data da prova (se souber)<input name="data_prova" maxlength="40" placeholder="Ex.: março de 2027"></label>
+        </div>
+        <div class="f2">
+          <label>Seu nome<input name="nome" maxlength="80" autocomplete="name"></label>
+          <label>E-mail ou WhatsApp para eu te avisar<input name="contato" maxlength="120" autocomplete="email"></label>
+        </div>
+        <label>Quer comentar algo? (opcional)<textarea name="mensagem" rows="3" maxlength="800" placeholder="Ex.: quero focar em matemática e raciocínio lógico"></textarea></label>
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true">
+        <div class="factions">
+          <button class="btn" type="submit">Enviar pedido</button>
+          <span class="fnote">Seu contato é usado só para avisar sobre esse material.</span>
+        </div>
+        <p class="fmsg" id="fmsg" role="status" hidden></p>
+      </form>
+      <p class="alt">Prefere outro canal? Escreva para <a href="mailto:academiamatematica.rj@gmail.com">academiamatematica.rj@gmail.com</a> ou entre no <a href="https://t.me/rielsonfragoso" target="_blank" rel="noopener">canal do Telegram</a> para saber dos lançamentos.</p>
+    </div>
+
   </div>
 </section>
 </main>
@@ -81,6 +128,27 @@
     ['ebooks','simulados'].forEach(function(id){var s=document.getElementById(id);
       var vis=s.querySelectorAll('[data-banca]:not([hidden])').length; s.querySelector('.empty').hidden=vis>0;});
   });});
+  var f=document.getElementById('form-pedido'), msg=document.getElementById('fmsg');
+  if(f){f.addEventListener('submit',function(ev){
+    ev.preventDefault();
+    var req=[f.concurso,f.cargo], ok=true;
+    req.forEach(function(i){var bad=!i.value.trim(); i.setAttribute('aria-invalid',bad?'true':'false'); if(bad&&ok){i.focus();ok=false;}});
+    if(!ok){show('Preencha o concurso e o cargo, por favor.',true);return;}
+    if(f._honey.value){return;}
+    var data={}; [].forEach.call(f.elements,function(el){if(el.name&&el.name!=='_honey')data[el.name]=el.value.trim();});
+    data._subject='Pedido de simulado: '+data.concurso+' · '+data.cargo;
+    data._template='table'; data._captcha='false'; data.origem='rielsonfragoso.com.br/concursos';
+    var btn=f.querySelector('button[type=submit]'); btn.disabled=true; btn.textContent='Enviando…';
+    fetch('https://formsubmit.co/ajax/academiamatematica.rj@gmail.com',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)})
+      .then(function(r){return r.json().then(function(j){if(!r.ok||String(j.success)==='false')throw new Error(j.message||'erro');});})
+      .then(function(){f.reset();show('Pedido enviado! Obrigado. Se você deixou um contato, eu aviso quando o simulado sair.',false);})
+      .catch(function(){
+        var body='Concurso: '+data.concurso+'%0ACargo: '+data.cargo+'%0ABanca: '+data.banca+'%0AData da prova: '+data.data_prova+'%0ANome: '+data.nome+'%0AContato: '+data.contato+'%0A%0A'+data.mensagem;
+        msg.innerHTML='Não consegui enviar por aqui. <a href="mailto:academiamatematica.rj@gmail.com?subject='+encodeURIComponent(data._subject)+'&body='+body.replace(/ /g,'%20')+'">Toque aqui para mandar por e-mail</a> ou escreva para academiamatematica.rj@gmail.com.';
+        msg.className='fmsg err'; msg.hidden=false;})
+      .then(function(){btn.disabled=false;btn.textContent='Enviar pedido';});
+  });}
+  function show(t,err){msg.textContent=t;msg.className='fmsg'+(err?' err':'');msg.hidden=false;}
 })();
 </script>
 <footer>
@@ -90,7 +158,7 @@
         <p>Material sério, bem explicado, para quem estuda por conta própria.</p>
         <p class="hand" style="color:var(--yellow)">Dúvida sobre um material? Me chama.</p></div>
       <div><h3>Contato</h3><ul>
-        <li><a href="https://wa.me/5521964446262?text=Oi%2C%20Rielson%21%20Vim%20pelo%20site." target="_blank" rel="noopener">WhatsApp · (21) 96444-6262</a></li>
+        <li><a href="mailto:academiamatematica.rj@gmail.com">E-mail · academiamatematica.rj@gmail.com</a></li>
         <li><a href="https://t.me/rielsonfragoso" target="_blank" rel="noopener">Telegram · avisos de materiais</a></li>
         <li><a href="https://www.youtube.com/@AcademiaMatem%C3%A1ticarj" target="_blank" rel="noopener">YouTube · Academia Matemática RJ</a></li>
         <li><a href="https://linktr.ee/academiamatematicarj" target="_blank" rel="noopener">Todos os links</a></li></ul></div>
