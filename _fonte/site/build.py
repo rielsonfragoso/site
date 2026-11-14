@@ -15,18 +15,18 @@ EBOOKS = [  # título, detalhe, banca, link
     ("Mapa do RLM · Volume 1", "Raciocínio lógico com questões comentadas passo a passo", "Instituto Seleção", "https://go.hotmart.com/H104483701D"),
     ("Mapa do RLM · Volume 2", "Raciocínio lógico com questões comentadas passo a passo", "IBDO", "https://mapa-rlm-i4juerxq.manus.space"),
     ("Quebrando a Banca #1", "51 questões de matemática comentadas", "IDIB", "https://hotm.art/idib-matematica"),
-    ("Quebrando a Banca · Matemática Básica", "Questões de matemática básica comentadas", "IDECAN", "https://landing-swthg6.manus.space"),
+    ("Quebrando a Banca · Matemática Básica", "Questões de matemática básica comentadas", "IDECAN", "https://hotmart.com/pt-br/marketplace/produtos/quebrando-a-banca-idecan-matematica-basica/G101803984M"),
 ]
 SIMS = [  # título, cargo/detalhe, banca, link, destaque
     ("PRODERJ 2026", "Assistente Administrativo", "IBDO", "https://go.hotmart.com/W104324926I", True),
-    ("TRT RJ 2025", "Conhecimentos Gerais · todos os cargos", "FCC", "https://go.hotmart.com/C98694845P?dp=1", True),
+    ("TRT RJ 2025", "Conhecimentos Gerais · 35 questões · todos os cargos", "FCC", "https://go.hotmart.com/C98694845P?dp=1", True),
     ("UNIRIO 2025", "Assistente em Administração", "", "https://go.hotmart.com/C103584769A?dp=1", True),
     ("Nova Iguaçu 2025 · 2º simulado", "Técnico de Controle Interno", "Consulplan", "https://hotmart.com/pt-br/marketplace/produtos/2o-simulado-tecnico-de-controle-interno-2025-nova-iguacu-rj-instituto-consulplan/N98062683H", False),
     ("Nova Iguaçu 2025", "Técnico de Controle Interno", "Consulplan", "https://go.hotmart.com/H97645608B", False),
     ("Nova Iguaçu 2025", "Analista de Controle Interno Jurídico", "Consulplan", "https://go.hotmart.com/C98331270U?dp=1", False),
     ("Duque de Caxias 2025", "Agente de Combate às Endemias", "Consulplan", "https://hotmart.com/pt-br/marketplace/produtos/simulado-agente-de-combate-as-endemias-duque-de-caxias-rj-2025-instituto-consulplan/O98049432J", False),
     ("Magé 2025", "Professor II", "IAN", "https://go.hotmart.com/K97786315U?dp=1", False),
-    ("Niterói 2025", "Guarda Municipal", "", "https://go.hotmart.com/W97110610T", False),
+    ("Niterói 2025", "Guarda Municipal · 100 questões", "Selecon", "https://go.hotmart.com/W97110610T", False),
 ]
 e = html.escape
 
