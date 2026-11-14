@@ -169,7 +169,7 @@ def home():
         <h1>Matemática para <span class="chalk-u">passar</span>.<br>Inglês para aprender <span class="chalk-u">em família</span>.</h1>
         <p class="lead">Faço materiais para quem estuda por conta própria: simulados e questões comentadas para concursos, e um jeito leve de aprender inglês com os filhos.</p>
       </div>
-      <div class="mono" aria-hidden="true">RF<small>aprendi sozinho. ensino assim.</small></div>
+      <div class="mono" aria-hidden="true">RF<small>empreendedor e educador</small></div>
     </div>
     <div class="pick">
       <p class="hand">{ARROW} escolha por onde começar</p>
@@ -211,7 +211,7 @@ def home():
     <span class="eyebrow">Grátis</span>
     <h2>Comece sem gastar nada</h2>
     <div class="cards free">
-      <a class="card" href="{YT}" target="_blank" rel="noopener"><b>Canal no YouTube</b><span>Aulas e resoluções de provas de concursos da Academia Matemática RJ.</span><em>Assistir →</em></a>
+      <a class="card" href="{YT}" target="_blank" rel="noopener"><b>Canal no YouTube</b><span>Matemática para todas as idades: das Olimpíadas Mirins aos concursos públicos.</span><em>Assistir →</em></a>
       <a class="card" href="{TG}" target="_blank" rel="noopener"><b>Canal no Telegram</b><span>Avisos de novos simulados, materiais e aulas, direto no celular.</span><em>Entrar no canal →</em></a>
       <a class="card" href="/ingles-em-familia/amostra.pdf" target="_blank" rel="noopener"><b>Capítulo grátis de inglês</b><span>O Capítulo 5 do Inglês em Família completo, interativo, para fazer hoje com a família.</span><em>Baixar a amostra →</em></a>
     </div>
@@ -223,8 +223,8 @@ def home():
     <div class="rf" aria-hidden="true">RF</div>
     <div class="stack">
       <span class="eyebrow">Sobre</span>
-      <h2>Aprendi estudando por conta própria. É isso que eu ensino.</h2>
-      <p>Sou educador de matemática e fundador da Academia Matemática RJ, onde ensino matemática e raciocínio lógico para concursos desde 2024. Aprendi inglês sozinho, ainda criança, jogando Pokémon com um dicionário do lado. Hoje estudo inglês com as minhas filhas, e foi daí que nasceu o Inglês em Família.</p>
+      <h2>Empreendedor no mundo real. Educador no digital.</h2>
+      <p>Desde 2019 empreendo com a minha esposa no ramo de banho e tosa e transporte pet. Em paralelo, fundei em 2024 a Academia Matemática RJ, meu projeto de educação, com matemática das Olimpíadas Mirins aos concursos públicos. Dos estudos com as minhas filhas nasceu o Inglês em Família.</p>
       <div><a class="btn line" href="/sobre/">Conhecer a minha história →</a></div>
     </div>
   </div>
@@ -303,50 +303,78 @@ SOBRE_CSS = '''
 .phero{padding-block:clamp(44px,7vw,80px)}
 .phero h1{color:var(--chalk);font-size:clamp(2rem,5vw,3.1rem)}
 .prose{max-width:68ch;display:flex;flex-direction:column;gap:16px;font-size:1.1rem}
-.timeline{list-style:none;margin:0;padding:0;border-left:3px solid var(--navy);display:flex;flex-direction:column;gap:22px;max-width:720px}
-:root[data-theme="dark"] .timeline{border-color:var(--yellow)}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .timeline{border-color:var(--yellow)}}
-.timeline li{position:relative;padding-left:26px}
-.timeline li::before{content:"";position:absolute;left:-10px;top:6px;width:17px;height:17px;border-radius:50%;background:var(--yellow);border:3px solid var(--navy)}
-.timeline .y{font-family:var(--hand);font-size:1.6rem;font-weight:600;color:var(--red);line-height:1}
-.timeline h3{margin:4px 0}
-.timeline p{color:var(--muted)}
+.fronts{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.fronts>*{min-width:0}
+.front{border-radius:var(--r);padding:26px;display:flex;flex-direction:column;gap:12px;border:1px solid var(--line);background:var(--surface)}
+.front .tag{font-family:var(--hand);font-size:1.6rem;font-weight:600;line-height:1;color:var(--red)}
+.front ul{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:6px;color:var(--muted)}
+.front.digital{border:2px solid var(--navy)}
+:root[data-theme="dark"] .front.digital{border-color:var(--yellow)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .front.digital{border-color:var(--yellow)}}
+.ages{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-family:var(--display);font-weight:600;font-size:.9rem}
+.ages span{background:var(--yellow-soft);border-radius:999px;padding:5px 12px}
+.ages i{font-style:normal;color:var(--muted)}
+.belief{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.belief>div{border-top:3px solid var(--yellow);padding-top:14px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.belief p{color:var(--muted)}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .two>*{min-width:0}
-@media (max-width:760px){.two{grid-template-columns:1fr}}
+@media (max-width:760px){.fronts,.belief,.two{grid-template-columns:1fr}}
 '''
 def sobre():
-    return head("Sobre · Rielson Fragoso", "Educador de matemática, fundador da Academia Matemática RJ, pai de duas meninas e autodidata em inglês.",
+    return head("Sobre · Rielson Fragoso", "Empreendedor no Rio de Janeiro: um negócio presencial de banho e tosa e transporte pet e, em paralelo, projetos digitais de educação, com a Academia Matemática RJ à frente.",
                 "/sobre/", extra_css=SOBRE_CSS) + nav("/sobre/") + f'''
 <main>
 <section class="board phero">
   <div class="wrap stack">
     <span class="eyebrow">Sobre</span>
-    <h1>Aprendi estudando por conta própria. É isso que eu ensino.</h1>
-    <p class="hand">— Rielson Fragoso, carioca da Ilha do Governador</p>
+    <h1>Empreendedor no mundo real. Educador no digital.</h1>
+    <p class="lead">Durante o dia, cuido de um negócio de verdade, com clientes, agenda e contas para pagar. Em paralelo, construo projetos de educação que ajudam gente de todas as idades a estudar melhor.</p>
+    <p class="hand">— Rielson Fragoso, Ilha do Governador, Rio de Janeiro</p>
   </div>
 </section>
 <section>
   <div class="wrap prose">
-    <p>Sou educador de matemática e fundador da <b>Academia Matemática RJ</b>, onde ensino matemática e raciocínio lógico para concursos desde 2024. Sou pai de duas meninas, e boa parte do que eu crio hoje nasce da nossa rotina de estudo em casa.</p>
-    <p>Aprendi inglês sozinho, ainda criança. Os jogos de Pokémon no Game Boy não tinham tradução, então eu jogava com um dicionário inglês-português do lado. Depois vieram os livros <i>Inglês Sem Mestre</i> do meu avô. Anos mais tarde, esse inglês me levou a trabalhar como recepcionista bilíngue, inclusive no Aeroporto Internacional do Rio de Janeiro.</p>
-    <p>Por isso eu acredito em material que a pessoa consegue usar sozinha: bem explicado, organizado e honesto sobre o que entrega. Nos concursos, isso vira simulados montados a partir do edital. Em casa, virou o <b>Inglês em Família</b>.</p>
+    <p>Antes de empreender, trabalhei em aeroporto, farmácia e padaria. Aprendi cedo o valor de atender bem, de cumprir horário e de fazer a conta fechar no fim do mês.</p>
+    <p>Em 2019 comecei a empreender junto com a minha esposa, no ramo de banho e tosa e transporte pet. É o negócio que sustenta a nossa casa e onde aprendi, na prática, a vender soluções, cuidar de cliente e crescer com pé no chão.</p>
+    <p>Em paralelo, nunca larguei a vontade de ensinar. Em 2024 criei a <b>Academia Matemática RJ</b>, meu principal projeto digital, e de lá vieram os e-books, os simulados e, mais recentemente, o <b>Inglês em Família</b>, criado a partir dos estudos com as minhas filhas.</p>
   </div>
 </section>
 <section class="grid-paper">
   <div class="wrap stack" style="gap:26px">
-    <h2>Linha do tempo</h2>
-    <ol class="timeline">
-      <li><span class="y">infância</span><h3>Pokémon, dicionário e o Inglês Sem Mestre</h3><p>O inglês começou como curiosidade e virou disciplina de estudo.</p></li>
-      <li><span class="y">2014–2016</span><h3>Recepcionista bilíngue no RIOgaleão</h3><p>Atendendo passageiros do mundo inteiro no aeroporto internacional do Rio.</p></li>
-      <li><span class="y">2024</span><h3>Nasce a Academia Matemática RJ</h3><p>Canal no YouTube, e-books de questões comentadas e simulados de concursos.</p></li>
-      <li><span class="y">2026</span><h3>Inglês em Família · Volume 1</h3><p>O método que uso com as minhas filhas, organizado em 28 sessões para outras famílias.</p></li>
-    </ol>
+    <span class="eyebrow">Duas frentes</span>
+    <h2>O presencial paga as contas. O digital constrói o futuro.</h2>
+    <div class="fronts">
+      <div class="front">
+        <span class="tag">presencial</span>
+        <h3>Banho e tosa e transporte pet</h3>
+        <p>O negócio que toco com a minha esposa desde 2019 e minha principal fonte de renda.</p>
+        <ul><li>Banho e tosa</li><li>Táxi dog e transporte particular de pets</li><li>Soluções de transporte sob medida para cada cliente</li></ul>
+      </div>
+      <div class="front digital">
+        <span class="tag">digital</span>
+        <h3>Academia Matemática RJ e produtos educacionais</h3>
+        <p>Meu projeto de conteúdo educacional, com matemática para todas as idades.</p>
+        <div class="ages"><span>Olimpíadas Mirins · a partir do 2º ano</span><i>→</i><span>Concursos públicos</span></div>
+        <ul><li>Canal no YouTube com aulas e resoluções</li><li>E-books de questões comentadas e simulados de concursos</li><li>Inglês em Família, para pais e filhos</li></ul>
+      </div>
+    </div>
   </div>
 </section>
 <section>
+  <div class="wrap stack" style="gap:26px">
+    <span class="eyebrow">Como eu trabalho</span>
+    <h2>O que o balcão me ensinou e eu levo para os materiais</h2>
+    <div class="belief">
+      <div><h3>Resolver o problema do cliente</h3><p>Material bom é o que funciona para quem vai usar. Cada simulado é montado para a prova real, cada capítulo para caber na rotina.</p></div>
+      <div><h3>Prometer só o que entrego</h3><p>Sem promessa milagrosa. Eu digo o que o material faz e o que não faz, e ofereço garantia.</p></div>
+      <div><h3>Crescer com consistência</h3><p>Nada aqui surgiu de uma vez. É um material de cada vez, um aluno de cada vez, do mesmo jeito que se constrói um negócio.</p></div>
+    </div>
+  </div>
+</section>
+<section class="plain">
   <div class="wrap stack" style="gap:22px">
-    <h2>O que eu faço hoje</h2>
+    <h2>Conheça os projetos</h2>
     <div class="two">
       <a class="card" href="/concursos/" style="text-decoration:none"><span class="banca">Concursos</span><h3>Simulados e e-books de matemática</h3><p class="meta">Para quem vai fazer prova de concurso e quer treinar com o estilo real da banca.</p><span class="go" style="font-family:var(--display);font-weight:600;margin-top:auto">Ver materiais →</span></a>
       <a class="card" href="/ingles-em-familia/" style="text-decoration:none"><span class="banca">Família</span><h3>Inglês em Família</h3><p class="meta">Para pais e filhos que querem começar o inglês juntos, mesmo sem saber nada.</p><span class="go" style="font-family:var(--display);font-weight:600;margin-top:auto">Conhecer →</span></a>
