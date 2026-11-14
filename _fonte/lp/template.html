@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Inglês em Família · Vol. 1</title>
+<meta name="description" content="E-book interativo para pais e filhos aprenderem inglês juntos com o desenho Trash Truck (Zé Coleta). 28 sessões de 30 minutos. Você não precisa saber inglês para começar.">
+<meta property="og:type" content="product">
+<meta property="og:title" content="Inglês em Família: aprendam inglês juntos, episódio por episódio">
+<meta property="og:description" content="28 sessões de 30 minutos com um desenho calmo da Netflix. Você não precisa saber inglês para começar. Teste um capítulo grátis.">
+<meta property="og:image" content="https://rielsonfragoso.com.br/ingles-em-familia/og.jpg">
+<meta property="og:url" content="https://rielsonfragoso.com.br/ingles-em-familia/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%234E7D5B'/%3E%3Ctext x='32' y='43' font-family='Arial' font-weight='700' font-size='30' fill='white' text-anchor='middle'%3EEF%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400&display=swap">
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0}img{max-width:100%}[hidden]{display:none!important}
+{{BASECSS}}
+/* ---- v2 ---- */
+.seal{width:64px;height:64px;font-size:.6rem;letter-spacing:.02em}
+html{scroll-behavior:smooth}
+.hero h1 em{font-style:normal;color:var(--green)}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px 18px;align-items:center}
+.link2{font-family:var(--display);font-weight:600;color:var(--green);text-decoration:none;border-bottom:2px solid var(--green-soft);padding-bottom:2px}
+.link2:hover{border-color:var(--green)}
+.trust{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.92rem;color:var(--muted);list-style:none;margin:0;padding:0}
+.trust li{display:flex;align-items:center;gap:6px}
+.trust li::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--green)}
+.coverbox{position:relative;justify-self:center;max-width:420px;width:100%}
+.coverbox .tag{position:absolute;left:-10px;bottom:28px;background:var(--orange);color:var(--on-accent);font-family:var(--display);font-weight:700;
+  padding:10px 16px;border-radius:14px;box-shadow:0 10px 24px -12px rgba(0,0,0,.4);line-height:1.15;font-size:.95rem}
+.coverbox .tag small{display:block;font-weight:500;font-size:.75rem;opacity:.9}
+.numbers{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding-block:22px}
+.num{text-align:center;display:flex;flex-direction:column;gap:2px}
+.num b{font-family:var(--display);font-size:clamp(1.6rem,4vw,2.2rem);color:var(--green);line-height:1}
+.num span{font-size:.9rem;color:var(--muted)}
+.strip{border-block:1px solid var(--line);background:var(--surface)}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.compare>div{border-radius:var(--radius);padding:24px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.compare .bad{background:var(--surface);border:1px solid var(--line)}
+.compare .good{background:var(--green-soft);border:2px solid var(--green)}
+.compare h3{font-size:1.1rem}
+.compare ol{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:8px;color:var(--muted)}
+.compare .good ol{color:var(--ink)}
+.compare .res{font-family:var(--display);font-weight:600;font-size:.98rem;padding-top:8px;border-top:1px dashed var(--line)}
+.compare .bad .res{color:var(--orange)}
+.compare .good .res{color:var(--green-deep)}
+.sample{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;max-width:860px}
+.sample p{flex:1 1 260px;min-width:0}
+.ghostbtn{display:inline-flex;font-family:var(--display);font-weight:600;border:2px solid var(--green);color:var(--green);border-radius:999px;padding:11px 20px;text-decoration:none}
+.ghostbtn:hover{background:var(--green-soft)}
+.author{display:grid;grid-template-columns:auto 1fr;gap:clamp(18px,4vw,40px);align-items:start;max-width:900px}
+.author>*{min-width:0}
+.mono{width:110px;height:110px;border-radius:28px;background:var(--green);color:var(--on-accent);display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:2.4rem;transform:rotate(-3deg);box-shadow:8px 8px 0 var(--orange-soft)}
+.author blockquote{margin:0;font-family:var(--display);font-size:1.25rem;font-weight:600;line-height:1.35;color:var(--green);text-wrap:balance}
+.stackoffer{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0}
+.stackoffer li{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line)}
+.stackoffer li span:last-child{font-family:var(--display);font-weight:600;color:var(--green);white-space:nowrap}
+.daily{display:inline-block;background:var(--green-soft);color:var(--green-deep);font-family:var(--display);font-weight:600;border-radius:10px;padding:6px 12px;font-size:.95rem}
+:root[data-theme="dark"] .daily{color:var(--green)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .daily{color:var(--green)}}
+.after{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;counter-reset:a}
+.after div{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;font-size:.98rem;color:var(--muted);min-width:0}
+.after b{display:block;color:var(--ink);font-family:var(--display);margin-bottom:4px}
+.after div::before{counter-increment:a;content:counter(a);display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--orange);color:var(--on-accent);font-family:var(--display);font-weight:700;font-size:.9rem;margin-bottom:8px}
+.mbar{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--surface);border-top:1px solid var(--line);
+  padding:10px max(16px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+  display:none;align-items:center;justify-content:space-between;gap:12px;box-shadow:0 -8px 24px -16px rgba(0,0,0,.35);transform:translateY(110%);transition:transform .25s ease}
+.mbar.show{transform:none}
+.mbar .p{font-family:var(--display);line-height:1.1}
+.mbar .p b{font-size:1.25rem;color:var(--green)}
+.mbar .p small{display:block;color:var(--muted);font-size:.75rem}
+.mbar .btn{padding:12px 20px;font-size:.98rem}
+@media (max-width:860px){
+  .compare,.after{grid-template-columns:1fr}
+  .numbers{grid-template-columns:repeat(2,1fr)}
+  .mbar{display:flex}
+  body{padding-bottom:76px}
+  .coverbox{max-width:300px}
+  .coverbox .tag{left:-4px}
+}
+@media (max-width:520px){.author{grid-template-columns:1fr}.mono{width:84px;height:84px;font-size:1.8rem}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.mbar{transition:none}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand">Inglês em Família <span>· Vol. 1</span></div>
+    <a class="btn buy" href="{{CHECKOUT}}" target="_blank" rel="noopener">Quero o e-book</a>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <div class="stack">
+      <span class="eyebrow">E-book interativo para pais e filhos iniciantes</span>
+      <h1>Seu filho aprendendo inglês com você, <em>mesmo que você não saiba inglês.</em></h1>
+      <p class="lead">Em 30 minutos por dia, vocês estudam 5 palavras, assistem a um episódio do desenho <i>Trash Truck</i> (<i>Zé Coleta</i>) em inglês e revisam juntos. Tudo guiado, passo a passo, direto no celular.</p>
+      <div class="cta-row">
+        <a class="btn buy" href="{{CHECKOUT}}" target="_blank" rel="noopener">Quero começar hoje <small>R$ {{PRECO}}</small></a>
+        <a class="link2" href="#experimente">Testar um capítulo grátis ↓</a>
+      </div>
+      <ul class="trust"><li>Acesso imediato</li><li>Garantia de 7 dias</li><li>Pix, boleto ou cartão</li><li>Funciona no celular</li></ul>
+    </div>
+    <div class="coverbox">
+      <img class="cover" src="capa.jpg" width="637" height="900" alt="Capa do e-book Inglês em Família, Volume 1: uma família no sofá assistindo a um desenho em inglês">
+      <span class="tag">R$ {{PRECO_DIA}} por sessão<small>28 sessões em família</small></span>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="wrap numbers">
+    <div class="num"><b>28</b><span>episódios guiados</span></div>
+    <div class="num"><b>140</b><span>palavras do dia a dia</span></div>
+    <div class="num"><b>30 min</b><span>por sessão</span></div>
+    <div class="num"><b>0</b><span>inglês exigido dos pais</span></div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap stack">
+    <span class="eyebrow">Você se identifica?</span>
+    <h2>Muita família quer o inglês em casa, mas trava no mesmo lugar</h2>
+    <div class="pains">
+      <div class="pain"><q>Eu não sei inglês. Como vou ensinar?</q><p>Você não precisa ensinar. Cada palavra vem com pronúncia escrita do jeito que se fala e um botão para ouvir. Vocês aprendem juntos.</p></div>
+      <div class="pain"><q>Coloquei o desenho em inglês e ele não entendeu nada.</q><p>Sem preparação, o áudio vira barulho e a criança desiste. Com 5 palavras estudadas antes, ela reconhece, comemora e quer o próximo.</p></div>
+      <div class="pain"><q>Curso de inglês não cabe no orçamento agora.</q><p>Uma sessão custa menos que um pão na padaria, com um desenho que vocês já têm acesso. O e-book é seu para sempre.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap stack">
+    <span class="eyebrow">Por que funciona</span>
+    <h2>O segredo está nos 5 minutos antes do episódio</h2>
+    <p class="lead">Colocar desenho em inglês ajuda, mas sozinho costuma frustrar. A diferença está em chegar ao episódio sabendo o que procurar.</p>
+    <div class="compare">
+      <div class="bad">
+        <h3>Só colocar o desenho em inglês</h3>
+        <ol><li>A criança ouve um som que não reconhece</li><li>Perde o interesse em poucos minutos</li><li>Pede para voltar ao português</li></ol>
+        <p class="res">Resultado: “inglês é difícil, não é pra mim”.</p>
+      </div>
+      <div class="good">
+        <h3>Com o Inglês em Família</h3>
+        <ol><li>Vocês estudam 5 palavras do episódio, com áudio</li><li>Assistem procurando essas palavras: vira uma caçada</li><li>Revisam com exercícios e cartões que viram com um toque</li></ol>
+        <p class="res">Resultado: “eu entendi! Eu sou capaz”.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap stack">
+    <span class="eyebrow">O método</span>
+    <h2>Três passos, cerca de 30 minutos</h2>
+    <div class="steps">
+      <div class="step"><span class="n">1</span> <span class="t">5 a 8 min</span><h3>Preparar</h3><p>5 palavras com pronúncia, tradução e frases de exemplo. Toque em “ouvir” para escutar.</p></div>
+      <div class="step"><span class="n">2</span> <span class="t">10 a 17 min</span><h3>Assistir</h3><p>O episódio em inglês, sem legenda. O desafio é acompanhar a história e pegar as palavras, não entender cada frase.</p></div>
+      <div class="step"><span class="n">3</span> <span class="t">5 a 8 min</span><h3>Revisar</h3><p>Exercícios rápidos com gabarito e cartões de memória. No capítulo seguinte, vocês revisam antes de começar.</p></div>
+    </div>
+    <p class="note">Baseado em princípios conhecidos de aprendizagem: entender pelo contexto, poucas palavras por vez, lembrar ativamente, revisar com intervalos e aprender com emoção positiva.</p>
+  </div>
+</section>
+
+<section class="band" id="experimente">
+  <div class="wrap stack">
+    <span class="eyebrow">Experimente agora, grátis</span>
+    <h2>Faça o Capítulo 5 aqui mesmo, do jeito que funciona no PDF</h2>
+    <p class="lead">Ouça a pronúncia, responda os exercícios e vire os cartões. No e-book é igual: você toca, escreve e vira, direto no celular.</p>
+    <div class="demo">
+      <div class="tabs" role="tablist" aria-label="Partes do capítulo">
+        <button role="tab" id="tab-1" aria-controls="painel-1" aria-selected="true">1 · Antes de assistir</button>
+        <button role="tab" id="tab-2" aria-controls="painel-2" aria-selected="false">2 · Exercícios</button>
+        <button role="tab" id="tab-3" aria-controls="painel-3" aria-selected="false">3 · Cartões</button>
+      </div>
+      <div class="paper">
+        <div class="chap">
+          <div><span class="chap-k">Capítulo 5 · Temporada 1, Episódio 5 · ~15 min</span><b class="chap-t">Hide and Seek</b><i class="chap-s">Esconde-esconde</i></div>
+          <span class="chap-30">30<small>minutos</small></span>
+        </div>
+        <div role="tabpanel" id="painel-1" aria-labelledby="tab-1" class="panel">
+          <p class="dz-about" id="dz-about"></p>
+          <h3 class="dz-h">Antes de assistir: 5 palavras</h3>
+          <p class="dz-small">Leia em voz alta e toque em <b>▶ ouvir</b>.</p>
+          <div class="words" id="dz-words"></div>
+          <div class="ouvido" id="dz-ouvido"></div>
+        </div>
+        <div role="tabpanel" id="painel-2" aria-labelledby="tab-2" class="panel" hidden>
+          <h3 class="dz-h">1. Ligue a palavra à tradução</h3>
+          <div class="ex1" id="dz-ex1"></div>
+          <h3 class="dz-h">2. Complete com a palavra certa</h3>
+          <p class="dz-small" id="dz-bank"></p>
+          <div class="ex2" id="dz-ex2"></div>
+          <h3 class="dz-h">3. O que aconteceu? Numere de 1 a 3</h3>
+          <div class="ex3" id="dz-ex3"></div>
+          <h3 class="dz-h">4. Quantas palavras você reconheceu?</h3>
+          <div class="stars" id="dz-stars" role="group" aria-label="Estrelas"></div>
+          <div class="dz-actions"><button class="ghost" id="dz-gab" aria-expanded="false">Ver gabarito</button><button class="ghost" id="dz-clear">Limpar respostas</button></div>
+          <p class="gab" id="dz-gabtxt" hidden></p>
+        </div>
+        <div role="tabpanel" id="painel-3" aria-labelledby="tab-3" class="panel" hidden>
+          <p class="dz-small">Olhe a palavra, tente lembrar e <b>toque no cartão para virar</b>. Lembrou? Marque a estrela.</p>
+          <div class="cards" id="dz-cards"></div>
+        </div>
+      </div>
+      <p class="note">O episódio você assiste na Netflix, em inglês e sem legenda. No PDF, o botão “ouvir” abre a pronúncia no Google Tradutor.</p>
+    </div>
+    <div class="sample">
+      <p><b>Prefere testar no PDF de verdade?</b> Baixe a amostra grátis com o Capítulo 5 completo e faça a primeira sessão hoje com a sua família.</p>
+      <a class="ghostbtn" href="amostra.pdf" target="_blank" rel="noopener">Baixar a amostra grátis</a>
+    </div>
+    <div class="thumbs">
+      <figure><img src="p20.jpg" loading="lazy" width="580" height="820" alt="Página 1 do capítulo no PDF"><figcaption>Página 1: as 5 palavras</figcaption></figure>
+      <figure><img src="p21.jpg" loading="lazy" width="580" height="820" alt="Página 2 do capítulo no PDF"><figcaption>Página 2: exercícios</figcaption></figure>
+      <figure><img src="p22.jpg" loading="lazy" width="580" height="820" alt="Página 3 do capítulo no PDF, com cartões virados"><figcaption>Página 3: cartões</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap cols">
+    <div class="stack">
+      <span class="eyebrow">O que você recebe</span>
+      <h2>Tudo pronto para a primeira sessão</h2>
+      <ul class="check">
+        <li>28 capítulos, um para cada episódio das temporadas 1 e 2</li>
+        <li>140 palavras e expressões do dia a dia</li>
+        <li>Pronúncia escrita e clicável em todas as palavras e frases</li>
+        <li>Exercícios para responder no próprio PDF (ou imprimir)</li>
+        <li>140 cartões de revisão que viram com um toque</li>
+        <li>Duas grandes revisões, uma por temporada</li>
+        <li>Perguntas para a família conversar depois de cada episódio</li>
+        <li>Certificado de conclusão para preencher com as crianças</li>
+      </ul>
+    </div>
+    <div class="stack">
+      <span class="eyebrow">Para quem é</span>
+      <h2>Feito para quem está começando</h2>
+      <ul class="check">
+        <li>Famílias com crianças que estão começando no inglês</li>
+        <li>Pais e mães que nunca estudaram ou acham que “não levam jeito”</li>
+        <li>Adultos que estudaram, pararam e querem recomeçar do básico</li>
+      </ul>
+      <dl class="levels"><dt>Pré-A1 e A1</dt><dd>Público principal</dd><dt>A2</dt><dd>Prática de escuta e revisão</dd><dt>B1+</dt><dd>Não é o foco</dd></dl>
+      <h3 style="margin-top:8px">Este livro não é</h3>
+      <ul class="cross"><li>Um curso de gramática</li><li>Promessa de fluência rápida</li><li>Material oficial da série (é independente)</li></ul>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap author">
+    <div class="mono" aria-hidden="true">RF</div>
+    <div class="stack">
+      <span class="eyebrow">Quem fez este livro</span>
+      <blockquote>“Mais do que vocabulário, minhas filhas estavam descobrindo que são capazes.”</blockquote>
+      <p>Eu sou o Rielson, pai de duas meninas, educador de matemática e fundador da Academia Matemática RJ. Aprendi inglês sozinho, desde criança: jogava Pokémon no Game Boy com um dicionário do lado e estudava pelos livros <i>Inglês Sem Mestre</i> do meu avô.</p>
+      <p>Procurando desenhos mais calmos para as minhas filhas, encontrei <i>Trash Truck</i>. Comecei a estudar 5 palavras com elas antes de cada episódio. Quando uma palavra aparecia, vinha aquela festa de reconhecer. E quando eu errava a pronúncia, elas adoravam me corrigir.</p>
+      <p>Organizei tudo o que fazemos em casa neste e-book, para que a sua família viva a mesma coisa, mesmo que ninguém aí fale inglês ainda.</p>
+    </div>
+  </div>
+</section>
+
+<section id="oferta">
+  <div class="wrap">
+    <div class="offer">
+      <div class="stack">
+        <span class="eyebrow">Preço de lançamento</span>
+        <h2>Inglês em Família · Volume 1</h2>
+        <ul class="stackoffer">
+          <li><span>28 capítulos interativos</span><span>incluso</span></li>
+          <li><span>140 cartões de revisão</span><span>incluso</span></li>
+          <li><span>2 grandes revisões de temporada</span><span>incluso</span></li>
+          <li><span>Certificado da família</span><span>incluso</span></li>
+        </ul>
+        <div class="guarantee"><span class="seal">7 DIAS<br>GARANTIA</span><span>Faça as primeiras sessões. Se não for para a sua família, peça o reembolso em até 7 dias pela própria Hotmart.</span></div>
+      </div>
+      <div class="stack">
+        <div class="price"><div class="old">de R$ {{PRECO_CHEIO}} por</div><div class="now"><sup>R$</sup>{{PRECO}}</div></div>
+        <span class="daily">≈ R$ {{PRECO_DIA}} por sessão em família</span>
+        <p class="per">PDF interativo de 108 páginas. Acesso imediato após a compra. Pagamento seguro pela Hotmart: Pix, boleto ou cartão.</p>
+        <div><a class="btn buy" href="{{CHECKOUT}}" target="_blank" rel="noopener">Quero o e-book agora</a></div>
+        <p class="note">É preciso ter assinatura da Netflix para assistir aos episódios.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap stack">
+    <span class="eyebrow">Depois da compra</span>
+    <h2>Em 5 minutos vocês estão prontos</h2>
+    <div class="after">
+      <div><b>Receba o acesso</b>A Hotmart envia o e-book para o seu e-mail logo após o pagamento.</div>
+      <div><b>Abra no celular</b>Pelo Google Drive, Chrome, Edge, Acrobat ou o visualizador do iPhone.</div>
+      <div><b>Comece pelo Capítulo 1</b>Separe 30 minutos, chame as crianças e coloque a Netflix em inglês.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap stack">
+    <span class="eyebrow">Perguntas frequentes</span>
+    <h2>Antes de começar</h2>
+    <div class="faq">
+      <details><summary>Preciso saber inglês para usar com meu filho?</summary><p>Não. O livro foi feito para pais iniciantes. Cada palavra tem guia de pronúncia em português e um botão para ouvir. Vocês aprendem juntos, e errar faz parte da graça.</p></details>
+      <details><summary>Preciso ter Netflix?</summary><p>Sim. Os episódios de Trash Truck (Zé Coleta) estão na Netflix, e a sessão inclui assistir ao episódio com o áudio em inglês.</p></details>
+      <details><summary>Para qual idade é indicado?</summary><p>A série é pensada para crianças pequenas. Crianças que já leem participam de tudo; as menores participam ouvindo, repetindo e assistindo, com um adulto conduzindo.</p></details>
+      <details><summary>Serve para adulto estudando sozinho?</summary><p>Serve. Se você está começando ou recomeçando do zero, o formato curto e guiado ajuda a criar o hábito e treinar o ouvido.</p></details>
+      <details><summary>Funciona no celular?</summary><p>Sim. O PDF funciona no celular, no tablet e no computador. Os recursos interativos funcionam no Google Drive, no Chrome, no Edge, no Adobe Acrobat e no visualizador do iPhone.</p></details>
+      <details><summary>Posso imprimir?</summary><p>Pode. Os exercícios também funcionam com lápis. Impresso, o cartão de revisão mostra só a frente, e a resposta está na página 1 do capítulo.</p></details>
+      <details><summary>Vou ficar fluente?</summary><p>Não prometemos fluência. O livro é um ponto de partida: vocabulário, ouvido treinado e, principalmente, a confiança de que vocês conseguem aprender.</p></details>
+      <details><summary>E se não gostar?</summary><p>Você tem 7 dias de garantia. Peça o reembolso pela própria Hotmart, sem complicação.</p></details>
+      <details><summary>Este material é oficial da série?</summary><p>Não. É um material educativo independente, sem relação com a Netflix ou com os criadores de Trash Truck.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="band final">
+  <div class="wrap stack">
+    <h2>A primeira sessão pode ser hoje à noite</h2>
+    <p class="lead">Um episódio, cinco palavras e a sua família descobrindo que é capaz.</p>
+    <a class="btn buy" href="{{CHECKOUT}}" target="_blank" rel="noopener">Quero começar <small>R$ {{PRECO}}</small></a>
+    <a class="link2" href="amostra.pdf" target="_blank" rel="noopener">Ainda em dúvida? Baixe a amostra grátis</a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Inglês em Família · Volume 1 · por <a href="/" style="color:inherit">Rielson Fragoso</a></span>
+    <span>Material educativo independente. Trash Truck é uma série da Netflix; este produto não tem afiliação, patrocínio ou autorização da Netflix ou dos criadores da série.</span>
+  </div>
+</footer>
+
+<div class="mbar" id="mbar" aria-hidden="true">
+  <span class="p"><b>R$ {{PRECO}}</b><small>Garantia de 7 dias</small></span>
+  <a class="btn buy" href="{{CHECKOUT}}" target="_blank" rel="noopener" tabindex="-1">Quero o e-book</a>
+</div>
+
+<script id="dz-data" type="application/json">{{DEMO}}</script>
+<script>
+{{DEMOJS}}
+</script>
+<script>
+(function(){
+  // repassa a origem do visitante (?src=instagram) para o checkout da Hotmart
+  var src='lp';
+  try{var s=new URLSearchParams(location.search).get('src'); if(s && /^[\w-]{1,30}$/.test(s)) src='lp_'+s;}catch(e){}
+  [].forEach.call(document.querySelectorAll('a.buy'),function(a){
+    a.href=a.href+(a.href.indexOf('?')<0?'?':'&')+'src='+encodeURIComponent(src);
+  });
+  // barra fixa no celular depois do topo
+  var bar=document.getElementById('mbar'), hero=document.querySelector('.hero'), offer=document.getElementById('oferta');
+  if('IntersectionObserver' in window){
+    var heroOut=false, offerIn=false;
+    function upd(){var on=heroOut&&!offerIn; bar.classList.toggle('show',on); bar.setAttribute('aria-hidden',on?'false':'true'); bar.querySelector('a').tabIndex=on?0:-1;}
+    new IntersectionObserver(function(e){heroOut=!e[0].isIntersecting;upd()}).observe(hero);
+    new IntersectionObserver(function(e){offerIn=e[0].isIntersecting;upd()}).observe(offer);
+  }
+})();
+</script>
+</body>
+</html>
