@@ -62,7 +62,7 @@ def head(title, desc, path, og="og-site.jpg", extra_css=""):
 '''
 
 def nav(cur):
-    items = [("/", "Início"), ("/concursos/", "Concursos"), ("/ingles-em-familia/", "Inglês em Família"), ("/aulas/", "Aulas"), ("/livros/", "Livros"), ("/#gratis", "Grátis"), ("/sobre/", "Sobre")]
+    items = [("/", "Início"), ("/concursos/", "Concursos"), ("/ingles-em-familia/", "Inglês em Família"), ("/aulas/", "Resoluções"), ("/livros/", "Livros"), ("/#gratis", "Grátis"), ("/sobre/", "Sobre")]
     li = "".join(f'<li><a href="{h}"{" aria-current=\"page\"" if h == cur else ""}>{t}</a></li>' for h, t in items)
     return f'<header class="nav"><div class="wrap"><a class="logo" href="/"><i>RF</i>Rielson Fragoso</a><nav aria-label="Principal"><ul>{li}</ul></nav></div></header>\n'
 
@@ -80,7 +80,7 @@ FOOT = f'''<footer>
       <div><h3>Materiais</h3><ul>
         <li><a href="/concursos/">Concursos: e-books e simulados</a></li>
         <li><a href="/ingles-em-familia/">Inglês em Família</a></li>
-        <li><a href="/aulas/">Aula particular de matemática</a></li>
+        <li><a href="/aulas/">Resolução de questões em vídeo</a></li>
         <li><a href="/livros/">Livros usados à venda</a></li>
         <li><a href="/sobre/">Sobre mim</a></li></ul></div>
     </div>
@@ -195,7 +195,7 @@ def home():
     {METHOD}
     <h3 style="margin-top:8px">Alguns simulados</h3>
     <div class="cards">{feat}</div>
-    <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="/concursos/">Ver todos os 13 materiais →</a><a class="btn line" href="/concursos/#pedir">Pedir o simulado do meu concurso</a><a class="btn line" href="/aulas/">Aula particular · R$ 50/h</a></div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="/concursos/">Ver todos os 13 materiais →</a><a class="btn line" href="/concursos/#pedir">Pedir o simulado do meu concurso</a><a class="btn line" href="/aulas/">Resolução de questões em vídeo</a></div>
   </div>
 </section>
 
