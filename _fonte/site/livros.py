@@ -12,7 +12,7 @@ FRETE = 20
 # (título, autor/detalhe, preço, qtd, categoria, foto, vendido)
 L = [
     ("Álgebra Linear e Geometria Analítica", "Antonio dos Santos Machado", 36, 2, "Graduação", "machado", False),
-    ("Cálculo · Volume 1", "James Stewart · tradução da 6ª edição", 54, 2, "Graduação", "stewart", False),
+    ("Cálculo · Volume 1", "James Stewart · tradução da 6ª edição", 54, 1, "Graduação", "stewart", False),
     ("Cálculo · Volume 1", "George B. Thomas Jr.", 25, 1, "Graduação", "thomas", False),
     ("Cálculo · Volume 2", "George B. Thomas Jr.", 25, 1, "Graduação", "thomas", False),
     ("Cálculo · Volume 3", "George B. Thomas Jr.", 25, 1, "Graduação", "thomas", False),
@@ -20,10 +20,10 @@ L = [
     ("Fundamentos de Matemática Elementar 1 · Conjuntos e Funções", "Iezzi e Murakami · edição recente", 50, 1, "Ensino médio", "fme-novos", False),
     ("Fundamentos de Matemática Elementar 2 · Logaritmos", "Iezzi, Dolce e Murakami · edição recente", 50, 1, "Ensino médio", "fme-novos", False),
     ("Fundamentos de Matemática Elementar 3 · Trigonometria", "Gelson Iezzi · edição recente", 50, 1, "Ensino médio", "fme-novos", False),
-    ("Fundamentos de Matemática Elementar 2 · Logaritmos", "Iezzi, Dolce e Murakami · edição antiga (anos 80)", 32, 1, "Coleções clássicas", "fme-antigos", False),
-    ("Fundamentos de Matemática Elementar 3 · Trigonometria", "Gelson Iezzi · edição antiga (anos 80)", 32, 1, "Coleções clássicas", "fme-antigos", False),
-    ("Fundamentos de Matemática Elementar 4 · Sequências, Matrizes, Determinantes e Sistemas", "Iezzi e Hazzan · edição antiga (anos 80)", 32, 1, "Coleções clássicas", "fme-antigos", False),
-    ("Fundamentos de Matemática Elementar 5 · Combinatória e Probabilidade", "Samuel Hazzan · edição antiga (anos 80)", 32, 1, "Coleções clássicas", "fme-antigos", False),
+    ("Fundamentos de Matemática Elementar 2 · Logaritmos", "Iezzi, Dolce e Murakami · edição antiga (anos 80)", 32, 1, "Coleções clássicas", "fme-antigos", True),
+    ("Fundamentos de Matemática Elementar 3 · Trigonometria", "Gelson Iezzi · edição antiga (anos 80)", 32, 1, "Coleções clássicas", "fme-antigos", True),
+    ("Fundamentos de Matemática Elementar 4 · Sequências, Matrizes, Determinantes e Sistemas", "Iezzi e Hazzan · edição antiga (anos 80)", 32, 1, "Coleções clássicas", "fme-antigos", True),
+    ("Fundamentos de Matemática Elementar 5 · Combinatória e Probabilidade", "Samuel Hazzan · edição antiga (anos 80)", 32, 1, "Coleções clássicas", "fme-antigos", True),
     ("Matemática · Segundo Ano Colegial", "Ary Quintella · Companhia Editora Nacional", 27, 1, "Coleções clássicas", "quintella", False),
     ("Matemática · Terceiro Ano Colegial", "Ary Quintella · Companhia Editora Nacional", 27, 1, "Coleções clássicas", "quintella", False),
     ("Matemática · 3ª Série Ginasial", "Ary Quintella · Companhia Editora Nacional", 27, 1, "Coleções clássicas", "quintella", False),
