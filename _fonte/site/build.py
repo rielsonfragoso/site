@@ -203,7 +203,7 @@ def home():
       <h2>Inglês em Família · Volume 1</h2>
       <p class="lead">Pais e filhos aprendendo inglês juntos com os episódios de <i>Trash Truck</i> (<i>Zé Coleta</i>). 5 palavras, o episódio em inglês e uma revisão rápida. Mesmo que você não saiba inglês.</p>
       <div class="chips"><span>28 episódios</span><span>140 palavras</span><span>30 min por sessão</span><span>Garantia de 7 dias</span></div>
-      <div class="row"><a class="btn green" href="/ingles-em-familia/">Testar um capítulo grátis</a><a class="btn line" style="color:var(--green)" href="{src(IEF, "site_home")}" target="_blank" rel="noopener">Comprar · R$ 37</a></div>
+      <div class="row"><a class="btn green" href="/ingles-em-familia/">Testar um capítulo grátis</a><a class="btn line" style="color:var(--green)" href="{src(IEF, "site_home")}" target="_blank" rel="noopener">Comprar · R$ 24,90</a></div>
     </div>
   </div>
 </section>
