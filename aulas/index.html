@@ -35,7 +35,12 @@
 .sched>div{background:var(--yellow-soft);border-radius:14px;padding:14px;text-align:center;min-width:0}
 .sched b{display:block;font:700 1.1rem var(--display)}
 .sched span{color:var(--muted);font-size:.92rem}
-.ctx{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.ctx{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.train{background:var(--navy);color:var(--chalk);border-radius:var(--r);padding:clamp(20px,4vw,32px);display:flex;flex-direction:column;gap:10px;border:2px solid var(--yellow)}
+.train h2{color:var(--chalk)}
+.train p{color:var(--chalk-dim);max-width:70ch}
+.train b{color:var(--yellow)}
+.train .tag{font-family:var(--hand);font-size:1.6rem;font-weight:600;color:var(--yellow);line-height:1}
 .ctx>div{border-top:3px solid var(--yellow);padding-top:12px;display:flex;flex-direction:column;gap:6px;min-width:0}
 .ctx p{color:var(--muted);font-size:.96rem}
 .ctx .ex{font-size:.92rem}
@@ -78,8 +83,8 @@
   <div class="wrap ahero">
     <div class="stack">
       <span class="eyebrow">Aula particular de matemática</span>
-      <h1>Uma aula montada para a sua prova, não uma aula genérica</h1>
-      <p class="lead">Ao vivo pela internet ou gravada sob demanda. Você me conta o assunto, a prova e onde trava; eu preparo a aula com teoria e os exercícios mais próximos da realidade que você vai enfrentar.</p>
+      <h1>Resolução explicada, questão por questão</h1>
+      <p class="lead">Meu ponto forte é resolver exercícios e questões explicando cada passo: o raciocínio, o caminho e onde costuma estar a pegadinha. Traga as questões que geraram dúvida e a gente treina em cima delas, ao vivo ou numa aula gravada sob demanda.</p>
       <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="#pedido-sec">Pedir uma aula</a><a class="btn line" style="color:var(--chalk)" href="https://wa.me/5521972464789?text=Ol%C3%A1%2C%20Rielson%21%20Vi%20no%20site%20e%20queria%20saber%20mais%20sobre%20as%20aulas%20particulares%20de%20matem%C3%A1tica." target="_blank" rel="noopener">Tirar dúvida no WhatsApp</a></div>
     </div>
     <div class="price-card">
@@ -92,13 +97,19 @@
 
 <section>
   <div class="wrap stack" style="gap:22px">
+    <div class="train">
+      <span class="tag">o segredo é o treino</span>
+      <h2>Aprender matemática é resolver problemas</h2>
+      <p>Teoria ajuda, mas o que faz a matéria entrar é o treino: resolver, errar, entender o porquê e resolver de novo. Por isso as minhas aulas giram em torno de exercícios e questões, com a teoria entrando na hora em que ela é necessária para destravar a resolução.</p>
+      <p><b>O ideal:</b> traga os exercícios e as questões que você não conseguiu fazer ou que te deixaram em dúvida. Eles mostram exatamente onde está a dificuldade, e a aula rende muito mais.</p>
+    </div>
     <span class="eyebrow">Duas modalidades</span>
     <h2>Escolha como prefere estudar</h2>
     <div class="modes">
       <div><span class="tag">ao vivo</span><h3>Aula online, em tempo real</h3>
-        <ul><li>Terça, quarta ou sexta, entre 19h e 22h</li><li>Você tira dúvidas na hora e resolve exercícios comigo</li><li>Sempre que possível, a aula fica gravada para você reassistir</li><li>R$ 50 por hora, com pacotes negociáveis</li></ul></div>
+        <ul><li>Terça, quarta ou sexta, entre 19h e 22h</li><li>Resolvemos juntos as questões que te deixaram em dúvida, passo a passo</li><li>Sempre que possível, a aula fica gravada para você reassistir</li><li>R$ 50 por hora, com pacotes negociáveis</li></ul></div>
       <div><span class="tag">gravada</span><h3>Aula sob demanda, feita para você</h3>
-        <ul><li>Você me diz o assunto e o objetivo: prova da escola, concurso X para o cargo Y da banca Z</li><li>Eu monto a aula com teoria e uma lista de problemas no nível e no estilo da sua prova</li><li>Você recebe o vídeo e assiste quantas vezes quiser</li><li>Valor combinado conforme o tamanho do conteúdo</li></ul></div>
+        <ul><li>Você me diz o assunto e o objetivo: prova da escola, concurso X para o cargo Y da banca Z</li><li>Eu gravo a resolução explicada de uma lista de questões no nível e no estilo da sua prova, com a teoria necessária em cada uma</li><li>Você recebe o vídeo e assiste quantas vezes quiser</li><li>Valor combinado conforme o tamanho do conteúdo</li></ul></div>
     </div>
   </div>
 </section>
@@ -121,6 +132,7 @@
     <span class="eyebrow">Quanto mais contexto, melhor a aula</span>
     <h2>O que me ajuda a preparar a aula certa</h2>
     <div class="ctx">
+      <div><h3>As questões que geraram dúvida</h3><p>É o material mais valioso: exercícios do livro, da lista ou de provas anteriores que você errou ou não soube começar.</p></div>
       <div><h3>Assunto bem específico</h3><p>Não só o tema geral: diga exatamente a parte que precisa.</p>
         <p class="ex"><s>trigonometria</s> → “trigonometria no triângulo retângulo” ou “funções trigonométricas”</p></div>
       <div><h3>Prova da escola</h3><p>Série, livro e capítulo, data da prova. Fotos do livro, do caderno, de provas e testes anteriores ou da lista do professor.</p></div>
@@ -179,12 +191,12 @@
       <h3>2. O conteúdo</h3>
       <label>Assunto específico *<span class="hint">Quanto mais específico, melhor. Ex.: “trigonometria no triângulo retângulo”, “juros compostos com taxas equivalentes”, “porcentagem: aumentos e descontos sucessivos”.</span>
         <textarea name="assunto" rows="2" maxlength="400"></textarea></label>
-      <label>O que você já sabe e onde trava?<span class="hint">Ex.: entendo a fórmula, mas erro na interpretação dos problemas.</span>
+      <label>Em que questões ou partes você trava?<span class="hint">Ex.: entendo a fórmula, mas erro na interpretação; não sei por onde começar as questões 3 e 7 da lista.</span>
         <textarea name="trava" rows="2" maxlength="400"></textarea></label>
       <fieldset><legend>Foco da aula</legend>
         <div class="pills">
-          <label><input type="radio" name="foco" value="teoria + resolução de exercícios" checked>Teoria + exercícios <span class="rec">recomendado</span></label>
-          <label><input type="radio" name="foco" value="mais resolução de exercícios e problemas">Mais exercícios</label>
+          <label><input type="radio" name="foco" value="resolução explicada de exercícios e questões" checked>Resolução explicada de questões <span class="rec">recomendado</span></label>
+          <label><input type="radio" name="foco" value="teoria + resolução de exercícios">Teoria + exercícios</label>
           <label><input type="radio" name="foco" value="mais explicação teórica">Mais teoria</label>
           <label><input type="radio" name="foco" value="revisão rápida para a prova">Revisão para a prova</label>
         </div></fieldset>
@@ -206,6 +218,7 @@
       <h3>4. Material de apoio</h3>
       <fieldset><legend>O que você pode me mandar por foto ou link na conversa?</legend>
         <div class="pills">
+          <label><input type="checkbox" name="mat" value="exercícios e questões que geraram dúvida" checked>Exercícios e questões com dúvida <span class="rec">ideal</span></label>
           <label><input type="checkbox" name="mat" value="páginas do livro">Páginas do livro</label>
           <label><input type="checkbox" name="mat" value="caderno">Caderno</label>
           <label><input type="checkbox" name="mat" value="provas ou testes anteriores">Provas ou testes anteriores</label>
@@ -214,7 +227,7 @@
         </div></fieldset>
       <label>Algo mais que eu deva saber?<textarea name="obs" rows="2" maxlength="500"></textarea></label>
 
-      <p class="anote">Ao enviar, o seu WhatsApp abre com o pedido já escrito para mim. Depois de enviar, mande as fotos ou links do material na mesma conversa. Eu respondo confirmando data, prazo e valor.</p>
+      <p class="anote">Ao enviar, o seu WhatsApp abre com o pedido já escrito para mim. Depois de enviar, mande na mesma conversa as fotos das questões que geraram dúvida e o restante do material. Eu respondo confirmando data, prazo e valor.</p>
       <p class="amsg" id="amsg" role="alert" hidden></p>
       <button class="btn wabtn" type="submit">Enviar pedido pelo WhatsApp</button>
       <p class="anote" id="adone" hidden>O WhatsApp não abriu? <a id="ago" href="#" target="_blank" rel="noopener">Toque aqui para abrir com o pedido</a>.</p>
@@ -265,7 +278,7 @@
     }
     if((obj==='olimpiada'||obj==='outro')&&v('outro_det'))L.push('Detalhes: '+v('outro_det'));
     L.push('','*Assunto específico:* '+v('assunto'));
-    if(v('trava'))L.push('Onde trava / o que já sabe: '+v('trava'));
+    if(v('trava'))L.push('Onde trava: '+v('trava'));
     L.push('Foco da aula: '+radio('foco'));
     if(modo==='ao vivo'){
       L.push('Quantidade: '+radio('qtd'));
