@@ -2,7 +2,7 @@
 Páginas: / · /concursos/ · /sobre/   (a /ingles-em-familia/ tem build próprio em site/lp_v2)"""
 import os, shutil, html, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import livros
+import livros, aulas
 from urllib.parse import quote
 OUT = "/home/claude/site-repo"; HERE = os.path.dirname(os.path.abspath(__file__))
 WA = "https://wa.me/5521964446262?text=" + quote("Oi, Rielson! Vim pelo site.")
@@ -62,7 +62,7 @@ def head(title, desc, path, og="og-site.jpg", extra_css=""):
 '''
 
 def nav(cur):
-    items = [("/", "Início"), ("/concursos/", "Concursos"), ("/ingles-em-familia/", "Inglês em Família"), ("/livros/", "Livros"), ("/#gratis", "Grátis"), ("/sobre/", "Sobre")]
+    items = [("/", "Início"), ("/concursos/", "Concursos"), ("/ingles-em-familia/", "Inglês em Família"), ("/aulas/", "Aulas"), ("/livros/", "Livros"), ("/#gratis", "Grátis"), ("/sobre/", "Sobre")]
     li = "".join(f'<li><a href="{h}"{" aria-current=\"page\"" if h == cur else ""}>{t}</a></li>' for h, t in items)
     return f'<header class="nav"><div class="wrap"><a class="logo" href="/"><i>RF</i>Rielson Fragoso</a><nav aria-label="Principal"><ul>{li}</ul></nav></div></header>\n'
 
@@ -80,6 +80,7 @@ FOOT = f'''<footer>
       <div><h3>Materiais</h3><ul>
         <li><a href="/concursos/">Concursos: e-books e simulados</a></li>
         <li><a href="/ingles-em-familia/">Inglês em Família</a></li>
+        <li><a href="/aulas/">Aula particular de matemática</a></li>
         <li><a href="/livros/">Livros usados à venda</a></li>
         <li><a href="/sobre/">Sobre mim</a></li></ul></div>
     </div>
@@ -194,7 +195,7 @@ def home():
     {METHOD}
     <h3 style="margin-top:8px">Alguns simulados</h3>
     <div class="cards">{feat}</div>
-    <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="/concursos/">Ver todos os 13 materiais →</a><a class="btn line" href="/concursos/#pedir">Pedir o simulado do meu concurso</a></div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="/concursos/">Ver todos os 13 materiais →</a><a class="btn line" href="/concursos/#pedir">Pedir o simulado do meu concurso</a><a class="btn line" href="/aulas/">Aula particular · R$ 50/h</a></div>
   </div>
 </section>
 
@@ -474,7 +475,7 @@ def og():
     im.save(os.path.join(OUT, "og-site.jpg"), quality=85)
 
 if __name__ == "__main__":
-    for rel, fn in [("index.html", home), ("concursos/index.html", concursos), ("sobre/index.html", sobre), ("livros/index.html", lambda: livros.page(head, nav, FOOT))]:
+    for rel, fn in [("index.html", home), ("concursos/index.html", concursos), ("sobre/index.html", sobre), ("livros/index.html", lambda: livros.page(head, nav, FOOT)), ("aulas/index.html", lambda: aulas.page(head, nav, FOOT))]:
         p = os.path.join(OUT, rel); os.makedirs(os.path.dirname(p), exist_ok=True)
         open(p, "w").write(fn())
     shutil.copy(os.path.join(HERE, "site.css"), os.path.join(OUT, "site.css"))
@@ -484,5 +485,5 @@ if __name__ == "__main__":
         '<text x="32" y="42" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="26" fill="#F2C230" text-anchor="middle">RF</text></svg>')
     open(os.path.join(OUT, "robots.txt"), "w").write("User-agent: *\nAllow: /\nSitemap: https://rielsonfragoso.com.br/sitemap.xml\n")
     open(os.path.join(OUT, "sitemap.xml"), "w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
-        + "".join(f"<url><loc>https://rielsonfragoso.com.br{u}</loc></url>" for u in ["/", "/concursos/", "/ingles-em-familia/", "/sobre/", "/livros/"]) + "</urlset>\n")
+        + "".join(f"<url><loc>https://rielsonfragoso.com.br{u}</loc></url>" for u in ["/", "/concursos/", "/ingles-em-familia/", "/sobre/", "/livros/", "/aulas/"]) + "</urlset>\n")
     og(); print("ok")
