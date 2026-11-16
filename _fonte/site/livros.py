@@ -1,12 +1,13 @@
 """Página /livros/ — desapego de livros (Matemática, Física e outras áreas).
 Para marcar um livro como vendido: mude vendido=False para True (ou diminua qtd)."""
-import html, json
+import html, json, os
 from urllib.parse import quote
 e = html.escape
 
 WA_LIVROS = "5521972464789"
 VIDEO_ID = "d3m-W96kx5c"
 FRETE_GRATIS = 100
+FRETE = 20
 
 # (título, autor/detalhe, preço, qtd, categoria, foto, vendido)
 L = [
@@ -59,6 +60,39 @@ def preco(v):
     return f"R$ {v:.2f}".replace(".", ",")
 
 CSS = '''
+.co{position:fixed;inset:0;z-index:40;background:rgba(10,16,32,.55);display:flex;justify-content:center;align-items:flex-start;overflow-y:auto;padding:calc(12px + env(safe-area-inset-top,0px)) max(12px, env(safe-area-inset-right,0px)) calc(12px + env(safe-area-inset-bottom,0px)) max(12px, env(safe-area-inset-left,0px))}
+.co[hidden]{display:none!important}
+body.co-open{overflow:hidden}
+.co-box{background:var(--bg);color:var(--ink);border-radius:18px;border-top:4px solid var(--yellow);width:100%;max-width:620px;padding:clamp(16px,4vw,28px);display:flex;flex-direction:column;gap:14px}
+.co-head{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.co-x{border:0;background:var(--surface);color:var(--ink);width:38px;height:38px;border-radius:50%;font-size:1rem;cursor:pointer;border:1px solid var(--line)}
+.co-items{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.co-items li{display:grid;grid-template-columns:1fr auto auto auto;gap:10px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.co-items .it{display:flex;flex-direction:column;min-width:0;font-weight:600;font-size:.95rem;line-height:1.3}
+.co-items .it small{font-weight:400;color:var(--muted)}
+.co-items .lp{font:700 .95rem var(--display);white-space:nowrap}
+.co-items .rm{border:0;background:transparent;color:var(--muted);cursor:pointer;font-size:.95rem;padding:4px}
+.qty{display:inline-flex;align-items:center;gap:6px}
+.qty button{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer;font-weight:700}
+.co-tot{display:grid;grid-template-columns:1fr auto;gap:4px 12px;margin:0;padding:12px 14px;background:var(--surface);border:1px solid var(--line);border-radius:12px}
+.co-tot dd{margin:0;text-align:right;font-weight:700}
+.co-tot .big{font:700 1.2rem var(--display);padding-top:6px;border-top:1px dashed var(--line)}
+.co-hint{color:var(--muted);font-size:.92rem}
+.co-hint:empty{display:none}
+#co-form{display:flex;flex-direction:column;gap:12px}
+#co-form h3{margin-top:4px}
+#co-form label{display:flex;flex-direction:column;gap:5px;font:600 .88rem var(--display)}
+#co-form input,#co-form textarea{font:400 1rem var(--body);color:var(--ink);background:var(--surface);border:1.5px solid var(--line);border-radius:10px;padding:11px 12px;width:100%}
+#co-form input[aria-invalid="true"]{border-color:var(--red)}
+#co-form .f2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+#co-form .f2b{grid-template-columns:1fr 90px}
+#co-form .f2>*{min-width:0}
+.co-note{font-size:.88rem;color:var(--muted)}
+.co-msg{color:var(--red);font-weight:700}
+.co-send{justify-content:center;border:0;cursor:pointer;font-size:1.05rem}
+.co-done{font-size:.92rem}
+@media (max-width:480px){.co-items li{grid-template-columns:1fr auto auto}.co-items .qty{grid-column:1/2}}
+
 .phero{padding-block:clamp(36px,6vw,64px)}
 .lhero{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(20px,4vw,48px);align-items:center}
 .lhero>*{min-width:0}
@@ -128,7 +162,7 @@ def page(head, nav, foot):
         qtxt = f"{q} unidades · preço cada" if q > 1 else "1 unidade"
         tag = '<span class="soldtag">Vendido</span>' if sold else ""
         acts = "" if sold else (
-            f'<button type="button" class="add" aria-pressed="false" data-i="{i}">+ Lote</button>'
+            f'<button type="button" class="add" aria-pressed="false" data-i="{i}">+ Pedido</button>'
             f'<a class="wa" href="{e(wa_link(msg))}" target="_blank" rel="noopener" aria-label="Perguntar no WhatsApp sobre {e(t)}">{WA_SVG}</a>')
         cards.append(
             f'<article class="book{" sold" if sold else ""}" data-cat="{e(c)}">'
@@ -137,32 +171,9 @@ def page(head, nav, foot):
             f'<div class="row"><span class="pr">{preco(p)}<small>{qtxt}</small></span><span class="acts">{acts}</span></div></div></article>')
     chips = '<button type="button" aria-pressed="true" data-f="*">Todos</button>' + "".join(
         f'<button type="button" aria-pressed="false" data-f="{e(c)}">{e(c)}</button>' for c in CATS if any(x[4] == c for x in L))
-    dados = json.dumps([{"t": f"{t} – {a.split(' · ')[0]}", "p": p} for t, a, p, q, c, f, s in L], ensure_ascii=False).replace("</", "<\\/")
+    dados = json.dumps([{"t": f"{t} – {a.split(' · ')[0]}", "p": p, "q": q, "s": s} for t, a, p, q, c, f, s in L], ensure_ascii=False).replace("</", "<\\/")
     disp = sum(1 for x in L if not x[6])
-    js = '''<script id="lv-data" type="application/json">__DADOS__</script>
-<script>
-(function(){
-  var D=JSON.parse(document.getElementById('lv-data').textContent), sel={}, FG=__FG__, WA='__WA__';
-  function brl(v){return 'R$ '+v.toFixed(2).replace('.',',');}
-  var cart=document.getElementById('cart'), sum=document.getElementById('csum'), send=document.getElementById('csend');
-  function upd(){
-    var ks=Object.keys(sel), tot=ks.reduce(function(s,k){return s+D[k].p},0);
-    cart.classList.toggle('show',ks.length>0); document.body.classList.toggle('has-cart',ks.length>0);
-    var falta=FG-tot;
-    sum.innerHTML='<b>'+ks.length+(ks.length===1?' livro':' livros')+' · '+brl(tot)+'</b><small>'+(falta>0?'Faltam '+brl(falta)+' para o frete grátis':'Frete grátis garantido')+'</small>';
-    var msg='Olá, Rielson! Vi no site e tenho interesse nestes livros:\\n'+ks.map(function(k){return '• '+D[k].t+' ('+brl(D[k].p)+')'}).join('\\n')+'\\nTotal: '+brl(tot)+'. Estão disponíveis?';
-    send.href='https://wa.me/'+WA+'?text='+encodeURIComponent(msg);
-  }
-  [].forEach.call(document.querySelectorAll('.add'),function(b){b.addEventListener('click',function(){
-    var i=b.getAttribute('data-i'); if(sel[i]){delete sel[i];b.setAttribute('aria-pressed','false');b.textContent='+ Lote';}
-    else{sel[i]=1;b.setAttribute('aria-pressed','true');b.textContent='✓ No lote';} upd();});});
-  document.getElementById('cclear').addEventListener('click',function(){sel={};[].forEach.call(document.querySelectorAll('.add'),function(b){b.setAttribute('aria-pressed','false');b.textContent='+ Lote';});upd();});
-  var fb=[].slice.call(document.querySelectorAll('.filters button')), cards=[].slice.call(document.querySelectorAll('.book'));
-  fb.forEach(function(b){b.addEventListener('click',function(){var f=b.getAttribute('data-f');
-    fb.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});
-    cards.forEach(function(c){c.hidden=!(f==='*'||c.getAttribute('data-cat')===f)});});});
-})();
-</script>'''.replace("__DADOS__", dados).replace("__FG__", str(FRETE_GRATIS)).replace("__WA__", WA_LIVROS)
+    js = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "livros_checkout.js.html")).read().replace("__DADOS__", dados).replace("__FG__", str(FRETE_GRATIS)).replace("__FRETE__", str(FRETE)).replace("__WA__", WA_LIVROS)
     geral = wa_link("Olá, Rielson! Vi no site os livros à venda e queria saber mais.")
     return head("Livros à venda · Matemática, Física e mais | Rielson Fragoso",
                 f"Desapego de {len(L)} livros de Matemática, Física, Matemática Financeira e Estatística, com fotos e preços. Ilha do Governador, RJ. Frete grátis a partir de R$ 100.",
@@ -173,8 +184,8 @@ def page(head, nav, foot):
     <div class="stack">
       <span class="eyebrow">Desapego · livros usados</span>
       <h1>Livros de Matemática, Física e outras áreas</h1>
-      <p class="lead">Livros de graduação, ensino médio, concursos e coleções clássicas que passaram pelas minhas mãos. Monte seu lote e me chame no WhatsApp.</p>
-      <div class="facts"><span>{disp} títulos disponíveis</span><span>Frete grátis acima de R$ 100</span><span>Ilha do Governador · RJ</span><span>Aceito ofertas para lote</span></div>
+      <p class="lead">Livros de graduação, ensino médio, concursos e coleções clássicas que passaram pelas minhas mãos. Escolha os livros, veja o total com frete e envie o pedido pelo WhatsApp.</p>
+      <div class="facts"><span>{disp} títulos disponíveis</span><span>Frete grátis acima de R$ 100</span><span>Ilha do Governador · RJ</span><span>Frete único de R$ 20 abaixo disso</span><span>Aceito ofertas para lote</span></div>
       <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="#catalogo">Ver os livros ↓</a><a class="btn wabtn" href="{e(geral)}" target="_blank" rel="noopener">Falar no WhatsApp</a></div>
     </div>
     <img src="img/capa.jpg" alt="Rielson ao lado de uma pilha de livros de matemática e física" width="1400" height="788">
@@ -183,8 +194,8 @@ def page(head, nav, foot):
 <section style="padding-bottom:24px">
   <div class="wrap stack" style="gap:16px">
     <div class="info">
-      <div><b>Como comprar</b>Toque em “+ Lote” nos livros que quiser e envie a lista pelo WhatsApp. Ou toque no ícone verde para perguntar por um livro só.</div>
-      <div><b>Entrega</b>Estou na Ilha do Governador (RJ). Frete grátis em compras a partir de R$ 100; para valores menores, combinamos pelo WhatsApp.</div>
+      <div><b>Como comprar</b>Toque em “+ Pedido” nos livros que quiser e depois em “Finalizar pedido”. Preencha os dados de envio e o pedido chega pronto no meu WhatsApp. Para tirar uma dúvida sobre um livro, toque no ícone verde.</div>
+      <div><b>Frete</b>Envio pelos Correios. <b style="display:inline">Grátis</b> em compras a partir de R$ 100; abaixo disso, taxa única de R$ 20. Estou na Ilha do Governador (RJ).</div>
       <div><b>Negociação</b>Aberto a ofertas para quem levar vários livros ou o lote completo.</div>
     </div>
     <h2 style="margin-top:12px">Veja todos os livros no vídeo</h2>
@@ -201,5 +212,29 @@ def page(head, nav, foot):
   </div>
 </section>
 </main>
-<div class="cart" id="cart" aria-live="polite"><span class="sum" id="csum"></span><span class="cbtns"><button type="button" class="clear" id="cclear">Limpar</button><a class="btn wabtn" id="csend" href="#" target="_blank" rel="noopener">Enviar lote no WhatsApp</a></span></div>
+<div class="cart" id="cart" aria-live="polite"><span class="sum" id="csum"></span><span class="cbtns"><button type="button" class="clear" id="cclear">Limpar</button><button type="button" class="btn" id="copen">Finalizar pedido</button></span></div>
+<div class="co" id="checkout" role="dialog" aria-modal="true" aria-labelledby="co-title" hidden>
+  <div class="co-box">
+    <div class="co-head"><h2 id="co-title">Seu pedido</h2><button type="button" class="co-x" id="co-close" aria-label="Fechar">✕</button></div>
+    <ul class="co-items" id="co-items"></ul>
+    <p class="co-empty" id="co-empty" hidden>Nenhum livro escolhido ainda.</p>
+    <dl class="co-tot"><dt>Subtotal</dt><dd id="co-sub"></dd><dt>Frete</dt><dd id="co-fr"></dd><dt class="big">Total</dt><dd class="big" id="co-tot"></dd></dl>
+    <p class="co-hint" id="co-hint"></p>
+    <form id="co-form" novalidate>
+      <h3>Dados para envio pelos Correios</h3>
+      <label>Nome completo *<input name="nome" autocomplete="name" maxlength="100"></label>
+      <div class="f2"><label>CPF *<input name="cpf" inputmode="numeric" maxlength="14" placeholder="000.000.000-00"></label>
+        <label>CEP *<input name="cep" inputmode="numeric" autocomplete="postal-code" maxlength="9" placeholder="00000-000"></label></div>
+      <label>Rua / Avenida *<input name="rua" autocomplete="address-line1" maxlength="120"></label>
+      <div class="f2"><label>Número *<input name="numero" maxlength="12"></label><label>Complemento<input name="comp" autocomplete="address-line2" maxlength="60" placeholder="apto, bloco…"></label></div>
+      <label>Bairro *<input name="bairro" maxlength="60"></label>
+      <div class="f2 f2b"><label>Cidade *<input name="cidade" autocomplete="address-level2" maxlength="60"></label><label>UF *<input name="uf" autocomplete="address-level1" maxlength="2"></label></div>
+      <label>Observação<textarea name="obs" rows="2" maxlength="300" placeholder="Ex.: prefiro retirar pessoalmente"></textarea></label>
+      <p class="co-note">Ao confirmar, o seu WhatsApp abre com o pedido e os dados de envio já escritos. É só tocar em enviar. Os livros ficam reservados depois da confirmação do pagamento. Seus dados não ficam guardados no site.</p>
+      <p class="co-msg" id="co-msg" role="alert" hidden></p>
+      <button class="btn wabtn co-send" type="submit">Enviar pedido pelo WhatsApp</button>
+      <p class="co-done" id="co-done" hidden>O WhatsApp não abriu? <a id="co-go" href="#" target="_blank" rel="noopener">Toque aqui para abrir com o pedido</a>.</p>
+    </form>
+  </div>
+</div>
 ''' + js + foot
