@@ -486,4 +486,7 @@ if __name__ == "__main__":
     open(os.path.join(OUT, "robots.txt"), "w").write("User-agent: *\nAllow: /\nSitemap: https://rielsonfragoso.com.br/sitemap.xml\n")
     open(os.path.join(OUT, "sitemap.xml"), "w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
         + "".join(f"<url><loc>https://rielsonfragoso.com.br{u}</loc></url>" for u in ["/", "/concursos/", "/ingles-em-familia/", "/sobre/", "/livros/", "/aulas/"]) + "</urlset>\n")
+    extra = livros.build(OUT, head, nav, FOOT)
+    sm = open(os.path.join(OUT, 'sitemap.xml')).read().replace('</urlset>', ''.join(f'<url><loc>https://rielsonfragoso.com.br{u}</loc></url>' for u in extra) + '</urlset>')
+    open(os.path.join(OUT, 'sitemap.xml'), 'w').write(sm)
     og(); print("ok")

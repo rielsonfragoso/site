@@ -1,33 +1,52 @@
 <script id="lv-data" type="application/json">__DADOS__</script>
 <script>
 (function(){
-  var D=JSON.parse(document.getElementById('lv-data').textContent), FG=__FG__, FRETE=__FRETE__, WA='__WA__', sel={};
-  function brl(v){return 'R$ '+v.toFixed(2).replace('.',',');}
+  var DATA=JSON.parse(document.getElementById('lv-data').textContent), D=DATA.livros, C=DATA.combos;
+  var FG=__FG__*100, FRETE=__FRETE__*100, WA='__WA__', KEY='lv-cart', sel={};
+  function c(v){return Math.round(v*100);}
+  function brl(cents){return 'R$ '+(cents/100).toFixed(2).replace('.',',');}
   function $(id){return document.getElementById(id);}
-  try{var s=JSON.parse(localStorage.getItem('lv-sel')||'{}');Object.keys(s).forEach(function(k){if(D[k]&&!D[k].s)sel[k]=Math.min(s[k],D[k].q);});}catch(e){}
-  function save(){try{localStorage.setItem('lv-sel',JSON.stringify(sel));}catch(e){}}
-  function totals(){var sub=0,n=0;Object.keys(sel).forEach(function(k){sub+=D[k].p*sel[k];n+=sel[k];});var fr=(n&&sub<FG)?FRETE:0;return{sub:sub,fr:fr,tot:sub+fr,n:n};}
-  function syncButtons(){[].forEach.call(document.querySelectorAll('.add'),function(b){var on=!!sel[b.getAttribute('data-i')];b.setAttribute('aria-pressed',on?'true':'false');b.textContent=on?'✓ No pedido':'+ Pedido';});}
+  try{var s=JSON.parse(localStorage.getItem(KEY)||'{}');Object.keys(s).forEach(function(k){if(D[k]&&D[k].q>0)sel[k]=Math.max(1,Math.min(s[k]|0,D[k].q));});}catch(e){}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(sel));}catch(e){}}
+  function totals(){
+    var sub=0,n=0,desc=0,cd=[];
+    Object.keys(sel).forEach(function(k){sub+=c(D[k].p)*sel[k];n+=sel[k];});
+    C.forEach(function(cb){var sets=Math.min.apply(null,cb.itens.map(function(k){return sel[k]||0;}));
+      if(sets>0){var soma=cb.itens.reduce(function(s,k){return s+c(D[k].p);},0);var d=(soma-c(cb.p))*sets;desc+=d;cd.push({nome:cb.nome,sets:sets,d:d});}});
+    var liq=sub-desc, fr=(n&&liq<FG)?FRETE:0;
+    return{sub:sub,desc:desc,cd:cd,liq:liq,fr:fr,tot:liq+fr,n:n};
+  }
+  function syncButtons(){[].forEach.call(document.querySelectorAll('.add'),function(b){var on=!!sel[b.getAttribute('data-k')];
+    b.setAttribute('aria-pressed',on?'true':'false');b.textContent=on?'✓ No pedido':(b.classList.contains('big')?'+ Adicionar ao pedido':'+ Pedido');});}
+  function esc(s){return String(s).replace(/[&<>"]/g,function(m){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m];});}
   function render(){
     var t=totals(), cart=$('cart');
     cart.classList.toggle('show',t.n>0); document.body.classList.toggle('has-cart',t.n>0);
-    $('csum').innerHTML='<b>'+t.n+(t.n===1?' livro':' livros')+' · '+brl(t.sub)+'</b><small>'+(t.sub>=FG?'Frete grátis':'Faltam '+brl(FG-t.sub)+' para o frete grátis')+(t.n>=10?' · desconto especial liberado':(t.n>=6?' · faltam '+(10-t.n)+' para o desconto especial':''))+'</small>';
-    $('co-bulk').hidden=!(t.n>=10);
+    var extra=t.liq>=FG?'Frete grátis':'Faltam '+brl(FG-t.liq)+' para o frete grátis';
+    if(t.n>=10)extra+=' · desconto especial liberado'; else if(t.n>=6)extra+=' · faltam '+(10-t.n)+' para o desconto especial';
+    $('csum').innerHTML='<b>'+t.n+(t.n===1?' livro':' livros')+' · '+brl(t.liq)+'</b><small>'+extra+'</small>';
     var ul=$('co-items'); ul.innerHTML='';
     Object.keys(sel).forEach(function(k){
-      var li=document.createElement('li'); var d=D[k];
-      var qty=d.q>1?'<span class="qty"><button type="button" data-k="'+k+'" data-d="-1" aria-label="Diminuir">−</button><b>'+sel[k]+'</b><button type="button" data-k="'+k+'" data-d="1" aria-label="Aumentar">+</button></span>':'';
-      li.innerHTML='<span class="it"><span>'+d.t.replace(/</g,'&lt;')+'</span><small>'+brl(d.p)+(d.q>1?' cada':'')+'</small></span>'+qty+'<span class="lp">'+brl(d.p*sel[k])+'</span><button type="button" class="rm" data-k="'+k+'" aria-label="Remover">✕</button>';
+      var d=D[k], li=document.createElement('li');
+      var qty=d.q>1?'<span class="qty"><button type="button" data-k="'+k+'" data-d="-1" aria-label="Diminuir">−</button><b>'+sel[k]+'</b><button type="button" data-k="'+k+'" data-d="1" aria-label="Aumentar"'+(sel[k]>=d.q?' disabled':'')+'>+</button></span>':'';
+      li.innerHTML='<span class="it"><span>'+esc(d.t)+'</span><small>'+esc(d.a)+' · '+brl(c(d.p))+(sel[k]>1?' cada':'')+'</small></span>'+qty+'<span class="lp">'+brl(c(d.p)*sel[k])+'</span><button type="button" class="rm" data-k="'+k+'" aria-label="Remover">✕</button>';
       ul.appendChild(li);
     });
     $('co-empty').hidden=t.n>0;
     $('co-sub').textContent=brl(t.sub);
+    $('co-dl').hidden=$('co-desc').hidden=!t.desc;
+    $('co-desc').textContent=t.desc?'− '+brl(t.desc)+' ('+t.cd.map(function(x){return x.nome;}).join(', ')+')':'';
     $('co-fr').textContent=t.n?(t.fr?brl(t.fr):'Grátis'):'–';
     $('co-tot').textContent=brl(t.tot);
-    $('co-hint').textContent=t.n&&t.sub<FG?'Adicione mais '+brl(FG-t.sub)+' em livros e o frete sai grátis.':'';
+    $('co-hint').textContent=t.n&&t.liq<FG?'Adicione mais '+brl(FG-t.liq)+' em livros e o frete sai grátis.':'';
+    $('co-bulk').hidden=!(t.n>=10);
     syncButtons(); save();
   }
-  [].forEach.call(document.querySelectorAll('.add'),function(b){b.addEventListener('click',function(){var i=b.getAttribute('data-i');if(sel[i])delete sel[i];else sel[i]=1;render();});});
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.add'); if(b){var k=b.getAttribute('data-k');if(sel[k])delete sel[k];else if(D[k]&&D[k].q>0)sel[k]=1;render();return;}
+    var cb=ev.target.closest('.addcombo'); if(cb){var co=C.filter(function(x){return x.id===cb.getAttribute('data-c');})[0];
+      co.itens.forEach(function(k){if(D[k].q>0&&!sel[k])sel[k]=1;}); render(); cb.textContent='✓ Combo no pedido'; return;}
+  });
   $('co-items').addEventListener('click',function(ev){var b=ev.target.closest('button');if(!b)return;var k=b.getAttribute('data-k');
     if(b.classList.contains('rm'))delete sel[k];else{var n=sel[k]+parseInt(b.getAttribute('data-d'),10);if(n<1)delete sel[k];else sel[k]=Math.min(n,D[k].q);}render();});
   $('cclear').addEventListener('click',function(){sel={};render();});
@@ -36,34 +55,43 @@
   function closeCo(){panel.hidden=true;document.body.classList.remove('co-open');}
   $('copen').addEventListener('click',openCo); $('co-close').addEventListener('click',closeCo);
   document.addEventListener('keydown',function(ev){if(ev.key==='Escape'&&!panel.hidden)closeCo();});
+  // busca e filtros (só no catálogo)
+  var q=$('q'), lang=$('lang'), grid=$('todos');
+  if(q&&grid){
+    var cat='*', fb=[].slice.call(document.querySelectorAll('.filters button')), cards=[].slice.call(grid.querySelectorAll('.book'));
+    function norm(s){return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');}
+    function apply(){var term=norm(q.value.trim()), l=lang.value, vis=0;
+      cards.forEach(function(cd){var ok=(cat==='*'||cd.getAttribute('data-cat')===cat)&&(l==='*'||cd.getAttribute('data-lang')===l)&&(!term||cd.getAttribute('data-q').indexOf(term)>=0);cd.hidden=!ok;if(ok)vis++;});
+      $('none').hidden=vis>0;}
+    fb.forEach(function(b){b.addEventListener('click',function(){cat=b.getAttribute('data-f');fb.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});apply();});});
+    q.addEventListener('input',apply); lang.addEventListener('change',apply);
+  }
   var f=$('co-form');
-  // CEP: busca o endereço automaticamente
+  f.addEventListener('input',function(ev){if(ev.target.getAttribute('aria-invalid')==='true'&&ev.target.value.trim())ev.target.setAttribute('aria-invalid','false');});
   f.cep.addEventListener('input',function(){var v=f.cep.value.replace(/\D/g,'').slice(0,8);f.cep.value=v.length>5?v.slice(0,5)+'-'+v.slice(5):v;
     if(v.length===8){fetch('https://viacep.com.br/ws/'+v+'/json/').then(function(r){return r.json();}).then(function(j){if(j.erro)return;
       if(j.logradouro&&!f.rua.value)f.rua.value=j.logradouro; if(j.bairro&&!f.bairro.value)f.bairro.value=j.bairro;
-      if(j.localidade)f.cidade.value=j.localidade; if(j.uf)f.uf.value=j.uf; f.numero.focus();}).catch(function(){});}});
-  f.cpf.addEventListener('input',function(){var v=f.cpf.value.replace(/\D/g,'').slice(0,11);
-    f.cpf.value=v.replace(/(\d{3})(\d)/,'$1.$2').replace(/(\d{3})(\d)/,'$1.$2').replace(/(\d{3})(\d{1,2})$/,'$1-$2');});
-  function cpfOk(c){c=c.replace(/\D/g,'');if(c.length!==11||/^(\d)\1+$/.test(c))return false;
-    for(var t=9;t<11;t++){var s=0;for(var i=0;i<t;i++)s+=c[i]*(t+1-i);if(((s*10)%11)%10!=c[t])return false;}return true;}
+      if(j.localidade&&!f.cidade.value)f.cidade.value=j.localidade; if(j.uf&&!f.uf.value)f.uf.value=j.uf; f.numero.focus();}).catch(function(){});}});
   f.addEventListener('submit',function(ev){
     ev.preventDefault(); var msg=$('co-msg'), t=totals(); msg.hidden=true;
     if(!t.n){msg.textContent='Escolha pelo menos um livro.';msg.hidden=false;return;}
-    var req=['nome','cpf','cep','rua','numero','bairro','cidade','uf'], bad=null;
-    req.forEach(function(n){var el=f[n],ok=!!el.value.trim();if(n==='cpf')ok=cpfOk(el.value);if(n==='cep')ok=el.value.replace(/\D/g,'').length===8;
+    var req=['nome','tel','cep','uf','cidade','bairro','rua','numero'], bad=null;
+    req.forEach(function(n){var el=f[n],ok=!!el.value.trim();if(n==='cep')ok=el.value.replace(/\D/g,'').length===8;if(n==='tel')ok=el.value.replace(/\D/g,'').length>=10;
       el.setAttribute('aria-invalid',ok?'false':'true');if(!ok&&!bad)bad=el;});
-    if(bad){msg.textContent=bad.name==='cpf'?'Confira o CPF.':(bad.name==='cep'?'Confira o CEP.':'Preencha os campos obrigatórios.');msg.hidden=false;bad.focus();return;}
-    var L=['*Pedido de livros · rielsonfragoso.com.br*',''];
-    Object.keys(sel).forEach(function(k){L.push('• '+(sel[k]>1?sel[k]+'x ':'')+D[k].t+' — '+brl(D[k].p*sel[k]));});
-    L.push('','Subtotal: '+brl(t.sub),'Frete: '+(t.fr?brl(t.fr):'grátis'),'*Total: '+brl(t.tot)+'*','','*Dados para envio*',
-      'Nome: '+f.nome.value.trim(),'CPF: '+f.cpf.value.trim(),'CEP: '+f.cep.value.trim(),
-      'Endereço: '+f.rua.value.trim()+', '+f.numero.value.trim()+(f.comp.value.trim()?' – '+f.comp.value.trim():''),
-      'Bairro: '+f.bairro.value.trim(),'Cidade/UF: '+f.cidade.value.trim()+' – '+f.uf.value.trim().toUpperCase());
-    if(f.obs.value.trim())L.push('','Obs.: '+f.obs.value.trim());
+    if(bad){msg.textContent=bad.name==='cep'?'Confira o CEP.':(bad.name==='tel'?'Confira o telefone com DDD.':'Preencha os campos obrigatórios.');msg.hidden=false;bad.focus();return;}
+    var L=['*Pedido de livros · rielsonfragoso.com.br*','','*Dados do comprador*',
+      'Nome: '+f.nome.value.trim(),'Telefone: '+f.tel.value.trim(),'CEP: '+f.cep.value.trim(),'Estado: '+f.uf.value.trim().toUpperCase(),
+      'Cidade: '+f.cidade.value.trim(),'Bairro: '+f.bairro.value.trim(),'Rua: '+f.rua.value.trim(),'Número: '+f.numero.value.trim()];
+    if(f.comp.value.trim())L.push('Complemento: '+f.comp.value.trim());
+    L.push('','*Produtos*');
+    Object.keys(sel).forEach(function(k){var d=D[k];L.push('• '+d.t+' – '+d.a+' | '+sel[k]+' x '+brl(c(d.p))+' = '+brl(c(d.p)*sel[k]));});
+    L.push('','*Resumo*','Subtotal dos livros: '+brl(t.sub));
+    L.push('Descontos: '+(t.desc?'− '+brl(t.desc)+' ('+t.cd.map(function(x){return x.nome+(x.sets>1?' x'+x.sets:'');}).join(', ')+')':'nenhum'));
+    L.push('Frete: '+(t.fr?brl(t.fr):'grátis'),'*Total: '+brl(t.tot)+'*');
     if(t.n>=10)L.push('','Pedido com 10 livros ou mais: gostaria de negociar o desconto especial.');
-    L.push('','Aguardo o Pix para reservar os livros.');
+    L.push('','Quero confirmar o pedido e receber a chave Pix para pagamento.');
     var url='https://wa.me/'+WA+'?text='+encodeURIComponent(L.join('\n'));
-    var a=$('co-go'); a.href=url; $('co-done').hidden=false; window.location.href=url;
+    $('co-go').href=url; $('co-done').hidden=false; window.location.href=url;
   });
   render();
 })();
