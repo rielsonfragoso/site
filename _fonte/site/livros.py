@@ -15,14 +15,19 @@ SITE = "https://rielsonfragoso.com.br"
 def preco(v):
     return f"R$ {v:.2f}".replace(".", ",")
 
-def slugify(s):
+def slugify(s, limite=60):
     s = unicodedata.normalize("NFKD", s).encode("ascii", "ignore").decode().lower()
-    return re.sub(r"[^a-z0-9]+", "-", s).strip("-")[:70].strip("-")
+    s = re.sub(r"[^a-z0-9]+", "-", s).strip("-")
+    if len(s) > limite:  # corta numa palavra inteira, nunca no meio
+        s = s[:limite].rsplit("-", 1)[0]
+    return s
 
 # slugs únicos
 _seen = set()
 for b in LIVROS:
-    s = b["slug"] or slugify(b["titulo"] + " " + b["autor"].split(" e ")[0].split(",")[0])
+    titulo_curto = b["titulo"].split(":")[0]
+    sobrenome = [w for w in b["autor"].split(" e ")[0].split(",")[0].split() if w.rstrip(".") not in ("Jr", "Neto", "Filho")][-1]
+    s = b["slug"] or slugify(titulo_curto + " " + sobrenome)
     base, n = s, 2
     while s in _seen:
         s = f"{base}-{n}"; n += 1
@@ -51,7 +56,7 @@ def card(b, i):
     act = "" if sold else f'<button type="button" class="add" aria-pressed="false" data-k="{b["slug"]}">+ Pedido</button>'
     busca = e(unicodedata.normalize("NFKD", (b["titulo"] + " " + b["autor"]).lower()).encode("ascii", "ignore").decode())
     return (f'<article class="book{" sold" if sold else ""}" data-cat="{e(b["cat"])}" data-lang="{e(b["idioma"])}" data-q="{busca}">'
-            f'<a class="ph" href="{b["slug"]}/">{tag}{lang}<img src="img/{b["foto"]}.jpg" alt="Foto do exemplar de {e(b["titulo"])}, de {e(b["autor"])}" loading="lazy" width="900" height="1200"></a>'
+            f'<a class="ph" href="{b["slug"]}/">{tag}{lang}<img src="img/thumb/{b["foto"]}.webp" alt="Foto do exemplar de {e(b["titulo"])}, de {e(b["autor"])}" loading="lazy" decoding="async" width="480" height="640"></a>'
             f'<div class="bd"><span class="cat">{e(b["cat"])}</span><h3><a href="{b["slug"]}/">{e(b["titulo"])}</a></h3><p class="au">{e(b["autor"])}</p>'
             f'<p class="st">Usado{" · " + e(b["cond"]) if b["cond"] else ""}</p>'
             + (f'<a class="vlink" href="{b["slug"]}/#video">▶ Ver vídeo do exemplar</a>' if b["video"] else "")
@@ -64,7 +69,7 @@ def combo_card(c):
     soma = sum(itens[s]["preco"] for s in c["itens"])
     btn = (f'<button type="button" class="btn addcombo" data-c="{c["id"]}">Adicionar os 3 ao pedido</button>' if ok
            else '<span class="soldtag" style="position:static">Esgotado</span>')
-    return (f'<div class="combo"><img src="img/{c["foto"]}.jpg" alt="Os três livros de Shakespeare do combo" loading="lazy" width="900" height="1200">'
+    return (f'<div class="combo"><img src="img/thumb/{c["foto"]}.webp" alt="Os três livros de Shakespeare do combo" loading="lazy" width="900" height="1200">'
             f'<div class="stack" style="gap:8px"><span class="eyebrow">Promoção</span><h3>{e(c["nome"])}: 3 livros por {preco(c["preco"])}</h3>'
             f'<p>{e(c["desc"])} Economia de {preco(soma - c["preco"])}.</p>'
             f'<p class="note">O desconto também vale se você adicionar os três separadamente.</p><div class="row" style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">{btn}'
@@ -203,6 +208,12 @@ def product_page(b, head, nav, foot):
 ''' + checkout_html() + checkout_js() + foot
 
 def build(out_dir, head, nav, foot):
+    from PIL import Image
+    src = os.path.join(out_dir, "livros", "img"); dst = os.path.join(src, "thumb"); os.makedirs(dst, exist_ok=True)
+    for f in os.listdir(src):
+        if f.endswith(".jpg"):
+            im = Image.open(os.path.join(src, f)).convert("RGB"); im.thumbnail((480, 960))
+            im.save(os.path.join(dst, f[:-4] + ".webp"), "WEBP", quality=72, method=6)
     for b in LIVROS:
         p = os.path.join(out_dir, "livros", b["slug"]); os.makedirs(p, exist_ok=True)
         open(os.path.join(p, "index.html"), "w").write(product_page(b, head, nav, foot))

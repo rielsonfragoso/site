@@ -128,3 +128,6 @@ body.has-cart{padding-bottom:84px}
 #video{scroll-margin-top:90px}
 
 .vlink.yt{color:var(--muted);margin-left:10px}
+
+.cart{visibility:hidden}
+.cart.show{visibility:visible}

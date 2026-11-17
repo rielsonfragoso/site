@@ -102,3 +102,14 @@ footer a:hover{color:var(--yellow)}
 footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
 footer .copy{margin-top:28px;font-size:.85rem;opacity:.8}
 @media (max-width:760px){footer .cols{grid-template-columns:1fr}}
+
+/* menu compacto no celular: uma linha com rolagem lateral */
+@media (max-width:760px){
+  .nav .wrap{flex-wrap:nowrap;flex-direction:column;align-items:stretch;gap:6px;padding-block:8px}
+  .nav nav{-webkit-mask-image:linear-gradient(90deg,#000 88%,transparent);mask-image:linear-gradient(90deg,#000 88%,transparent);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin-inline:-4px}
+  .nav nav::-webkit-scrollbar{display:none}
+  .nav ul{flex-wrap:nowrap;white-space:nowrap;gap:16px;padding-inline:4px;font-size:.9rem}
+}
+/* contraste: botão verde no tema escuro */
+:root[data-theme="dark"] .btn.green{color:#10160F}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .btn.green{color:#10160F}}

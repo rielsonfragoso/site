@@ -2,7 +2,7 @@
 Páginas: / · /concursos/ · /sobre/   (a /ingles-em-familia/ tem build próprio em site/lp_v2)"""
 import os, shutil, html, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import livros, aulas
+import livros, aulas, politicas, datetime
 from urllib.parse import quote
 OUT = "/home/claude/site-repo"; HERE = os.path.dirname(os.path.abspath(__file__))
 WA = "https://wa.me/5521964446262?text=" + quote("Oi, Rielson! Vim pelo site.")
@@ -48,13 +48,14 @@ def head(title, desc, path, og="og-site.jpg", extra_css=""):
 <meta name="description" content="{e(desc)}">
 <meta property="og:type" content="website"><meta property="og:locale" content="pt_BR">
 <meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}">
+<link rel="canonical" href="https://rielsonfragoso.com.br{path}">
 <meta property="og:url" content="https://rielsonfragoso.com.br{path}"><meta property="og:image" content="https://rielsonfragoso.com.br/{og}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#1B2A4E">
 <meta name="google-site-verification" content="aLdDBJ0eH36Q4Qbf-sTwIbmToy9CROETqgIYNNR8cwI" />
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400&family=Caveat:wght@600&display=swap">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito+Sans:wght@400;700&family=Caveat:wght@600&display=swap">
 <link rel="stylesheet" href="/site.css">
 <style>{extra_css}</style>
 </head>
@@ -64,7 +65,8 @@ def head(title, desc, path, og="og-site.jpg", extra_css=""):
 def nav(cur):
     items = [("/", "Início"), ("/concursos/", "Concursos"), ("/ingles-em-familia/", "Inglês em Família"), ("/aulas/", "Resoluções"), ("/livros/", "Livros"), ("/#gratis", "Grátis"), ("/sobre/", "Sobre")]
     li = "".join(f'<li><a href="{h}"{" aria-current=\"page\"" if h == cur else ""}>{t}</a></li>' for h, t in items)
-    return f'<header class="nav"><div class="wrap"><a class="logo" href="/"><i>RF</i>Rielson Fragoso</a><nav aria-label="Principal"><ul>{li}</ul></nav></div></header>\n'
+    return (f'<header class="nav"><div class="wrap"><a class="logo" href="/"><i>RF</i>Rielson Fragoso</a><nav aria-label="Principal"><ul>{li}</ul></nav></div></header>'
+            '<script>(function(){var a=document.querySelector(".nav [aria-current]");if(a&&a.parentNode){var n=a.closest("nav");n.scrollLeft=Math.max(0,a.offsetLeft-n.clientWidth/2+a.offsetWidth/2);}})();</script>\n')
 
 FOOT = f'''<footer>
   <div class="wrap">
@@ -82,9 +84,11 @@ FOOT = f'''<footer>
         <li><a href="/ingles-em-familia/">Inglês em Família</a></li>
         <li><a href="/aulas/">Resolução de questões em vídeo</a></li>
         <li><a href="/livros/">Livros usados à venda</a></li>
-        <li><a href="/sobre/">Sobre mim</a></li></ul></div>
+        <li><a href="/sobre/">Sobre mim</a></li>
+        <li><a href="/trocas/">Trocas e devoluções</a></li>
+        <li><a href="/privacidade/">Privacidade</a></li></ul></div>
     </div>
-    <p class="copy">© 2026 Rielson Fragoso · Rio de Janeiro. Pagamentos processados pela Hotmart.</p>
+    <p class="copy">© 2026 Rielson Fragoso · Rio de Janeiro. E-books e simulados: pagamento pela Hotmart. Livros usados e resoluções: pagamento via Pix. · <a href="/trocas/">Trocas, devoluções e envio</a> · <a href="/privacidade/">Privacidade</a></p>
   </div>
 </footer>
 </body>
@@ -162,10 +166,12 @@ HOME_CSS = METHOD_CSS + '''
 @media (max-width:760px){.hero .top,.doors,.feat{grid-template-columns:1fr}.mono{display:none}.feat img{max-width:240px}}
 @media (max-width:520px){.about{grid-template-columns:1fr}.door.f{padding-right:92px}.door.f img{width:76px}}
 '''
+HOME_LD = '<script type="application/ld+json">' + '{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://rielsonfragoso.com.br/#rielson", "name": "Rielson Fragoso", "url": "https://rielsonfragoso.com.br/", "jobTitle": "Educador de matemática e empreendedor", "address": {"@type": "PostalAddress", "addressLocality": "Rio de Janeiro", "addressRegion": "RJ", "addressCountry": "BR"}, "sameAs": ["https://www.youtube.com/@AcademiaMatem%C3%A1ticarj", "https://t.me/rielsonfragoso", "https://linktr.ee/academiamatematicarj", "https://hotmart.com/pt-br/marketplace/especialista/rielson-fragoso/EEWWNW3SCW"]}, {"@type": "WebSite", "url": "https://rielsonfragoso.com.br/", "name": "Rielson Fragoso · Academia Matemática RJ", "inLanguage": "pt-BR", "publisher": {"@id": "https://rielsonfragoso.com.br/#rielson"}}]}' + '</script>'
+
 def home():
     feat = "".join(sim_card(t, d, b, u, "site_home") for t, d, b, u, f in SIMS if f)
     return head("Rielson Fragoso · Matemática para concursos e inglês em família",
-                "Simulados e e-books de matemática e raciocínio lógico para concursos, e o e-book Inglês em Família para pais e filhos.", "/", extra_css=HOME_CSS) + nav("/") + f'''
+                "Simulados e e-books de matemática e raciocínio lógico para concursos, e o e-book Inglês em Família para pais e filhos.", "/", extra_css=HOME_CSS) + nav("/") + HOME_LD + f'''
 <main>
 <section class="board hero">
   <div class="wrap">
@@ -191,7 +197,7 @@ def home():
   <div class="wrap stack" style="gap:22px">
     <span class="eyebrow">Concursos · Matemática e Raciocínio Lógico</span>
     <h2>Simulados feitos para a prova que você vai fazer</h2>
-    <p class="stamp">“Mais realista do que isso, só se eu entregasse a prova antes da hora.”</p>
+    <p class="stamp">“Mais realista do que isso, só se eu entregasse a prova antes da hora.” <small style="display:block;font-size:.72em;font-weight:600;opacity:.85">— Rielson Fragoso, sobre os simulados</small></p>
     {METHOD}
     <h3 style="margin-top:8px">Alguns simulados</h3>
     <div class="cards">{feat}</div>
@@ -326,7 +332,7 @@ def concursos():
 </section>
 <section class="grid-paper">
   <div class="wrap stack" style="gap:22px">
-    <p class="stamp">“Mais realista do que isso, só se eu entregasse a prova antes da hora.”</p>
+    <p class="stamp">“Mais realista do que isso, só se eu entregasse a prova antes da hora.” <small style="display:block;font-size:.72em;font-weight:600;opacity:.85">— Rielson Fragoso, sobre os simulados</small></p>
     {METHOD}
   </div>
 </section>
@@ -475,7 +481,7 @@ def og():
     im.save(os.path.join(OUT, "og-site.jpg"), quality=85)
 
 if __name__ == "__main__":
-    for rel, fn in [("index.html", home), ("concursos/index.html", concursos), ("sobre/index.html", sobre), ("livros/index.html", lambda: livros.page(head, nav, FOOT)), ("aulas/index.html", lambda: aulas.page(head, nav, FOOT))]:
+    for rel, fn in [("index.html", home), ("concursos/index.html", concursos), ("sobre/index.html", sobre), ("livros/index.html", lambda: livros.page(head, nav, FOOT)), ("aulas/index.html", lambda: aulas.page(head, nav, FOOT)), ("privacidade/index.html", lambda: politicas.privacidade(head, nav, FOOT)), ("trocas/index.html", lambda: politicas.trocas(head, nav, FOOT)), ("404.html", lambda: politicas.nao_encontrada(head, nav, FOOT))]:
         p = os.path.join(OUT, rel); os.makedirs(os.path.dirname(p), exist_ok=True)
         open(p, "w").write(fn())
     shutil.copy(os.path.join(HERE, "site.css"), os.path.join(OUT, "site.css"))
@@ -485,8 +491,8 @@ if __name__ == "__main__":
         '<text x="32" y="42" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="26" fill="#F2C230" text-anchor="middle">RF</text></svg>')
     open(os.path.join(OUT, "robots.txt"), "w").write("User-agent: *\nAllow: /\nSitemap: https://rielsonfragoso.com.br/sitemap.xml\n")
     open(os.path.join(OUT, "sitemap.xml"), "w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
-        + "".join(f"<url><loc>https://rielsonfragoso.com.br{u}</loc></url>" for u in ["/", "/concursos/", "/ingles-em-familia/", "/sobre/", "/livros/", "/aulas/"]) + "</urlset>\n")
+        + "".join(f"<url><loc>https://rielsonfragoso.com.br{u}</loc><lastmod>{datetime.date.today().isoformat()}</lastmod></url>" for u in ["/", "/concursos/", "/ingles-em-familia/", "/sobre/", "/livros/", "/aulas/", "/trocas/", "/privacidade/"]) + "</urlset>\n")
     extra = livros.build(OUT, head, nav, FOOT)
-    sm = open(os.path.join(OUT, 'sitemap.xml')).read().replace('</urlset>', ''.join(f'<url><loc>https://rielsonfragoso.com.br{u}</loc></url>' for u in extra) + '</urlset>')
+    sm = open(os.path.join(OUT, 'sitemap.xml')).read().replace('</urlset>', ''.join(f'<url><loc>https://rielsonfragoso.com.br{u}</loc><lastmod>{datetime.date.today().isoformat()}</lastmod></url>' for u in extra) + '</urlset>')
     open(os.path.join(OUT, 'sitemap.xml'), 'w').write(sm)
     og(); print("ok")
