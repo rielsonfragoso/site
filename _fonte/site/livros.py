@@ -27,6 +27,12 @@ for b in LIVROS:
         s = f"{base}-{n}"; n += 1
     b["slug"] = s; _seen.add(s)
 
+def yt(link):
+    """Aceita link completo do YouTube (normal, youtu.be ou Shorts) ou só o ID. Retorna (id, vertical)."""
+    if not link: return None, False
+    m = re.search(r"(?:shorts/|youtu\.be/|v=|embed/)([A-Za-z0-9_-]{11})", link)
+    return (m.group(1) if m else link.strip()), ("shorts/" in link)
+
 def disp(b):
     return (not b["vendido"]) and b["qtd"] > 0
 
@@ -43,7 +49,8 @@ def card(b, i):
             f'<a class="ph" href="{b["slug"]}/">{tag}{lang}<img src="img/{b["foto"]}.jpg" alt="Foto do exemplar de {e(b["titulo"])}, de {e(b["autor"])}" loading="lazy" width="900" height="1200"></a>'
             f'<div class="bd"><span class="cat">{e(b["cat"])}</span><h3><a href="{b["slug"]}/">{e(b["titulo"])}</a></h3><p class="au">{e(b["autor"])}</p>'
             f'<p class="st">Usado{" · " + e(b["cond"]) if b["cond"] else ""}</p>'
-            f'<div class="row"><span class="pr">{preco(b["preco"])}<small>{qtxt}</small></span><span class="acts">{act}</span></div></div></article>')
+            + (f'<a class="vlink" href="{b["slug"]}/#video">▶ Ver vídeo do exemplar</a>' if b["video"] else "")
+            + f'<div class="row"><span class="pr">{preco(b["preco"])}<small>{qtxt}</small></span><span class="acts">{act}</span></div></div></article>')
 
 def combo_card(c):
     itens = {b["slug"]: b for b in LIVROS}
@@ -54,7 +61,8 @@ def combo_card(c):
     return (f'<div class="combo"><img src="img/{c["foto"]}.jpg" alt="Os três livros de Shakespeare do combo" loading="lazy" width="900" height="1200">'
             f'<div class="stack" style="gap:8px"><span class="eyebrow">Promoção</span><h3>{e(c["nome"])}: 3 livros por {preco(c["preco"])}</h3>'
             f'<p>{e(c["desc"])} Economia de {preco(soma - c["preco"])}.</p>'
-            f'<p class="note">O desconto também vale se você adicionar os três separadamente.</p><div>{btn}</div></div></div>')
+            f'<p class="note">O desconto também vale se você adicionar os três separadamente.</p><div class="row" style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">{btn}'
+            + (f'<a class="vlink" href="{c["itens"][0]}/#video">▶ Ver vídeo dos exemplares</a>' if c.get("video") else "") + '</div></div></div>')
 
 def dados_js():
     d = {b["slug"]: {"t": b["titulo"], "a": b["autor"], "p": b["preco"], "q": b["qtd"] if disp(b) else 0} for b in LIVROS}
@@ -133,6 +141,7 @@ def page(head, nav, foot):
 
 def product_page(b, head, nav, foot):
     sold = not disp(b)
+    combo = next((c for c in COMBOS if b["slug"] in c["itens"]), None)
     url = f"{SITE}/livros/{b['slug']}/"
     ld = {"@context": "https://schema.org", "@type": "Product", "name": b["titulo"], "image": f"{SITE}/livros/img/{b['foto']}.jpg",
           "description": b["desc"] or f"{b['titulo']}, de {b['autor']}. Livro usado.", "brand": {"@type": "Brand", "name": b["autor"]},
@@ -143,9 +152,11 @@ def product_page(b, head, nav, foot):
           "additionalProperty": [{"@type": "PropertyValue", "name": "Autor", "value": b["autor"]},
                                  {"@type": "PropertyValue", "name": "Idioma", "value": b["idioma"]}]}
     if b["editora"]: ld["additionalProperty"].append({"@type": "PropertyValue", "name": "Editora/edição", "value": b["editora"]})
-    combo = next((c for c in COMBOS if b["slug"] in c["itens"]), None)
-    video = (f'<h2>Vídeo do exemplar</h2><div class="video"><iframe src="https://www.youtube-nocookie.com/embed/{e(b["video"])}" title="Vídeo de {e(b["titulo"])}" loading="lazy" allowfullscreen></iframe></div>'
-             if b["video"] else "")
+    vid, vert = yt(b["video"] or (combo or {}).get("video", ""))
+    video = (f'<h2 id="video">Vídeo do exemplar real</h2><p class="note">Veja o estado do livro que você vai receber.</p>'
+             f'<div class="video{" vert" if vert else ""}"><iframe src="https://www.youtube-nocookie.com/embed/{e(vid)}" title="Vídeo de {e(b["titulo"])}" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe></div>'
+             if vid else "")
+    vbtn = '<a class="vlink big" href="#video">▶ Ver vídeo do exemplar</a>' if vid else ""
     rows = [("Autor", b["autor"]), ("Idioma", b["idioma"]), ("Categoria", b["cat"])]
     if b["editora"]: rows.append(("Editora / edição", b["editora"]))
     rows.append(("Estado", "Usado" + (f" · {b['cond']}" if b["cond"] else " · veja as fotos do exemplar real")))
@@ -169,7 +180,7 @@ def product_page(b, head, nav, foot):
         <h1 class="ptitle">{e(b["titulo"])}</h1>
         <p class="au" style="font-size:1.1rem">{e(b["autor"])}</p>
         <p class="pprice">{preco(b["preco"])}</p>
-        <div>{act}</div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">{act}{vbtn}</div>
         {combotxt}
         {f'<p>{e(b["desc"])}</p>' if b["desc"] else ''}
         <dl class="specs">{dl}</dl>

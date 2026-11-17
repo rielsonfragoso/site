@@ -120,3 +120,9 @@ body.has-cart{padding-bottom:84px}
 .prod+h2{margin-top:32px;margin-bottom:12px}
 .co-items .disc{color:var(--green)}
 @media (max-width:760px){.prod,.combo{grid-template-columns:1fr}.combo img{max-width:240px}}
+
+.vlink{display:inline-flex;align-items:center;gap:6px;font:600 .85rem var(--display);color:var(--red);text-decoration:none}
+.vlink:hover{text-decoration:underline}
+.vlink.big{font-size:1rem}
+.video.vert{aspect-ratio:9/16;max-width:360px}
+#video{scroll-margin-top:90px}

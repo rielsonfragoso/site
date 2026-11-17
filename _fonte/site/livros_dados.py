@@ -2,7 +2,8 @@
 COMO ATUALIZAR:
   • vendeu: diminua qtd; se zerar, mude vendido=True (o livro continua na página com o selo "Vendido").
   • conservação: preencha cond="..." (ex.: "Bom estado, com grifos a lápis nos capítulos 2 e 3").
-  • vídeo do livro no YouTube: preencha video="ID_DO_VIDEO" (aparece na página individual, sem reprodução automática).
+  • vídeo do livro no YouTube: preencha video="LINK" (link normal, youtu.be ou Shorts). Aparece o botão "Ver vídeo do exemplar" no catálogo e o vídeo na página do livro.
+  • vídeo de combo: preencha video="LINK" no COMBOS; vale para os livros do combo que não tiverem vídeo próprio.
 """
 
 def B(titulo, autor, preco, qtd, cat, foto, vendido=False, idioma="Português", editora="", cond="", desc="", video="", slug=""):
@@ -94,4 +95,4 @@ CATS = [CIENCIA, LIT, FIN, "Ensino fundamental", "Ensino médio", "Coleções cl
 # Combo: livros vendidos juntos com desconto. O desconto vale também quando os itens são adicionados um a um.
 COMBOS = [dict(id="shakespeare", nome="Combo Shakespeare", foto="shakespeare-trio", preco=49.90,
                itens=["shakespeare-sonho-de-uma-noite-de-verao", "shakespeare-hamlet", "shakespeare-o-rei-lear"],
-               desc="Sonho de uma Noite de Verão, Hamlet e O Rei Lear (L&PM Pocket). Separados saem R$ 59,70.")]
+               desc="Sonho de uma Noite de Verão, Hamlet e O Rei Lear (L&PM Pocket). Separados saem R$ 59,70.", video="")]
