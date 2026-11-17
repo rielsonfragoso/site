@@ -126,3 +126,5 @@ body.has-cart{padding-bottom:84px}
 .vlink.big{font-size:1rem}
 .video.vert{aspect-ratio:9/16;max-width:360px}
 #video{scroll-margin-top:90px}
+
+.vlink.yt{color:var(--muted);margin-left:10px}

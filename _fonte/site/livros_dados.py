@@ -3,12 +3,13 @@ COMO ATUALIZAR:
   • vendeu: diminua qtd; se zerar, mude vendido=True (o livro continua na página com o selo "Vendido").
   • conservação: preencha cond="..." (ex.: "Bom estado, com grifos a lápis nos capítulos 2 e 3").
   • vídeo do livro no YouTube: preencha video="LINK" (link normal, youtu.be ou Shorts). Aparece o botão "Ver vídeo do exemplar" no catálogo e o vídeo na página do livro.
+  • video_t=SEGUNDOS faz o vídeo abrir no trecho daquele livro.
   • vídeo de combo: preencha video="LINK" no COMBOS; vale para os livros do combo que não tiverem vídeo próprio.
 """
 
-def B(titulo, autor, preco, qtd, cat, foto, vendido=False, idioma="Português", editora="", cond="", desc="", video="", slug=""):
+def B(titulo, autor, preco, qtd, cat, foto, vendido=False, idioma="Português", editora="", cond="", desc="", video="", video_t=0, slug=""):
     return dict(titulo=titulo, autor=autor, preco=float(preco), qtd=qtd, cat=cat, foto=foto, vendido=vendido,
-                idioma=idioma, editora=editora, cond=cond, desc=desc, video=video, slug=slug)
+                idioma=idioma, editora=editora, cond=cond, desc=desc, video=video, video_t=video_t, slug=slug)
 
 CIENCIA = "Ciência, Física e Grandes Pensadores"
 LIT = "Literatura e Clássicos"
@@ -18,18 +19,18 @@ LIVROS = [
     # ---------- Ciência, Física e Grandes Pensadores (destaque) ----------
     B("Encounters with Einstein: And Other Essays on People, Places, and Particles", "Werner Heisenberg", 74.90, 1, CIENCIA, "heisenberg-encounters",
       idioma="Inglês", editora="Princeton University Press (Princeton Science Library)",
-      desc="Ensaios do Nobel de Física Werner Heisenberg sobre Einstein, outros cientistas, lugares e partículas: a física do século XX contada por um de seus protagonistas."),
+      desc="Ensaios do Nobel de Física Werner Heisenberg sobre Einstein, outros cientistas, lugares e partículas: a física do século XX contada por um de seus protagonistas.", video="https://youtube.com/shorts/4m-eMMlzePw", video_t=54),
     B("Physics and Philosophy: The Revolution in Modern Science", "Werner Heisenberg", 74.90, 1, CIENCIA, "heisenberg-physics-philosophy",
       idioma="Inglês", editora="Harper Perennial (Modern Thought)",
-      desc="Clássico de Heisenberg sobre as consequências filosóficas da mecânica quântica. Edição com introdução de David Lindley."),
+      desc="Clássico de Heisenberg sobre as consequências filosóficas da mecânica quântica. Edição com introdução de David Lindley.", video="https://youtube.com/shorts/4m-eMMlzePw", video_t=0),
     B("The First Three Minutes: A Modern View of the Origin of the Universe", "Steven Weinberg", 64.90, 1, CIENCIA, "weinberg",
-      idioma="Inglês", desc="O Nobel de Física de 1979 explica, passo a passo, o que aconteceu nos primeiros minutos do universo. Edição com posfácio do autor."),
+      idioma="Inglês", desc="O Nobel de Física de 1979 explica, passo a passo, o que aconteceu nos primeiros minutos do universo. Edição com posfácio do autor.", video="https://youtube.com/shorts/4m-eMMlzePw", video_t=28),
     B("My View of the World", "Erwin Schrödinger", 74.90, 1, CIENCIA, "schrodinger",
-      idioma="Inglês", desc="Ensaios filosóficos de Erwin Schrödinger, um dos fundadores da mecânica quântica, sobre consciência, ciência e a natureza da realidade."),
+      idioma="Inglês", desc="Ensaios filosóficos de Erwin Schrödinger, um dos fundadores da mecânica quântica, sobre consciência, ciência e a natureza da realidade.", video="https://youtube.com/shorts/4m-eMMlzePw", video_t=68),
     B("Big Bang", "Simon Singh", 39.90, 1, CIENCIA, "big-bang",
-      desc="Tudo sobre a mais importante descoberta científica de todos os tempos, pelo autor de O Último Teorema de Fermat e O Livro dos Códigos."),
+      desc="Tudo sobre a mais importante descoberta científica de todos os tempos, pelo autor de O Último Teorema de Fermat e O Livro dos Códigos.", video="https://youtube.com/shorts/4m-eMMlzePw", video_t=100),
     B("O Universo numa Casca de Noz", "Stephen Hawking", 21.90, 1, CIENCIA, "hawking-casca-de-noz", editora="ARX",
-      desc="Stephen Hawking apresenta, com muitas ilustrações, as grandes ideias da física moderna: relatividade, buracos negros, tempo e o universo."),
+      desc="Stephen Hawking apresenta, com muitas ilustrações, as grandes ideias da física moderna: relatividade, buracos negros, tempo e o universo.", video="https://youtube.com/shorts/4m-eMMlzePw", video_t=118),
     B("The Character of Physical Law", "Richard Feynman", 30, 1, CIENCIA, "feynman-leis", idioma="Inglês",
       desc="As famosas palestras de Feynman sobre o que as leis da física têm em comum."),
     B("Sobre as Leis da Física", "Richard Feynman", 30, 1, CIENCIA, "feynman-leis", editora="Contraponto / PUC-Rio",
@@ -46,7 +47,7 @@ LIVROS = [
 
     # ---------- Finanças e Negócios ----------
     B("Pai Rico, Pai Pobre: O que os Ricos Ensinam a Seus Filhos sobre Dinheiro", "Robert T. Kiyosaki", 24.90, 2, FIN, "pai-rico",
-      editora="Alta Books · edição atualizada e ampliada"),
+      editora="Alta Books · edição atualizada e ampliada", video="https://youtube.com/shorts/4m-eMMlzePw", video_t=76),
     B("Princípios de Administração Financeira", "Ross, Westerfield e Jordan", 20, 1, FIN, "ross-mathias", editora="Atlas"),
 
     # ---------- Catálogo anterior (preservado) ----------

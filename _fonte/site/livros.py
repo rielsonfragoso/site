@@ -33,6 +33,10 @@ def yt(link):
     m = re.search(r"(?:shorts/|youtu\.be/|v=|embed/)([A-Za-z0-9_-]{11})", link)
     return (m.group(1) if m else link.strip()), ("shorts/" in link)
 
+def yt_url(b):
+    vid, _ = yt(b["video"])
+    return f"https://www.youtube.com/watch?v={vid}" + (f"&t={b['video_t']}s" if b.get("video_t") else "")
+
 def disp(b):
     return (not b["vendido"]) and b["qtd"] > 0
 
@@ -50,6 +54,7 @@ def card(b, i):
             f'<div class="bd"><span class="cat">{e(b["cat"])}</span><h3><a href="{b["slug"]}/">{e(b["titulo"])}</a></h3><p class="au">{e(b["autor"])}</p>'
             f'<p class="st">Usado{" · " + e(b["cond"]) if b["cond"] else ""}</p>'
             + (f'<a class="vlink" href="{b["slug"]}/#video">▶ Ver vídeo do exemplar</a>' if b["video"] else "")
+            + (f'<a class="vlink yt" href="{yt_url(b)}" target="_blank" rel="noopener" aria-label="Ver no YouTube">YouTube ↗</a>' if b["video"] else "")
             + f'<div class="row"><span class="pr">{preco(b["preco"])}<small>{qtxt}</small></span><span class="acts">{act}</span></div></div></article>')
 
 def combo_card(c):
@@ -153,10 +158,11 @@ def product_page(b, head, nav, foot):
                                  {"@type": "PropertyValue", "name": "Idioma", "value": b["idioma"]}]}
     if b["editora"]: ld["additionalProperty"].append({"@type": "PropertyValue", "name": "Editora/edição", "value": b["editora"]})
     vid, vert = yt(b["video"] or (combo or {}).get("video", ""))
+    vstart = f"?start={b['video_t']}" if b["video"] and b.get("video_t") else ""
     video = (f'<h2 id="video">Vídeo do exemplar real</h2><p class="note">Veja o estado do livro que você vai receber.</p>'
-             f'<div class="video{" vert" if vert else ""}"><iframe src="https://www.youtube-nocookie.com/embed/{e(vid)}" title="Vídeo de {e(b["titulo"])}" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe></div>'
+             f'<div class="video{" vert" if vert else ""}"><iframe src="https://www.youtube-nocookie.com/embed/{e(vid)}{vstart}" title="Vídeo de {e(b["titulo"])}" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe></div>'
              if vid else "")
-    vbtn = '<a class="vlink big" href="#video">▶ Ver vídeo do exemplar</a>' if vid else ""
+    vbtn = ('<a class="vlink big" href="#video">▶ Ver vídeo do exemplar</a>' + (f'<a class="vlink big yt" href="{yt_url(b)}" target="_blank" rel="noopener">Abrir no YouTube ↗</a>' if b["video"] else "")) if vid else ""
     rows = [("Autor", b["autor"]), ("Idioma", b["idioma"]), ("Categoria", b["cat"])]
     if b["editora"]: rows.append(("Editora / edição", b["editora"]))
     rows.append(("Estado", "Usado" + (f" · {b['cond']}" if b["cond"] else " · veja as fotos do exemplar real")))
