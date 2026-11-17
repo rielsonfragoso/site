@@ -4,7 +4,7 @@ from PIL import Image, ImageDraw, ImageFont
 CHECKOUT="https://go.hotmart.com/E108477851B"; PRECO, CHEIO = "24,90", None
 OUT="/home/claude/site-repo/ingles-em-familia"; SP="/tmp/claude-0/-home-claude/ffb0129d-7c43-50bf-b4cf-edb89a662e49/scratchpad/"
 t=open("template.html").read()
-rep={"{{BASECSS}}":open(SP+"base.css").read(),"{{DEMOJS}}":open(SP+"demo.js").read(),
+rep={"{{BASECSS}}":open("base.css").read(),"{{DEMOJS}}":open("demo.js").read(),
      "{{DEMO}}":open("demo.json").read().replace("</","<\\/"),"{{CHECKOUT}}":CHECKOUT,
      "{{PRECO}}":PRECO,"{{PRECO_DIA}}":f"{float(PRECO.replace(',','.'))/28:.2f}".replace(".",",")}
 for k,v in rep.items(): t=t.replace(k,v)

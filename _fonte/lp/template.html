@@ -18,7 +18,7 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <style>
 :root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-body{margin:0}img{max-width:100%}[hidden]{display:none!important}
+body{margin:0}img{max-width:100%;height:auto}[hidden]{display:none!important}
 {{BASECSS}}
 /* ---- v2 ---- */
 .seal{width:64px;height:64px;font-size:.6rem;letter-spacing:.02em}
@@ -30,8 +30,9 @@ html{scroll-behavior:smooth}
 .trust{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.92rem;color:var(--muted);list-style:none;margin:0;padding:0}
 .trust li{display:flex;align-items:center;gap:6px}
 .trust li::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--green)}
-.coverbox{position:relative;justify-self:center;max-width:420px;width:100%}
-.coverbox .tag{position:absolute;left:-10px;bottom:28px;background:var(--orange);color:var(--on-accent);font-family:var(--display);font-weight:700;
+.coverbox{position:relative;justify-self:center;max-width:420px;width:100%;margin-bottom:40px}
+.coverbox .cover{display:block;width:100%;height:auto;aspect-ratio:637/900;object-fit:cover;border-radius:10px;box-shadow:0 24px 48px -24px rgba(0,0,0,.55)}
+.coverbox .tag{position:absolute;left:-10px;bottom:-44px;background:var(--orange);color:var(--on-accent);font-family:var(--display);font-weight:700;
   padding:10px 16px;border-radius:14px;box-shadow:0 10px 24px -12px rgba(0,0,0,.4);line-height:1.15;font-size:.95rem}
 .coverbox .tag small{display:block;font-weight:500;font-size:.75rem;opacity:.9}
 .numbers{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding-block:22px}
@@ -80,7 +81,7 @@ html{scroll-behavior:smooth}
   .numbers{grid-template-columns:repeat(2,1fr)}
   .mbar{display:flex}
   body{padding-bottom:76px}
-  .coverbox{max-width:300px}
+  .coverbox{max-width:300px;margin-bottom:40px}
   .coverbox .tag{left:-4px}
 }
 @media (max-width:520px){.author{grid-template-columns:1fr}.mono{width:84px;height:84px;font-size:1.8rem}}
