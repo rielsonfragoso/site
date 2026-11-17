@@ -4,6 +4,7 @@ import html, json, os, re, unicodedata
 e = html.escape
 HERE = os.path.dirname(os.path.abspath(__file__))
 from livros_dados import LIVROS, CATS, COMBOS, CIENCIA
+import livros_avaliacoes_ui as AV
 
 WA_LIVROS = "5521972464789"
 VIDEO_ID = "d3m-W96kx5c"
@@ -40,7 +41,7 @@ def yt_url(b):
 def disp(b):
     return (not b["vendido"]) and b["qtd"] > 0
 
-CSS = open(os.path.join(HERE, "livros.css")).read()
+CSS = open(os.path.join(HERE, "livros.css")).read() + AV.CSS
 
 def card(b, i):
     sold = not disp(b)
@@ -116,6 +117,7 @@ def page(head, nav, foot):
     <p class="trust">Já realizamos vendas e enviamos livros para nossos clientes. Nossa loja está presente em comunidades de leitores e compradores de livros usados, com clientes que acompanham nossas publicações e compartilham suas experiências.</p>
   </div>
 </section>
+{AV.secao()}
 <section style="padding-top:12px;padding-bottom:20px">
   <div class="wrap stack" style="gap:16px">
     <span class="eyebrow">Destaque</span>
