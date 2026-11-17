@@ -101,7 +101,7 @@ def page(head, nav, foot):
       <span class="eyebrow">Livros usados · Ilha do Governador, RJ</span>
       <h1>Livros usados, preços acessíveis e oportunidades de leitura</h1>
       <p class="lead">Os livros são usados e, por isso, custam menos do que exemplares novos. Todas as fotos são dos exemplares reais. Monte seu pedido, preencha os dados de envio e finalize pelo WhatsApp.</p>
-      <div class="facts"><span>{n_disp} títulos disponíveis</span><span>Frete fixo de R$ 20 para todo o Brasil</span><span>Frete grátis a partir de R$ 100</span><span>A partir de 10 livros: desconto especial</span></div>
+      <div class="facts"><span>{n_disp} títulos disponíveis</span><span>Frete fixo de R$ 20 para todo o Brasil</span><span>Frete grátis a partir de R$ 100</span><span>Envio em até 2 dias úteis após o pagamento</span><span>A partir de 10 livros: desconto especial</span></div>
       <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="#catalogo">Montar meu pedido ↓</a></div>
     </div>
     <img src="img/capa.jpg" alt="Rielson ao lado de uma pilha de livros de matemática e física" width="1400" height="788">
@@ -111,7 +111,7 @@ def page(head, nav, foot):
   <div class="wrap stack" style="gap:16px">
     <div class="info">
       <div><b>Como comprar</b>1. Toque em “+ Pedido” nos livros que quiser. 2. Toque em “Finalizar pedido” e preencha os dados de envio. 3. O pedido chega no meu WhatsApp e eu envio a chave Pix. O pedido é confirmado após o pagamento.</div>
-      <div><b>Frete</b>Frete fixo de <b style="display:inline">R$ 20</b> para todo o Brasil, pelos Correios. <b style="display:inline">Grátis</b> para compras a partir de R$ 100 (valor dos livros, já com descontos).</div>
+      <div><b>Frete</b>Frete fixo de <b style="display:inline">R$ 20</b> para todo o Brasil, pelos Correios. <b style="display:inline">Grátis</b> para compras a partir de R$ 100 (valor dos livros, já com descontos). <b style="display:inline">Envio em até 2 dias úteis</b> após a confirmação do pagamento.</div>
       <div><b>Livros usados, com transparência</b>Fotos reais de cada exemplar. Marcas de uso, grifos ou anotações são informados na descrição. Ficou em dúvida sobre o estado de um livro? Pergunte ao finalizar o pedido.</div>
     </div>
     <p class="trust">Já realizamos vendas e enviamos livros para nossos clientes. Nossa loja está presente em comunidades de leitores e compradores de livros usados, com clientes que acompanham nossas publicações e compartilham suas experiências.</p>
@@ -192,7 +192,7 @@ def product_page(b, head, nav, foot):
         {combotxt}
         {f'<p>{e(b["desc"])}</p>' if b["desc"] else ''}
         <dl class="specs">{dl}</dl>
-        <p class="note">Frete fixo de R$ 20 para todo o Brasil; grátis a partir de R$ 100 em livros. Pagamento via Pix, combinado pelo WhatsApp ao finalizar o pedido.</p>
+        <p class="note">Frete fixo de R$ 20 para todo o Brasil; grátis a partir de R$ 100 em livros. Pagamento via Pix, combinado pelo WhatsApp ao finalizar o pedido. Envio pelos Correios em até 2 dias úteis após a confirmação do pagamento.</p>
         <p><a href="../#catalogo">← Ver todos os livros</a></p>
       </div>
     </div>
