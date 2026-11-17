@@ -183,7 +183,7 @@ def page(head, nav, foot):
       <span class="eyebrow">Desapego · livros usados</span>
       <h1>Livros de Matemática, Física e outras áreas</h1>
       <p class="lead">Livros de graduação, ensino médio, concursos e coleções clássicas que passaram pelas minhas mãos. Escolha os livros, veja o total com frete e envie o pedido completo pelo WhatsApp, com os dados de envio, para reservar.</p>
-      <div class="facts"><span>{disp} títulos disponíveis</span><span>Frete grátis acima de R$ 100</span><span>Ilha do Governador · RJ</span><span>Frete único de R$ 20 abaixo disso</span><span>Acima de 10 livros: desconto especial</span></div>
+      <div class="facts"><span>{disp} títulos disponíveis</span><span>Frete grátis acima de R$ 100</span><span>Ilha do Governador · RJ</span><span>Frete único de R$ 20 abaixo disso</span><span>A partir de 10 livros: desconto especial</span></div>
       <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="#catalogo">Montar meu pedido ↓</a></div>
     </div>
     <img src="img/capa.jpg" alt="Rielson ao lado de uma pilha de livros de matemática e física" width="1400" height="788">
@@ -194,7 +194,7 @@ def page(head, nav, foot):
     <div class="info">
       <div><b>Como comprar</b>1. Toque em “+ Pedido” nos livros que quiser. 2. Toque em “Finalizar pedido” e preencha os dados de envio. 3. O pedido completo chega no meu WhatsApp e eu envio o Pix para reservar seus livros.</div>
       <div><b>Frete</b>Envio pelos Correios. <b style="display:inline">Grátis</b> em compras a partir de R$ 100; abaixo disso, taxa única de R$ 20. Estou na Ilha do Governador (RJ).</div>
-      <div><b>Desconto por quantidade</b>Os preços já são baixos, mas levando <b style="display:inline">mais de 10 livros</b> a gente negocia um desconto especial. Monte o pedido e envie: o desconto é combinado no WhatsApp.</div>
+      <div><b>Desconto por quantidade</b>Os preços já são baixos, mas levando <b style="display:inline">10 livros ou mais</b> a gente negocia um desconto especial. Monte o pedido e envie: o desconto é combinado no WhatsApp.</div>
     </div>
     <h2 style="margin-top:12px">Veja todos os livros no vídeo</h2>
     <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/{VIDEO_ID}" title="Vídeo mostrando os livros à venda" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
@@ -218,7 +218,7 @@ def page(head, nav, foot):
     <p class="co-empty" id="co-empty" hidden>Nenhum livro escolhido ainda.</p>
     <dl class="co-tot"><dt>Subtotal</dt><dd id="co-sub"></dd><dt>Frete</dt><dd id="co-fr"></dd><dt class="big">Total</dt><dd class="big" id="co-tot"></dd></dl>
     <p class="co-hint" id="co-hint"></p>
-    <p class="co-bulk" id="co-bulk" hidden>🎉 Mais de 10 livros: o seu pedido já vai com o pedido de <b>desconto especial</b>. A gente acerta o valor final no WhatsApp.</p>
+    <p class="co-bulk" id="co-bulk" hidden>🎉 10 livros ou mais: o seu pedido já vai com o pedido de <b>desconto especial</b>. A gente acerta o valor final no WhatsApp.</p>
     <form id="co-form" novalidate>
       <h3>Dados para envio pelos Correios</h3>
       <label>Nome completo *<input name="nome" autocomplete="name" maxlength="100"></label>
