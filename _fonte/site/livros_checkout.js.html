@@ -11,7 +11,8 @@
   function render(){
     var t=totals(), cart=$('cart');
     cart.classList.toggle('show',t.n>0); document.body.classList.toggle('has-cart',t.n>0);
-    $('csum').innerHTML='<b>'+t.n+(t.n===1?' livro':' livros')+' · '+brl(t.sub)+'</b><small>'+(t.sub>=FG?'Frete grátis':'Faltam '+brl(FG-t.sub)+' para o frete grátis')+'</small>';
+    $('csum').innerHTML='<b>'+t.n+(t.n===1?' livro':' livros')+' · '+brl(t.sub)+'</b><small>'+(t.sub>=FG?'Frete grátis':'Faltam '+brl(FG-t.sub)+' para o frete grátis')+(t.n>10?' · desconto especial liberado':(t.n>=7?' · faltam '+(11-t.n)+' para o desconto especial':''))+'</small>';
+    $('co-bulk').hidden=!(t.n>10);
     var ul=$('co-items'); ul.innerHTML='';
     Object.keys(sel).forEach(function(k){
       var li=document.createElement('li'); var d=D[k];
@@ -59,7 +60,8 @@
       'Endereço: '+f.rua.value.trim()+', '+f.numero.value.trim()+(f.comp.value.trim()?' – '+f.comp.value.trim():''),
       'Bairro: '+f.bairro.value.trim(),'Cidade/UF: '+f.cidade.value.trim()+' – '+f.uf.value.trim().toUpperCase());
     if(f.obs.value.trim())L.push('','Obs.: '+f.obs.value.trim());
-    L.push('','Aguardo os dados para pagamento.');
+    if(t.n>10)L.push('','Pedido com mais de 10 livros: gostaria de negociar o desconto especial.');
+    L.push('','Aguardo o Pix para reservar os livros.');
     var url='https://wa.me/'+WA+'?text='+encodeURIComponent(L.join('\n'));
     var a=$('co-go'); a.href=url; $('co-done').hidden=false; window.location.href=url;
   });

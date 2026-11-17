@@ -78,6 +78,7 @@ body.co-open{overflow:hidden}
 .co-tot dd{margin:0;text-align:right;font-weight:700}
 .co-tot .big{font:700 1.2rem var(--display);padding-top:6px;border-top:1px dashed var(--line)}
 .co-hint{color:var(--muted);font-size:.92rem}
+.co-bulk{background:var(--green-soft);color:var(--ink);border-radius:10px;padding:10px 12px;font-size:.95rem}
 .co-hint:empty{display:none}
 #co-form{display:flex;flex-direction:column;gap:12px}
 #co-form h3{margin-top:4px}
@@ -161,9 +162,7 @@ def page(head, nav, foot):
         msg = f"Olá, Rielson! Vi no site e tenho interesse no livro: {nome} ({preco(p)}). Ainda está disponível?"
         qtxt = f"{q} unidades · preço cada" if q > 1 else "1 unidade"
         tag = '<span class="soldtag">Vendido</span>' if sold else ""
-        acts = "" if sold else (
-            f'<button type="button" class="add" aria-pressed="false" data-i="{i}">+ Pedido</button>'
-            f'<a class="wa" href="{e(wa_link(msg))}" target="_blank" rel="noopener" aria-label="Perguntar no WhatsApp sobre {e(t)}">{WA_SVG}</a>')
+        acts = "" if sold else f'<button type="button" class="add" aria-pressed="false" data-i="{i}">+ Pedido</button>'
         cards.append(
             f'<article class="book{" sold" if sold else ""}" data-cat="{e(c)}">'
             f'<div class="ph">{tag}<img src="img/{f}.jpg" alt="Foto de {e(t)}" loading="lazy" width="900" height="1200"></div>'
@@ -174,7 +173,6 @@ def page(head, nav, foot):
     dados = json.dumps([{"t": f"{t} – {a.split(' · ')[0]}", "p": p, "q": q, "s": s} for t, a, p, q, c, f, s in L], ensure_ascii=False).replace("</", "<\\/")
     disp = sum(1 for x in L if not x[6])
     js = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "livros_checkout.js.html")).read().replace("__DADOS__", dados).replace("__FG__", str(FRETE_GRATIS)).replace("__FRETE__", str(FRETE)).replace("__WA__", WA_LIVROS)
-    geral = wa_link("Olá, Rielson! Vi no site os livros à venda e queria saber mais.")
     return head("Livros à venda · Matemática, Física e mais | Rielson Fragoso",
                 f"Desapego de {len(L)} livros de Matemática, Física, Matemática Financeira e Estatística, com fotos e preços. Ilha do Governador, RJ. Frete grátis a partir de R$ 100.",
                 "/livros/", og="livros/img/capa.jpg", extra_css=CSS) + nav("/livros/") + f'''
@@ -184,9 +182,9 @@ def page(head, nav, foot):
     <div class="stack">
       <span class="eyebrow">Desapego · livros usados</span>
       <h1>Livros de Matemática, Física e outras áreas</h1>
-      <p class="lead">Livros de graduação, ensino médio, concursos e coleções clássicas que passaram pelas minhas mãos. Escolha os livros, veja o total com frete e envie o pedido pelo WhatsApp.</p>
-      <div class="facts"><span>{disp} títulos disponíveis</span><span>Frete grátis acima de R$ 100</span><span>Ilha do Governador · RJ</span><span>Frete único de R$ 20 abaixo disso</span><span>Aceito ofertas para lote</span></div>
-      <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="#catalogo">Ver os livros ↓</a><a class="btn wabtn" href="{e(geral)}" target="_blank" rel="noopener">Falar no WhatsApp</a></div>
+      <p class="lead">Livros de graduação, ensino médio, concursos e coleções clássicas que passaram pelas minhas mãos. Escolha os livros, veja o total com frete e envie o pedido completo pelo WhatsApp, com os dados de envio, para reservar.</p>
+      <div class="facts"><span>{disp} títulos disponíveis</span><span>Frete grátis acima de R$ 100</span><span>Ilha do Governador · RJ</span><span>Frete único de R$ 20 abaixo disso</span><span>Acima de 10 livros: desconto especial</span></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="#catalogo">Montar meu pedido ↓</a></div>
     </div>
     <img src="img/capa.jpg" alt="Rielson ao lado de uma pilha de livros de matemática e física" width="1400" height="788">
   </div>
@@ -194,9 +192,9 @@ def page(head, nav, foot):
 <section style="padding-bottom:24px">
   <div class="wrap stack" style="gap:16px">
     <div class="info">
-      <div><b>Como comprar</b>Toque em “+ Pedido” nos livros que quiser e depois em “Finalizar pedido”. Preencha os dados de envio e o pedido chega pronto no meu WhatsApp. Para tirar uma dúvida sobre um livro, toque no ícone verde.</div>
+      <div><b>Como comprar</b>1. Toque em “+ Pedido” nos livros que quiser. 2. Toque em “Finalizar pedido” e preencha os dados de envio. 3. O pedido completo chega no meu WhatsApp e eu envio o Pix para reservar seus livros.</div>
       <div><b>Frete</b>Envio pelos Correios. <b style="display:inline">Grátis</b> em compras a partir de R$ 100; abaixo disso, taxa única de R$ 20. Estou na Ilha do Governador (RJ).</div>
-      <div><b>Negociação</b>Aberto a ofertas para quem levar vários livros ou o lote completo.</div>
+      <div><b>Desconto por quantidade</b>Os preços já são baixos, mas levando <b style="display:inline">mais de 10 livros</b> a gente negocia um desconto especial. Monte o pedido e envie: o desconto é combinado no WhatsApp.</div>
     </div>
     <h2 style="margin-top:12px">Veja todos os livros no vídeo</h2>
     <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/{VIDEO_ID}" title="Vídeo mostrando os livros à venda" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
@@ -220,6 +218,7 @@ def page(head, nav, foot):
     <p class="co-empty" id="co-empty" hidden>Nenhum livro escolhido ainda.</p>
     <dl class="co-tot"><dt>Subtotal</dt><dd id="co-sub"></dd><dt>Frete</dt><dd id="co-fr"></dd><dt class="big">Total</dt><dd class="big" id="co-tot"></dd></dl>
     <p class="co-hint" id="co-hint"></p>
+    <p class="co-bulk" id="co-bulk" hidden>🎉 Mais de 10 livros: o seu pedido já vai com o pedido de <b>desconto especial</b>. A gente acerta o valor final no WhatsApp.</p>
     <form id="co-form" novalidate>
       <h3>Dados para envio pelos Correios</h3>
       <label>Nome completo *<input name="nome" autocomplete="name" maxlength="100"></label>
@@ -230,7 +229,7 @@ def page(head, nav, foot):
       <label>Bairro *<input name="bairro" maxlength="60"></label>
       <div class="f2 f2b"><label>Cidade *<input name="cidade" autocomplete="address-level2" maxlength="60"></label><label>UF *<input name="uf" autocomplete="address-level1" maxlength="2"></label></div>
       <label>Observação<textarea name="obs" rows="2" maxlength="300" placeholder="Ex.: prefiro retirar pessoalmente"></textarea></label>
-      <p class="co-note">Ao confirmar, o seu WhatsApp abre com o pedido e os dados de envio já escritos. É só tocar em enviar. Os livros ficam reservados depois da confirmação do pagamento. Seus dados não ficam guardados no site.</p>
+      <p class="co-note">Ao confirmar, o seu WhatsApp abre com o pedido e os dados de envio já escritos: é só tocar em enviar. Eu respondo com o Pix e os livros ficam reservados para você assim que o pagamento é confirmado. Seus dados não ficam guardados no site.</p>
       <p class="co-msg" id="co-msg" role="alert" hidden></p>
       <button class="btn wabtn co-send" type="submit">Enviar pedido pelo WhatsApp</button>
       <p class="co-done" id="co-done" hidden>O WhatsApp não abriu? <a id="co-go" href="#" target="_blank" rel="noopener">Toque aqui para abrir com o pedido</a>.</p>
