@@ -56,10 +56,10 @@ def card(b, i):
     act = "" if sold else f'<button type="button" class="add" aria-pressed="false" data-k="{b["slug"]}">+ Pedido</button>'
     busca = e(unicodedata.normalize("NFKD", (b["titulo"] + " " + b["autor"]).lower()).encode("ascii", "ignore").decode())
     return (f'<article class="book{" sold" if sold else ""}" data-cat="{e(b["cat"])}" data-lang="{e(b["idioma"])}" data-q="{busca}">'
-            f'<a class="ph" href="{b["slug"]}/">{tag}{lang}<img src="img/thumb/{b["foto"]}.webp" alt="Foto do exemplar de {e(b["titulo"])}, de {e(b["autor"])}" loading="lazy" decoding="async" width="480" height="640"></a>'
-            f'<div class="bd"><span class="cat">{e(b["cat"])}</span><h3><a href="{b["slug"]}/">{e(b["titulo"])}</a></h3><p class="au">{e(b["autor"])}</p>'
+            f'<a class="ph" href="/livros/{b["slug"]}/">{tag}{lang}<img src="/livros/img/thumb/{b["foto"]}.webp" alt="Foto do exemplar de {e(b["titulo"])}, de {e(b["autor"])}" loading="lazy" decoding="async" width="480" height="640"></a>'
+            f'<div class="bd"><span class="cat">{e(b["cat"])}</span><h3><a href="/livros/{b["slug"]}/">{e(b["titulo"])}</a></h3><p class="au">{e(b["autor"])}</p>'
             f'<p class="st">Usado{" · " + e(b["cond"]) if b["cond"] else ""}</p>'
-            + (f'<a class="vlink" href="{b["slug"]}/#video">▶ Ver vídeo do exemplar</a>' if b["video"] else "")
+            + (f'<a class="vlink" href="/livros/{b["slug"]}/#video">▶ Ver vídeo do exemplar</a>' if b["video"] else "")
             + (f'<a class="vlink yt" href="{yt_url(b)}" target="_blank" rel="noopener" aria-label="Ver no YouTube">YouTube ↗</a>' if b["video"] else "")
             + f'<div class="row"><span class="pr">{preco(b["preco"])}<small>{qtxt}</small></span><span class="acts">{act}</span></div></div></article>')
 
@@ -69,11 +69,11 @@ def combo_card(c):
     soma = sum(itens[s]["preco"] for s in c["itens"])
     btn = (f'<button type="button" class="btn addcombo" data-c="{c["id"]}">Adicionar os 3 ao pedido</button>' if ok
            else '<span class="soldtag" style="position:static">Esgotado</span>')
-    return (f'<div class="combo"><img src="img/thumb/{c["foto"]}.webp" alt="Os três livros de Shakespeare do combo" loading="lazy" width="900" height="1200">'
+    return (f'<div class="combo"><img src="/livros/img/thumb/{c["foto"]}.webp" alt="Os três livros de Shakespeare do combo" loading="lazy" width="900" height="1200">'
             f'<div class="stack" style="gap:8px"><span class="eyebrow">Promoção</span><h3>{e(c["nome"])}: 3 livros por {preco(c["preco"])}</h3>'
             f'<p>{e(c["desc"])} Economia de {preco(soma - c["preco"])}.</p>'
             f'<p class="note">O desconto também vale se você adicionar os três separadamente.</p><div class="row" style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">{btn}'
-            + (f'<a class="vlink" href="{c["itens"][0]}/#video">▶ Ver vídeo dos exemplares</a>' if c.get("video") else "") + '</div></div></div>')
+            + (f'<a class="vlink" href="/livros/{c["itens"][0]}/#video">▶ Ver vídeo dos exemplares</a>' if c.get("video") else "") + '</div></div></div>')
 
 def dados_js():
     d = {b["slug"]: {"t": b["titulo"], "a": b["autor"], "p": b["preco"], "q": b["qtd"] if disp(b) else 0} for b in LIVROS}
@@ -109,7 +109,7 @@ def page(head, nav, foot):
       <div class="facts"><span>{n_disp} títulos disponíveis</span><span>Frete fixo de R$ 20 para todo o Brasil</span><span>Frete grátis a partir de R$ 100</span><span>Envio em até 2 dias úteis após o pagamento</span><span>A partir de 10 livros: desconto especial</span></div>
       <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="#catalogo">Montar meu pedido ↓</a></div>
     </div>
-    <img src="img/capa.jpg" alt="Rielson ao lado de uma pilha de livros de matemática e física" width="1400" height="788">
+    <img src="/livros/img/capa.jpg" alt="Rielson ao lado de uma pilha de livros de matemática e física" width="1400" height="788">
   </div>
 </section>
 <section style="padding-bottom:20px">
