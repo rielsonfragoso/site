@@ -23,8 +23,18 @@ def slugify(s, limite=60):
     return s
 
 # slugs únicos
-_seen = set()
+def _slug_antigo(s):
+    """Algoritmo de slug usado até 17/11/2026 (links antigos continuam funcionando via redirecionamento)."""
+    s = unicodedata.normalize("NFKD", s).encode("ascii", "ignore").decode().lower()
+    return re.sub(r"[^a-z0-9]+", "-", s).strip("-")[:70].strip("-")
+
+_seen, _seen_old = set(), set()
 for b in LIVROS:
+    o = b["slug"] or _slug_antigo(b["titulo"] + " " + b["autor"].split(" e ")[0].split(",")[0])
+    base, n = o, 2
+    while o in _seen_old:
+        o = f"{base}-{n}"; n += 1
+    b["slug_antigo"] = o; _seen_old.add(o)
     titulo_curto = b["titulo"].split(":")[0]
     sobrenome = [w for w in b["autor"].split(" e ")[0].split(",")[0].split() if w.rstrip(".") not in ("Jr", "Neto", "Filho")][-1]
     s = b["slug"] or slugify(titulo_curto + " " + sobrenome)
@@ -217,4 +227,16 @@ def build(out_dir, head, nav, foot):
     for b in LIVROS:
         p = os.path.join(out_dir, "livros", b["slug"]); os.makedirs(p, exist_ok=True)
         open(os.path.join(p, "index.html"), "w").write(product_page(b, head, nav, foot))
+    novos = {b["slug"] for b in LIVROS}
+    for b in LIVROS:  # endereços antigos -> página atual (links salvos, cache do celular, Google)
+        o = b["slug_antigo"]
+        if o in novos: continue
+        p = os.path.join(out_dir, "livros", o); os.makedirs(p, exist_ok=True)
+        url = f"/livros/{b['slug']}/"
+        open(os.path.join(p, "index.html"), "w").write(
+            f'<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>{e(b["titulo"])}</title>'
+            f'<meta name="robots" content="noindex"><link rel="canonical" href="https://rielsonfragoso.com.br{url}">'
+            f'<meta http-equiv="refresh" content="0; url={url}">'
+            f'<script>location.replace("{url}"+location.hash)</script></head>'
+            f'<body><p><a href="{url}">Abrir a página do livro</a></p></body></html>')
     return [f"/livros/{b['slug']}/" for b in LIVROS]
