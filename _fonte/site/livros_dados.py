@@ -98,7 +98,7 @@ COMBOS = [dict(id="shakespeare", nome="Combo Shakespeare", foto="shakespeare-tri
                itens=["shakespeare-sonho-de-uma-noite-de-verao", "shakespeare-hamlet", "shakespeare-o-rei-lear"],
                desc="Sonho de uma Noite de Verão, Hamlet e O Rei Lear (L&PM Pocket). Separados saem R$ 59,70.", video="",
                alt="Os três livros de Shakespeare do combo"),
-          dict(id="paiva-praticando", nome="Combo Matemática Escolar", foto="paiva-praticando", preco=160.00,
+          dict(id="paiva-praticando", nome="Combo Matemática Escolar", foto="paiva-praticando", preco=159.90,
                itens=["matematica-box-moderna-plus-vol-1-completo-paiva", "matematica-box-moderna-plus-vol-2-incompleto-paiva",
                       "matematica-box-moderna-plus-vol-3-completo-paiva", "novo-praticando-matematica-vol-2-andrini",
                       "novo-praticando-matematica-vol-3-andrini", "novo-praticando-matematica-vol-4-andrini"],
