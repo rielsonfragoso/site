@@ -77,12 +77,13 @@ def combo_card(c):
     itens = {b["slug"]: b for b in LIVROS}
     ok = all(disp(itens[s]) for s in c["itens"])
     soma = sum(itens[s]["preco"] for s in c["itens"])
-    btn = (f'<button type="button" class="btn addcombo" data-c="{c["id"]}">Adicionar os 3 ao pedido</button>' if ok
+    n = len(c["itens"])
+    btn = (f'<button type="button" class="btn addcombo" data-c="{c["id"]}">Adicionar os {n} ao pedido</button>' if ok
            else '<span class="soldtag" style="position:static">Esgotado</span>')
-    return (f'<div class="combo"><img src="/livros/img/thumb/{c["foto"]}.webp" alt="Os três livros de Shakespeare do combo" loading="lazy" width="900" height="1200">'
-            f'<div class="stack" style="gap:8px"><span class="eyebrow">Promoção</span><h3>{e(c["nome"])}: 3 livros por {preco(c["preco"])}</h3>'
+    return (f'<div class="combo"><img src="/livros/img/thumb/{c["foto"]}.webp" alt="{e(c.get("alt", c["nome"]))}" loading="lazy" width="900" height="1200">'
+            f'<div class="stack" style="gap:8px"><span class="eyebrow">Promoção</span><h3>{e(c["nome"])}: {n} livros por {preco(c["preco"])}</h3>'
             f'<p>{e(c["desc"])} Economia de {preco(soma - c["preco"])}.</p>'
-            f'<p class="note">O desconto também vale se você adicionar os três separadamente.</p><div class="row" style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">{btn}'
+            f'<p class="note">O desconto também vale se você adicionar os {n} separadamente.</p><div class="row" style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">{btn}'
             + (f'<a class="vlink" href="/livros/{c["itens"][0]}/#video">▶ Ver vídeo dos exemplares</a>' if c.get("video") else "") + '</div></div></div>')
 
 def dados_js():
@@ -139,6 +140,12 @@ def page(head, nav, foot):
     <h2>{e(CIENCIA)}</h2>
     <p class="lead" style="font-size:1rem">Heisenberg, Weinberg, Schrödinger, Simon Singh, Stephen Hawking e Feynman. Vários em inglês, na edição original.</p>
     <div class="books">{destaque}</div>
+  </div>
+</section>
+<section id="combos" style="padding-top:12px;padding-bottom:20px;scroll-margin-top:80px">
+  <div class="wrap stack" style="gap:16px">
+    <span class="eyebrow">Promoções</span>
+    <h2>Combos com desconto</h2>
     {combos}
   </div>
 </section>
@@ -187,8 +194,8 @@ def product_page(b, head, nav, foot):
     dl = "".join(f"<dt>{e(k)}</dt><dd>{e(v)}</dd>" for k, v in rows)
     act = ('<span class="soldtag" style="position:static">Vendido</span>' if sold else
            f'<button type="button" class="btn add big" aria-pressed="false" data-k="{b["slug"]}">+ Adicionar ao pedido</button>')
-    combotxt = (f'<p class="combo-note">Faz parte do <b>{e(combo["nome"])}</b>: os 3 por {preco(combo["preco"])}. '
-                f'<a href="../#catalogo">Ver o combo</a></p>' if combo else "")
+    combotxt = (f'<p class="combo-note">Faz parte do <b>{e(combo["nome"])}</b>: os {len(combo["itens"])} por {preco(combo["preco"])}. '
+                f'<a href="/livros/#combos">Ver o combo</a></p>' if combo else "")
     return head(f"{b['titulo']} – {b['autor']} (usado) | Livros Rielson Fragoso",
                 (b["desc"] or f"{b['titulo']}, de {b['autor']}. Livro usado") + f" Preço: {preco(b['preco'])}. Frete fixo R$ 20, grátis a partir de R$ 100.",
                 f"/livros/{b['slug']}/", og=f"livros/img/{b['foto']}.jpg", extra_css=CSS) + nav("/livros/") + f'''

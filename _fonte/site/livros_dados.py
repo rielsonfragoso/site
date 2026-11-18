@@ -85,8 +85,8 @@ LIVROS = [
     B("Matemática Financeira · mais de 600 exercícios resolvidos e propostos", "Washington Franco Mathias e José Maria Gomes", 22.90, 1, "Financeira e Estatística", "ross-mathias", editora="Atlas"),
     B("Curso de Estatística · Elementos", "Ruy Aguiar da Silva Leme", 17.90, 1, "Financeira e Estatística", "estatistica-basica", editora="Ao Livro Técnico"),
     B("The Feynman Lectures on Physics · Vol. III: Quantum Mechanics", "Feynman, Leighton e Sands", 53.90, 1, "Física", "feynman-lectures", idioma="Inglês", editora="New Millennium Edition"),
-    B("Os Tópicos da Física 2 · Termologia, Ondas e Óptica", "Gualter, Newton e Helou Doca", 24.90, 1, "Física", "topicos-fisica", editora="Saraiva"),
-    B("Os Tópicos da Física 3 · Eletricidade", "Gualter, Newton e Helou Doca", 24.90, 1, "Física", "topicos-fisica", editora="Saraiva"),
+    B("Os Tópicos da Física 2 · Termologia, Ondas e Óptica", "Gualter, Newton e Helou Doca", 24.90, 1, "Física", "topicos-fisica", editora="Saraiva", vendido=True),
+    B("Os Tópicos da Física 3 · Eletricidade", "Gualter, Newton e Helou Doca", 24.90, 1, "Física", "topicos-fisica", editora="Saraiva", vendido=True),
     B("Física Básica · Volume Único", "Nicolau, Toledo e Ronaldo", 24.90, 1, "Física", "fisica-basica", editora="Atual"),
     B("La Gaceta de la Real Sociedad Matemática Española · Vol. 21, nº 3 (2018)", "Real Sociedad Matemática Española", 17.90, 1, "Outros", "gaceta", idioma="Espanhol"),
 ]
@@ -96,4 +96,11 @@ CATS = [CIENCIA, LIT, FIN, "Ensino fundamental", "Ensino médio", "Coleções cl
 # Combo: livros vendidos juntos com desconto. O desconto vale também quando os itens são adicionados um a um.
 COMBOS = [dict(id="shakespeare", nome="Combo Shakespeare", foto="shakespeare-trio", preco=49.90,
                itens=["shakespeare-sonho-de-uma-noite-de-verao", "shakespeare-hamlet", "shakespeare-o-rei-lear"],
-               desc="Sonho de uma Noite de Verão, Hamlet e O Rei Lear (L&PM Pocket). Separados saem R$ 59,70.", video="")]
+               desc="Sonho de uma Noite de Verão, Hamlet e O Rei Lear (L&PM Pocket). Separados saem R$ 59,70.", video="",
+               alt="Os três livros de Shakespeare do combo"),
+          dict(id="paiva-praticando", nome="Combo Matemática Escolar", foto="paiva-praticando", preco=160.00,
+               itens=["matematica-box-moderna-plus-vol-1-completo-paiva", "matematica-box-moderna-plus-vol-2-incompleto-paiva",
+                      "matematica-box-moderna-plus-vol-3-completo-paiva", "novo-praticando-matematica-vol-2-andrini",
+                      "novo-praticando-matematica-vol-3-andrini", "novo-praticando-matematica-vol-4-andrini"],
+               desc="Os 3 boxes Matemática Moderna Plus de Manoel Paiva (ensino médio; o Vol. 2 está incompleto) e os volumes 2, 3 e 4 do Novo Praticando Matemática (ensino fundamental). Separados saem R$ 181,40.",
+               video="", alt="Boxes Moderna Plus de Manoel Paiva e livros Novo Praticando Matemática")]
