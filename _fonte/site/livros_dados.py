@@ -51,7 +51,7 @@ LIVROS = [
     B("Princípios de Administração Financeira", "Ross, Westerfield e Jordan", 20, 1, FIN, "ross-mathias", editora="Atlas"),
 
     # ---------- Catálogo anterior (preservado) ----------
-    B("Álgebra Linear e Geometria Analítica", "Antonio dos Santos Machado", 36, 2, "Graduação", "machado"),
+    B("Álgebra Linear e Geometria Analítica", "Antonio dos Santos Machado", 36, 1, "Graduação", "machado"),
     B("Cálculo · Volume 1", "James Stewart", 54, 1, "Graduação", "stewart", editora="Cengage · tradução da 6ª edição"),
     B("Cálculo · Volume 1", "George B. Thomas Jr.", 25, 1, "Graduação", "thomas"),
     B("Cálculo · Volume 2", "George B. Thomas Jr.", 25, 1, "Graduação", "thomas"),
