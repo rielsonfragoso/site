@@ -129,7 +129,7 @@ HOME_CSS = METHOD_CSS + '''
 .hero .top>*{min-width:0}
 .hero h1{color:var(--chalk)}
 .hero h1 span{color:var(--yellow)}
-.mono{justify-self:center;width:min(200px,40vw);aspect-ratio:1;border:2px dashed var(--chalk-dim);border-radius:50%;display:grid;place-items:center;
+.mono{justify-self:center;width:min(220px,40vw);aspect-ratio:1;border:2px dashed var(--chalk-dim);border-radius:50%;display:grid;place-items:center;
   font-family:var(--display);font-weight:700;font-size:clamp(3rem,8vw,4.6rem);color:var(--yellow);position:relative}
 .mono small{position:absolute;bottom:-38px;left:50%;transform:translateX(-50%) rotate(-3deg);white-space:nowrap;font-family:var(--hand);font-size:1.35rem;color:var(--chalk-dim);font-weight:600}
 .mono.foto{border:none;padding:0}
@@ -173,14 +173,19 @@ HOME_LD = '<script type="application/ld+json">' + '{"@context": "https://schema.
 
 def mono():
     """Foto do Rielson no topo da home (se existir rielson.jpg ao lado do build); senão, o monograma RF."""
-    src = os.path.join(HERE, "rielson.jpg")
+    src = os.path.join(HERE, "rielson.png")
     if not os.path.exists(src):
         return '<div class="mono" aria-hidden="true">RF<small>empreendedor e educador</small></div>'
     from PIL import Image, ImageOps
-    im = ImageOps.exif_transpose(Image.open(src)).convert("RGB")
-    lado = min(im.size); x = (im.width - lado) // 2; y = max(0, min((im.height - lado) // 4, im.height - lado))
+    im = ImageOps.exif_transpose(Image.open(src)).convert("RGBA")
+    bb = im.getbbox() or (0, 0, im.width, im.height)          # recorta a área transparente em volta
+    im = im.crop(bb)
+    lado = int(im.height * 0.74); x = y = 0                    # quadro vai da cabeça até abaixo dos braços cruzados
+    fundo = Image.new("RGBA", (lado, lado), (242, 194, 48, 255))  # amarelo da marca atrás da foto sem fundo
+    fundo.alpha_composite(im, ((lado - im.width) // 2, int(lado * 0.06)))
+    im = fundo.convert("RGB"); x = y = 0
     os.makedirs(os.path.join(OUT, "img"), exist_ok=True)
-    im.crop((x, y, x + lado, y + lado)).resize((440, 440), Image.LANCZOS).save(os.path.join(OUT, "img", "rielson.webp"), quality=84)
+    im.crop((x, y, x + lado, y + lado)).resize((440, 440), Image.LANCZOS).save(os.path.join(OUT, "img", "rielson.webp"), quality=88)
     return ('<div class="mono foto"><img src="/img/rielson.webp" width="440" height="440" '
             'alt="Rielson Fragoso, de braços cruzados, sorrindo"><small>empreendedor e educador</small></div>')
 
