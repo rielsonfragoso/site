@@ -132,6 +132,9 @@ HOME_CSS = METHOD_CSS + '''
 .mono{justify-self:center;width:min(200px,40vw);aspect-ratio:1;border:2px dashed var(--chalk-dim);border-radius:50%;display:grid;place-items:center;
   font-family:var(--display);font-weight:700;font-size:clamp(3rem,8vw,4.6rem);color:var(--yellow);position:relative}
 .mono small{position:absolute;bottom:-38px;left:50%;transform:translateX(-50%) rotate(-3deg);white-space:nowrap;font-family:var(--hand);font-size:1.35rem;color:var(--chalk-dim);font-weight:600}
+.mono.foto{border:none;padding:0}
+.mono.foto img{width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:50% 20%;border:3px solid var(--yellow);box-shadow:0 18px 40px -18px rgba(0,0,0,.6)}
+@media (max-width:760px){.hero .mono.foto{display:grid;width:150px;justify-self:start;margin-bottom:34px}.hero .mono.foto small{left:0;transform:rotate(-3deg)}}
 .pick{margin-top:clamp(36px,5vw,56px);display:flex;flex-direction:column;gap:10px}
 .pick .hand{display:flex;align-items:flex-end;gap:8px}
 .arrow{width:72px;height:36px;color:var(--yellow);flex:none}
@@ -168,7 +171,21 @@ HOME_CSS = METHOD_CSS + '''
 '''
 HOME_LD = '<script type="application/ld+json">' + '{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://rielsonfragoso.com.br/#rielson", "name": "Rielson Fragoso", "url": "https://rielsonfragoso.com.br/", "jobTitle": "Educador de matemática e empreendedor", "address": {"@type": "PostalAddress", "addressLocality": "Rio de Janeiro", "addressRegion": "RJ", "addressCountry": "BR"}, "sameAs": ["https://www.youtube.com/@AcademiaMatem%C3%A1ticarj", "https://t.me/rielsonfragoso", "https://linktr.ee/academiamatematicarj", "https://hotmart.com/pt-br/marketplace/especialista/rielson-fragoso/EEWWNW3SCW"]}, {"@type": "WebSite", "url": "https://rielsonfragoso.com.br/", "name": "Rielson Fragoso · Academia Matemática RJ", "inLanguage": "pt-BR", "publisher": {"@id": "https://rielsonfragoso.com.br/#rielson"}}]}' + '</script>'
 
+def mono():
+    """Foto do Rielson no topo da home (se existir rielson.jpg ao lado do build); senão, o monograma RF."""
+    src = os.path.join(HERE, "rielson.jpg")
+    if not os.path.exists(src):
+        return '<div class="mono" aria-hidden="true">RF<small>empreendedor e educador</small></div>'
+    from PIL import Image, ImageOps
+    im = ImageOps.exif_transpose(Image.open(src)).convert("RGB")
+    lado = min(im.size); x = (im.width - lado) // 2; y = max(0, min((im.height - lado) // 4, im.height - lado))
+    os.makedirs(os.path.join(OUT, "img"), exist_ok=True)
+    im.crop((x, y, x + lado, y + lado)).resize((440, 440), Image.LANCZOS).save(os.path.join(OUT, "img", "rielson.webp"), quality=84)
+    return ('<div class="mono foto"><img src="/img/rielson.webp" width="440" height="440" '
+            'alt="Rielson Fragoso, de braços cruzados, sorrindo"><small>empreendedor e educador</small></div>')
+
 def home():
+    MONO = mono()
     feat = "".join(sim_card(t, d, b, u, "site_home") for t, d, b, u, f in SIMS if f)
     return head("Rielson Fragoso · Matemática para concursos e inglês em família",
                 "Simulados e e-books de matemática e raciocínio lógico para concursos, e o e-book Inglês em Família para pais e filhos.", "/", extra_css=HOME_CSS) + nav("/") + HOME_LD + f'''
@@ -181,7 +198,7 @@ def home():
         <h1>Matemática para <span class="chalk-u">passar</span>.<br>Inglês para aprender <span class="chalk-u">em família</span>.</h1>
         <p class="lead">Faço materiais para quem estuda por conta própria: simulados e questões comentadas para concursos, e um jeito leve de aprender inglês com os filhos.</p>
       </div>
-      <div class="mono" aria-hidden="true">RF<small>empreendedor e educador</small></div>
+      {MONO}
     </div>
     <div class="pick">
       <p class="hand">{ARROW} escolha por onde começar</p>
