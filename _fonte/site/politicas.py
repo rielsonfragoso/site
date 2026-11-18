@@ -17,7 +17,7 @@ def privacidade(head, nav, foot):
 <p>Este site é mantido por Rielson Fragoso (Academia Matemática RJ), no Rio de Janeiro. Coletamos o mínimo de dados necessário para atender você, de acordo com a Lei Geral de Proteção de Dados (LGPD).</p>
 <h2>Quais dados e para quê</h2>
 <ul>
-<li><b>Pedidos de livros:</b> nome, telefone e endereço que você digita no pedido. Esses dados não ficam guardados no site: eles vão apenas na mensagem que você mesmo envia pelo WhatsApp, e são usados só para combinar o pagamento e postar o envio pelos Correios.</li>
+<li><b>Pedidos de livros:</b> nome, CPF, telefone e endereço que você digita no pedido (o CPF é exigido pelos Correios na postagem). Esses dados não ficam guardados no site: eles vão apenas na mensagem que você mesmo envia pelo WhatsApp, e são usados só para combinar o pagamento e postar o envio pelos Correios.</li>
 <li><b>Pedidos de resolução de questões e de simulados:</b> as informações que você preenche (nome, concurso, assunto) chegam por WhatsApp ou por e-mail e são usadas só para responder ao seu pedido.</li>
 <li><b>Avaliações:</b> nome público, nota e comentário, enviados por e-mail. Só são publicados com a sua autorização e após aprovação. Nunca publicamos telefone, e-mail ou endereço.</li>
 <li><b>Compras na Hotmart</b> (e-books e simulados): os dados de pagamento são tratados pela Hotmart, conforme a política dela.</li>
@@ -28,7 +28,7 @@ def privacidade(head, nav, foot):
 <ul><li>Hospedagem: GitHub Pages.</li><li>Fontes: Google Fonts.</li><li>Vídeos: YouTube em modo de privacidade aprimorada.</li>
 <li>Formulários: FormSubmit (encaminha o envio para o nosso e-mail).</li><li>Busca de endereço pelo CEP: ViaCEP (só o CEP é enviado).</li></ul>
 <h2>Compartilhamento</h2>
-<p>Não vendemos nem repassamos seus dados. O endereço de entrega é informado apenas aos Correios, na postagem.</p>
+<p>Não vendemos nem repassamos seus dados. O nome, o CPF e o endereço de entrega são informados apenas aos Correios, na postagem.</p>
 <h2>Seus direitos</h2>
 <p>Você pode pedir a qualquer momento acesso, correção ou exclusão dos seus dados, ou a retirada de uma avaliação publicada, pelo e-mail <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>''')
 

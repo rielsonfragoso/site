@@ -131,3 +131,4 @@ body.has-cart{padding-bottom:84px}
 
 .cart{visibility:hidden}
 .cart.show{visibility:visible}
+label .co-hint{display:block;font-family:var(--body);font-weight:400;font-size:.85rem;margin-top:2px}

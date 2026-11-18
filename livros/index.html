@@ -149,6 +149,7 @@ body.has-cart{padding-bottom:84px}
 
 .cart{visibility:hidden}
 .cart.show{visibility:visible}
+label .co-hint{display:block;font-family:var(--body);font-weight:400;font-size:.85rem;margin-top:2px}
 
 .rv-band{background:var(--navy);color:var(--chalk);border-block:3px solid var(--yellow)}
 .rv-band h2{color:var(--chalk)}
@@ -320,6 +321,7 @@ body.has-cart{padding-bottom:84px}
     <form id="co-form" novalidate>
       <h3>Dados para envio pelos Correios</h3>
       <label>Nome completo *<input name="nome" autocomplete="name" maxlength="100"></label>
+      <label>CPF *<input name="cpf" inputmode="numeric" autocomplete="off" maxlength="14" placeholder="000.000.000-00"><small class="co-hint">Os Correios pedem o CPF do destinatário na postagem.</small></label>
       <label>Telefone de contato (WhatsApp) *<input name="tel" type="tel" inputmode="tel" autocomplete="tel" maxlength="20" placeholder="(21) 90000-0000"></label>
       <div class="f2"><label>CEP *<input name="cep" inputmode="numeric" autocomplete="postal-code" maxlength="9" placeholder="00000-000"></label>
         <label>Estado (UF) *<input name="uf" autocomplete="address-level1" maxlength="2"></label></div>
@@ -341,6 +343,8 @@ body.has-cart{padding-bottom:84px}
   function c(v){return Math.round(v*100);}
   function brl(cents){return 'R$ '+(cents/100).toFixed(2).replace('.',',');}
   function $(id){return document.getElementById(id);}
+  function cpfOk(v){v=v.replace(/\D/g,'');if(v.length!==11||/^(\d)\1{10}$/.test(v))return false;
+    for(var t=9;t<11;t++){var s=0;for(var i=0;i<t;i++)s+=(+v[i])*(t+1-i);if(((s*10)%11)%10!==+v[t])return false;}return true;}
   try{var s=JSON.parse(localStorage.getItem(KEY)||'{}');Object.keys(s).forEach(function(k){if(D[k]&&D[k].q>0)sel[k]=Math.max(1,Math.min(s[k]|0,D[k].q));});}catch(e){}
   function save(){try{localStorage.setItem(KEY,JSON.stringify(sel));}catch(e){}}
   function totals(){
@@ -403,6 +407,8 @@ body.has-cart{padding-bottom:84px}
   }
   var f=$('co-form');
   f.addEventListener('input',function(ev){if(ev.target.getAttribute('aria-invalid')==='true'&&ev.target.value.trim())ev.target.setAttribute('aria-invalid','false');});
+  f.cpf.addEventListener('input',function(){var v=f.cpf.value.replace(/\D/g,'').slice(0,11);
+    f.cpf.value=v.replace(/(\d{3})(\d)/,'$1.$2').replace(/(\d{3})\.(\d{3})(\d)/,'$1.$2.$3').replace(/\.(\d{3})(\d{1,2})$/,'.$1-$2');});
   f.cep.addEventListener('input',function(){var v=f.cep.value.replace(/\D/g,'').slice(0,8);f.cep.value=v.length>5?v.slice(0,5)+'-'+v.slice(5):v;
     if(v.length===8){fetch('https://viacep.com.br/ws/'+v+'/json/').then(function(r){return r.json();}).then(function(j){if(j.erro)return;
       if(j.logradouro&&!f.rua.value)f.rua.value=j.logradouro; if(j.bairro&&!f.bairro.value)f.bairro.value=j.bairro;
@@ -410,12 +416,12 @@ body.has-cart{padding-bottom:84px}
   f.addEventListener('submit',function(ev){
     ev.preventDefault(); var msg=$('co-msg'), t=totals(); msg.hidden=true;
     if(!t.n){msg.textContent='Escolha pelo menos um livro.';msg.hidden=false;return;}
-    var req=['nome','tel','cep','uf','cidade','bairro','rua','numero'], bad=null;
-    req.forEach(function(n){var el=f[n],ok=!!el.value.trim();if(n==='cep')ok=el.value.replace(/\D/g,'').length===8;if(n==='tel')ok=el.value.replace(/\D/g,'').length>=10;
+    var req=['nome','cpf','tel','cep','uf','cidade','bairro','rua','numero'], bad=null;
+    req.forEach(function(n){var el=f[n],ok=!!el.value.trim();if(n==='cep')ok=el.value.replace(/\D/g,'').length===8;if(n==='tel')ok=el.value.replace(/\D/g,'').length>=10;if(n==='cpf')ok=cpfOk(el.value);
       el.setAttribute('aria-invalid',ok?'false':'true');if(!ok&&!bad)bad=el;});
-    if(bad){msg.textContent=bad.name==='cep'?'Confira o CEP.':(bad.name==='tel'?'Confira o telefone com DDD.':'Preencha os campos obrigatórios.');msg.hidden=false;bad.focus();return;}
+    if(bad){msg.textContent=bad.name==='cpf'?'Confira o CPF (11 números).':bad.name==='cep'?'Confira o CEP.':(bad.name==='tel'?'Confira o telefone com DDD.':'Preencha os campos obrigatórios.');msg.hidden=false;bad.focus();return;}
     var L=['*Pedido de livros · rielsonfragoso.com.br*','','*Dados do comprador*',
-      'Nome: '+f.nome.value.trim(),'Telefone: '+f.tel.value.trim(),'CEP: '+f.cep.value.trim(),'Estado: '+f.uf.value.trim().toUpperCase(),
+      'Nome: '+f.nome.value.trim(),'CPF: '+f.cpf.value.trim(),'Telefone: '+f.tel.value.trim(),'CEP: '+f.cep.value.trim(),'Estado: '+f.uf.value.trim().toUpperCase(),
       'Cidade: '+f.cidade.value.trim(),'Bairro: '+f.bairro.value.trim(),'Rua: '+f.rua.value.trim(),'Número: '+f.numero.value.trim()];
     if(f.comp.value.trim())L.push('Complemento: '+f.comp.value.trim());
     L.push('','*Produtos*');
