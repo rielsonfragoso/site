@@ -17,15 +17,15 @@ FIN = "Finanças e Negócios"
 
 LIVROS = [
     # ---------- Ciência, Física e Grandes Pensadores (destaque) ----------
-    B("Encounters with Einstein: And Other Essays on People, Places, and Particles", "Werner Heisenberg", 74.90, 1, CIENCIA, "heisenberg-encounters",
+    B("Encounters with Einstein: And Other Essays on People, Places, and Particles", "Werner Heisenberg", 69.90, 1, CIENCIA, "heisenberg-encounters",
       idioma="Inglês", editora="Princeton University Press (Princeton Science Library)",
       desc="Ensaios do Nobel de Física Werner Heisenberg sobre Einstein, outros cientistas, lugares e partículas: a física do século XX contada por um de seus protagonistas.", video="https://youtube.com/shorts/4m-eMMlzePw", video_t=54),
-    B("Physics and Philosophy: The Revolution in Modern Science", "Werner Heisenberg", 74.90, 1, CIENCIA, "heisenberg-physics-philosophy",
+    B("Physics and Philosophy: The Revolution in Modern Science", "Werner Heisenberg", 69.90, 1, CIENCIA, "heisenberg-physics-philosophy",
       idioma="Inglês", editora="Harper Perennial (Modern Thought)",
       desc="Clássico de Heisenberg sobre as consequências filosóficas da mecânica quântica. Edição com introdução de David Lindley.", video="https://youtube.com/shorts/4m-eMMlzePw", video_t=0),
-    B("The First Three Minutes: A Modern View of the Origin of the Universe", "Steven Weinberg", 64.90, 1, CIENCIA, "weinberg",
+    B("The First Three Minutes: A Modern View of the Origin of the Universe", "Steven Weinberg", 59.90, 1, CIENCIA, "weinberg",
       idioma="Inglês", desc="O Nobel de Física de 1979 explica, passo a passo, o que aconteceu nos primeiros minutos do universo. Edição com posfácio do autor.", video="https://youtube.com/shorts/4m-eMMlzePw", video_t=28),
-    B("My View of the World", "Erwin Schrödinger", 74.90, 1, CIENCIA, "schrodinger",
+    B("My View of the World", "Erwin Schrödinger", 69.90, 1, CIENCIA, "schrodinger",
       idioma="Inglês", desc="Ensaios filosóficos de Erwin Schrödinger, um dos fundadores da mecânica quântica, sobre consciência, ciência e a natureza da realidade.", video="https://youtube.com/shorts/4m-eMMlzePw", video_t=68),
     B("Big Bang", "Simon Singh", 39.90, 1, CIENCIA, "big-bang",
       desc="Tudo sobre a mais importante descoberta científica de todos os tempos, pelo autor de O Último Teorema de Fermat e O Livro dos Códigos.", video="https://youtube.com/shorts/4m-eMMlzePw", video_t=100),
@@ -103,4 +103,13 @@ COMBOS = [dict(id="shakespeare", nome="Combo Shakespeare", foto="shakespeare-tri
                       "matematica-box-moderna-plus-vol-3-completo-paiva", "novo-praticando-matematica-vol-2-andrini",
                       "novo-praticando-matematica-vol-3-andrini", "novo-praticando-matematica-vol-4-andrini"],
                desc="Os 3 boxes Matemática Moderna Plus de Manoel Paiva (ensino médio; o Vol. 2 está incompleto) e os volumes 2, 3 e 4 do Novo Praticando Matemática (ensino fundamental). Separados saem R$ 181,40.",
-               video="", alt="Boxes Moderna Plus de Manoel Paiva e livros Novo Praticando Matemática")]
+               video="", alt="Boxes Moderna Plus de Manoel Paiva e livros Novo Praticando Matemática"),
+          dict(id="thomas", nome="Combo Cálculo Thomas", foto="thomas", preco=59.90,
+               itens=["calculo-volume-1-thomas", "calculo-volume-2-thomas", "calculo-volume-3-thomas"],
+               desc="Os 3 volumes de Cálculo de George B. Thomas Jr., coleção completa para a graduação. Separados saem R$ 74,70.",
+               video="", alt="Os três volumes de Cálculo de George B. Thomas Jr."),
+          dict(id="quintella", nome="Combo Ary Quintella", foto="quintella", preco=79.90,
+               itens=["matematica-3a-serie-ginasial-quintella", "matematica-4a-serie-ginasial-quintella",
+                      "matematica-segundo-ano-colegial-quintella", "matematica-terceiro-ano-colegial-quintella"],
+               desc="Os 4 livros de Matemática de Ary Quintella (Companhia Editora Nacional): 3ª e 4ª séries ginasiais, 2º e 3º anos colegiais. Separados saem R$ 107,60.",
+               video="", alt="Os quatro livros de Matemática de Ary Quintella")]
