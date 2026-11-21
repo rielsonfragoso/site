@@ -59,8 +59,8 @@ LIVROS = [
       desc="Stephen Hawking apresenta, com muitas ilustrações, as grandes ideias da física moderna: relatividade, buracos negros, tempo e o universo.", video="https://youtube.com/shorts/4m-eMMlzePw", video_t=118, medidas="2 x 19 x 24", peso=630),
     B("The Character of Physical Law", "Richard Feynman", 29.90, 1, CIENCIA, "feynman-leis", idioma="Inglês",
       desc="As famosas palestras de Feynman sobre o que as leis da física têm em comum."),
-    B("Sobre as Leis da Física", "Richard Feynman", 29.90, 1, CIENCIA, "feynman-leis", editora="Contraponto / PUC-Rio",
-      desc="Tradução de The Character of Physical Law: Feynman explica o que as leis da física têm em comum."),
+    B("Sobre as Leis da Física", "Richard Feynman", 29.90, 1, CIENCIA, "feynman-sobre-as-leis", editora="Contraponto / PUC-Rio",
+      desc="Tradução de The Character of Physical Law: Feynman explica o que as leis da física têm em comum.", medidas="1 x 14 x 20,5", peso=220),
     B("Astronomia & Budismo · Uma Jornada Rumo ao Distante Universo", "Ronaldo Rogério de Freitas Mourão e Daisaku Ikeda", 14.90, 1, CIENCIA, "astronomia"),
 
     # ---------- Literatura e Clássicos ----------
