@@ -111,7 +111,7 @@ LIVROS = [
     B("Matemática · Box Moderna Plus Vol. 1 (completo)", "Manoel Paiva", 44.90, 1, "Ensino médio", "paiva", editora="Moderna"),
     B("Matemática · Box Moderna Plus Vol. 2 (incompleto)", "Manoel Paiva", 22.90, 1, "Ensino médio", "paiva", editora="Moderna"),
     B("Matemática · Box Moderna Plus Vol. 3 (completo)", "Manoel Paiva", 44.90, 1, "Ensino médio", "paiva", editora="Moderna"),
-    B("Minimanual Compacto de Matemática · Ensino Médio", "Editora Rideel", 22.90, 1, "Ensino médio", "pitagoras-minimanual", editora="Rideel"),
+    B("Minimanual Compacto de Matemática · Ensino Médio", "Editora Rideel", 22.90, 1, "Ensino médio", "minimanual-rideel", editora="Rideel", medidas="3 x 12 x 17", peso=355),
     B("Novo Praticando Matemática · Vol. 2", "Álvaro Andrini e Maria José Vasconcellos", 22.90, 1, "Ensino fundamental", "praticando", editora="Editora do Brasil"),
     B("Novo Praticando Matemática · Vol. 3", "Álvaro Andrini e Maria José Vasconcellos", 22.90, 1, "Ensino fundamental", "praticando", editora="Editora do Brasil"),
     B("Novo Praticando Matemática · Vol. 4", "Álvaro Andrini e Maria José Vasconcellos", 22.90, 1, "Ensino fundamental", "praticando", editora="Editora do Brasil"),
