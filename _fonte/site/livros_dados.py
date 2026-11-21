@@ -75,11 +75,11 @@ LIVROS = [
       editora="Ediouro", desc="Duas narrativas curtas de Dostoiévski em edição de bolso: o romance sentimental de um sonhador solitário em São Petersburgo e um conto de Natal.",
       medidas="0,5 x 10 x 15,5", peso=60),
     B("Sonho de uma Noite de Verão", "William Shakespeare", 19.90, 1, LIT, "sonho-noite-verao",
-      editora="L&PM Pocket · tradução de Beatriz Viégas-Faria", slug="shakespeare-sonho-de-uma-noite-de-verao"),
+      editora="L&PM Pocket · tradução de Beatriz Viégas-Faria", slug="shakespeare-sonho-de-uma-noite-de-verao", medidas="1 x 10 x 17", peso=90),
     B("Hamlet", "William Shakespeare", 19.90, 1, LIT, "hamlet",
-      editora="L&PM Pocket · tradução de Millôr Fernandes", slug="shakespeare-hamlet"),
+      editora="L&PM Pocket · tradução de Millôr Fernandes", slug="shakespeare-hamlet", medidas="1 x 10 x 17", peso=100),
     B("O Rei Lear", "William Shakespeare", 19.90, 1, LIT, "rei-lear",
-      editora="L&PM Pocket · tradução de Millôr Fernandes", slug="shakespeare-o-rei-lear"),
+      editora="L&PM Pocket · tradução de Millôr Fernandes", slug="shakespeare-o-rei-lear", medidas="1 x 10 x 17", peso=100),
 
     # ---------- Finanças e Negócios ----------
     B("Pai Rico, Pai Pobre: O que os Ricos Ensinam a Seus Filhos sobre Dinheiro", "Robert T. Kiyosaki", 24.90, 2, FIN, "pai-rico",
@@ -87,11 +87,11 @@ LIVROS = [
     B("Princípios de Administração Financeira", "Ross, Westerfield e Jordan", 19.90, 1, FIN, "ross-mathias", editora="Atlas"),
 
     # ---------- Catálogo anterior (preservado) ----------
-    B("Álgebra Linear e Geometria Analítica", "Antonio dos Santos Machado", 35.90, 1, "Graduação", "machado"),
+    B("Álgebra Linear e Geometria Analítica", "Antonio dos Santos Machado", 35.90, 1, "Graduação", "machado", medidas="1 x 15 x 21", peso=240),
     B("O Cálculo com Geometria Analítica · Volume 1", "Louis Leithold", 39.90, 1, "Graduação", "leithold-1", editora="Harbra",
       desc="Clássico de cálculo usado em cursos de exatas e engenharia: limites, derivadas, integrais e geometria analítica, com muitos exercícios.",
       medidas="4 x 22 x 28", peso=1130),
-    B("Cálculo · Volume 1", "James Stewart", 49.90, 1, "Graduação", "stewart", editora="Cengage · tradução da 6ª edição"),
+    B("Cálculo · Volume 1", "James Stewart", 49.90, 1, "Graduação", "stewart", editora="Cengage · tradução da 6ª edição", medidas="3,5 x 21 x 28", peso=1500),
     B("Cálculo · Volume 1", "George B. Thomas Jr.", 24.90, 1, "Graduação", "thomas"),
     B("Cálculo · Volume 2", "George B. Thomas Jr.", 24.90, 1, "Graduação", "thomas"),
     B("Cálculo · Volume 3", "George B. Thomas Jr.", 24.90, 1, "Graduação", "thomas"),
@@ -115,7 +115,7 @@ LIVROS = [
     B("Novo Praticando Matemática · Vol. 2", "Álvaro Andrini e Maria José Vasconcellos", 22.90, 1, "Ensino fundamental", "praticando", editora="Editora do Brasil"),
     B("Novo Praticando Matemática · Vol. 3", "Álvaro Andrini e Maria José Vasconcellos", 22.90, 1, "Ensino fundamental", "praticando", editora="Editora do Brasil"),
     B("Novo Praticando Matemática · Vol. 4", "Álvaro Andrini e Maria José Vasconcellos", 22.90, 1, "Ensino fundamental", "praticando", editora="Editora do Brasil"),
-    B("Vivendo a Matemática · A Numeração Indo-Arábica", "Luiz Márcio Imenes", 14.90, 1, "Ensino fundamental", "imenes", editora="Scipione"),
+    B("Vivendo a Matemática · A Numeração Indo-Arábica", "Luiz Márcio Imenes", 14.90, 1, "Ensino fundamental", "imenes", editora="Scipione", medidas="0,5 x 13 x 20", peso=65),
     B("Experiências de Ciências para o Ensino Fundamental", "Alberto Gaspar", 19.90, 1, "Ensino fundamental", "gaspar", editora="Ática"),
     B("Matemática para Concursos", "Flávio Alcântara", 22.90, 1, "Concursos", "medeiros-alcantara", editora="Método · teoria e questões comentadas"),
     B("Matemática Financeira · Série Provas e Concursos", "Benjamin Cesar", 22.90, 1, "Concursos", "financeira-puccini-cesar", editora="Campus/Elsevier · 7ª edição"),
