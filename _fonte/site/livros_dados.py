@@ -58,9 +58,9 @@ LIVROS = [
     B("O Universo numa Casca de Noz", "Stephen Hawking", 21.90, 1, CIENCIA, "hawking-casca-de-noz", editora="ARX",
       desc="Stephen Hawking apresenta, com muitas ilustrações, as grandes ideias da física moderna: relatividade, buracos negros, tempo e o universo.", video="https://youtube.com/shorts/4m-eMMlzePw", video_t=118, medidas="2 x 19 x 24", peso=630),
     B("The Character of Physical Law", "Richard Feynman", 29.90, 1, CIENCIA, "feynman-character", idioma="Inglês",
-      desc="As famosas palestras de Feynman sobre o que as leis da física têm em comum.", medidas="1,5 x 15 x 23", peso=328),
+      desc="As famosas palestras de Feynman sobre o que as leis da física têm em comum.", medidas="1,5 x 15 x 23", peso=328, video="https://youtube.com/shorts/lyL1FVbah1k", video_t=3),
     B("Sobre as Leis da Física", "Richard Feynman", 29.90, 1, CIENCIA, "feynman-sobre-as-leis", editora="Contraponto / PUC-Rio",
-      desc="Tradução de The Character of Physical Law: Feynman explica o que as leis da física têm em comum.", medidas="1 x 14 x 20,5", peso=220),
+      desc="Tradução de The Character of Physical Law: Feynman explica o que as leis da física têm em comum.", medidas="1 x 14 x 20,5", peso=220, video="https://youtube.com/shorts/lyL1FVbah1k", video_t=39),
     B("Astronomia & Budismo · Uma Jornada Rumo ao Distante Universo", "Ronaldo Rogério de Freitas Mourão e Daisaku Ikeda", 17.90, 1, CIENCIA, "astronomia", medidas="1 x 16 x 23", peso=302),
 
     # ---------- Literatura e Clássicos ----------
@@ -123,7 +123,7 @@ LIVROS = [
     B("Matemática Financeira · Objetiva e Aplicada", "Abelardo de Lima Puccini", 22.90, 1, "Financeira e Estatística", "puccini", editora="Saraiva · 6ª edição", medidas="2,5 x 17 x 24", peso=700),
     B("Matemática Financeira · mais de 600 exercícios resolvidos e propostos", "Washington Franco Mathias e José Maria Gomes", 19.90, 1, "Financeira e Estatística", "mathias-gomes", editora="Atlas", medidas="2 x 14 x 20,5", peso=516),
     B("Curso de Estatística · Elementos", "Ruy Aguiar da Silva Leme", 17.90, 1, "Financeira e Estatística", "estatistica-leme", editora="Ao Livro Técnico", medidas="2 x 14 x 21", peso=350),
-    B("The Feynman Lectures on Physics · Vol. III: Quantum Mechanics", "Feynman, Leighton e Sands", 49.90, 1, "Física", "feynman-lectures", idioma="Inglês", editora="New Millennium Edition", medidas="1,5 x 21,5 x 27", peso=880),
+    B("The Feynman Lectures on Physics · Vol. III: Quantum Mechanics", "Feynman, Leighton e Sands", 49.90, 1, "Física", "feynman-lectures", idioma="Inglês", editora="New Millennium Edition", medidas="1,5 x 21,5 x 27", peso=880, video="https://youtube.com/shorts/lyL1FVbah1k", video_t=69),
     B("Os Tópicos da Física 2 · Termologia, Ondas e Óptica", "Gualter, Newton e Helou Doca", 24.90, 1, "Física", "topicos-fisica", editora="Saraiva", vendido=True),
     B("Os Tópicos da Física 3 · Eletricidade", "Gualter, Newton e Helou Doca", 24.90, 1, "Física", "topicos-fisica", editora="Saraiva", vendido=True),
     B("Física Básica · Volume Único", "Nicolau, Toledo e Ronaldo", 24.90, 1, "Física", "fisica-basica", editora="Atual", medidas="4 x 20 x 27,5", peso=1500),
