@@ -63,6 +63,9 @@ LIVROS = [
 
     # ---------- Catálogo anterior (preservado) ----------
     B("Álgebra Linear e Geometria Analítica", "Antonio dos Santos Machado", 35.90, 1, "Graduação", "machado"),
+    B("O Cálculo com Geometria Analítica · Volume 1", "Louis Leithold", 39.90, 1, "Graduação", "leithold-1", editora="Harbra",
+      desc="Clássico de cálculo usado em cursos de exatas e engenharia: limites, derivadas, integrais e geometria analítica, com muitos exercícios.",
+      medidas="4 x 22 x 28", peso=1130),
     B("Cálculo · Volume 1", "James Stewart", 49.90, 1, "Graduação", "stewart", editora="Cengage · tradução da 6ª edição"),
     B("Cálculo · Volume 1", "George B. Thomas Jr.", 24.90, 1, "Graduação", "thomas"),
     B("Cálculo · Volume 2", "George B. Thomas Jr.", 24.90, 1, "Graduação", "thomas"),

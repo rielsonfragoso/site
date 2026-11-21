@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>O Cálculo com Geometria Analítica · Volume 1 – Louis Leithold (usado) | Livros Rielson Fragoso</title>
+<meta name="description" content="Clássico de cálculo usado em cursos de exatas e engenharia: limites, derivadas, integrais e geometria analítica, com muitos exercícios. Preço: R$ 39,90. Frete fixo R$ 20, grátis a partir de R$ 100.">
+<meta property="og:type" content="website"><meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="O Cálculo com Geometria Analítica · Volume 1 – Louis Leithold (usado) | Livros Rielson Fragoso"><meta property="og:description" content="Clássico de cálculo usado em cursos de exatas e engenharia: limites, derivadas, integrais e geometria analítica, com muitos exercícios. Preço: R$ 39,90. Frete fixo R$ 20, grátis a partir de R$ 100.">
+<link rel="canonical" href="https://rielsonfragoso.com.br/livros/o-calculo-com-geometria-analitica-volume-1-leithold/">
+<meta property="og:url" content="https://rielsonfragoso.com.br/livros/o-calculo-com-geometria-analitica-volume-1-leithold/"><meta property="og:image" content="https://rielsonfragoso.com.br/livros/img/leithold-1.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#1B2A4E">
+<meta name="google-site-verification" content="aLdDBJ0eH36Q4Qbf-sTwIbmToy9CROETqgIYNNR8cwI" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito+Sans:wght@400;700&family=Caveat:wght@600&display=swap">
+<link rel="stylesheet" href="/site.css">
+<style>
+.co{position:fixed;inset:0;z-index:40;background:rgba(10,16,32,.55);display:flex;justify-content:center;align-items:flex-start;overflow-y:auto;padding:calc(12px + env(safe-area-inset-top,0px)) max(12px, env(safe-area-inset-right,0px)) calc(12px + env(safe-area-inset-bottom,0px)) max(12px, env(safe-area-inset-left,0px))}
+.co[hidden]{display:none!important}
+body.co-open{overflow:hidden}
+.co-box{background:var(--bg);color:var(--ink);border-radius:18px;border-top:4px solid var(--yellow);width:100%;max-width:620px;padding:clamp(16px,4vw,28px);display:flex;flex-direction:column;gap:14px}
+.co-head{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.co-x{border:0;background:var(--surface);color:var(--ink);width:38px;height:38px;border-radius:50%;font-size:1rem;cursor:pointer;border:1px solid var(--line)}
+.co-items{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.co-items li{display:grid;grid-template-columns:1fr auto auto auto;gap:10px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.co-items .it{display:flex;flex-direction:column;min-width:0;font-weight:600;font-size:.95rem;line-height:1.3}
+.co-items .it small{font-weight:400;color:var(--muted)}
+.co-items .lp{font:700 .95rem var(--display);white-space:nowrap}
+.co-items .rm{border:0;background:transparent;color:var(--muted);cursor:pointer;font-size:.95rem;padding:4px}
+.qty{display:inline-flex;align-items:center;gap:6px}
+.qty button{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer;font-weight:700}
+.co-tot{display:grid;grid-template-columns:1fr auto;gap:4px 12px;margin:0;padding:12px 14px;background:var(--surface);border:1px solid var(--line);border-radius:12px}
+.co-tot dd{margin:0;text-align:right;font-weight:700}
+.co-tot .big{font:700 1.2rem var(--display);padding-top:6px;border-top:1px dashed var(--line)}
+.co-hint{color:var(--muted);font-size:.92rem}
+.co-bulk{background:var(--green-soft);color:var(--ink);border-radius:10px;padding:10px 12px;font-size:.95rem}
+.co-hint:empty{display:none}
+#co-form{display:flex;flex-direction:column;gap:12px}
+#co-form h3{margin-top:4px}
+#co-form label{display:flex;flex-direction:column;gap:5px;font:600 .88rem var(--display)}
+#co-form input,#co-form textarea{font:400 1rem var(--body);color:var(--ink);background:var(--surface);border:1.5px solid var(--line);border-radius:10px;padding:11px 12px;width:100%}
+#co-form input[aria-invalid="true"]{border-color:var(--red)}
+#co-form .f2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+#co-form .f2b{grid-template-columns:1fr 90px}
+#co-form .f2>*{min-width:0}
+.co-note{font-size:.88rem;color:var(--muted)}
+.co-msg{color:var(--red);font-weight:700}
+.co-send{justify-content:center;border:0;cursor:pointer;font-size:1.05rem}
+.co-done{font-size:.92rem}
+@media (max-width:480px){.co-items li{grid-template-columns:1fr auto auto}.co-items .qty{grid-column:1/2}}
+
+.phero{padding-block:clamp(36px,6vw,64px)}
+.lhero{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(20px,4vw,48px);align-items:center}
+.lhero>*{min-width:0}
+.lhero h1{color:var(--chalk);font-size:clamp(2rem,5vw,3.1rem)}
+.lhero img{border-radius:14px;border:2px solid var(--yellow);width:100%;height:auto}
+.facts{display:flex;flex-wrap:wrap;gap:8px}
+.facts span{background:color-mix(in srgb,var(--yellow) 18%,transparent);color:var(--chalk);border:1px solid color-mix(in srgb,var(--yellow) 60%,transparent);border-radius:999px;padding:5px 12px;font:600 .88rem var(--display)}
+.video{position:relative;aspect-ratio:16/9;max-width:860px;width:100%;border-radius:14px;overflow:hidden;background:#000}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.filters{display:flex;flex-wrap:wrap;gap:8px}
+.filters button{font:600 .9rem var(--display);border:1.5px solid var(--line);background:var(--surface);color:var(--muted);border-radius:999px;padding:7px 14px;cursor:pointer}
+.filters button[aria-pressed="true"]{border-color:var(--navy);background:var(--navy);color:#fff}
+:root[data-theme="dark"] .filters button[aria-pressed="true"]{border-color:var(--yellow);background:var(--yellow);color:var(--on-yellow)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .filters button[aria-pressed="true"]{border-color:var(--yellow);background:var(--yellow);color:var(--on-yellow)}}
+.books{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
+.book{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.book .ph{aspect-ratio:4/3;overflow:hidden;background:var(--line)}
+.book .ph img{width:100%;height:100%;object-fit:cover;display:block}
+.book .bd{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.book h3{font-size:1rem;line-height:1.3}
+.book .au{font-size:.88rem;color:var(--muted)}
+.book .cat{font:600 .72rem var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.book .row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:auto;padding-top:8px;flex-wrap:wrap}
+.book .pr{font:700 1.25rem var(--display);color:var(--ink)}
+.book .pr small{font:500 .78rem var(--body);color:var(--muted);display:block}
+.book .acts{display:flex;gap:6px}
+.add{font:600 .85rem var(--display);border:1.5px solid var(--navy);color:var(--navy);background:transparent;border-radius:999px;padding:7px 12px;cursor:pointer}
+.add[aria-pressed="true"]{background:var(--navy);color:#fff}
+:root[data-theme="dark"] .add{border-color:var(--yellow);color:var(--yellow)}
+:root[data-theme="dark"] .add[aria-pressed="true"]{background:var(--yellow);color:var(--on-yellow)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .add{border-color:var(--yellow);color:var(--yellow)}
+ :root:not([data-theme="light"]) .add[aria-pressed="true"]{background:var(--yellow);color:var(--on-yellow)}}
+.wa{display:inline-grid;place-items:center;width:36px;height:36px;border-radius:50%;background:#1FA855;color:#fff;text-decoration:none}
+.wa svg{width:19px;height:19px}
+.book.sold{opacity:.55}
+.book.sold .pr{text-decoration:line-through}
+.soldtag{position:absolute;top:10px;left:10px;background:var(--red);color:#fff;font:700 .75rem var(--display);padding:4px 10px;border-radius:999px}
+.book .ph{position:relative}
+.cart{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--navy);color:var(--chalk);border-top:3px solid var(--yellow);
+  padding:10px max(16px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+  display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;transform:translateY(110%);transition:transform .25s}
+.cart.show{transform:none}
+.cart .sum{font-family:var(--display);line-height:1.2}
+.cart .sum b{color:var(--yellow);font-size:1.15rem}
+.cart .sum small{display:block;font-family:var(--body);font-size:.82rem;color:var(--chalk-dim)}
+.cart .cbtns{display:flex;gap:8px;align-items:center}
+.cart .clear{background:transparent;border:0;color:var(--chalk-dim);font:600 .85rem var(--display);cursor:pointer;text-decoration:underline}
+.btn.wabtn{background:#1FA855;color:#fff}
+body.has-cart{padding-bottom:84px}
+.info{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.info>div{background:var(--yellow-soft);border-radius:var(--r);padding:16px;min-width:0}
+.info b{font-family:var(--display);display:block;margin-bottom:4px}
+@media (max-width:760px){.lhero,.info{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.cart{transition:none}}
+
+.book .ph{display:block}
+.book h3 a{text-decoration:none;color:inherit}
+.book h3 a:hover{text-decoration:underline}
+.book .st{font-size:.82rem;color:var(--muted)}
+.lang{position:absolute;top:10px;right:10px;background:var(--navy);color:#fff;font:700 .72rem var(--display);padding:4px 10px;border-radius:999px;border:1.5px solid var(--yellow)}
+.trust{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--yellow);border-radius:12px;padding:14px 16px;color:var(--muted);font-size:.98rem}
+.combo{display:grid;grid-template-columns:220px 1fr;gap:20px;align-items:center;background:var(--yellow-soft);border-radius:var(--r);padding:18px;margin-top:6px}
+.combo>*{min-width:0}
+.combo img{border-radius:12px;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover}
+.combo h3{font-size:1.25rem}
+.combo .note{font-size:.9rem;color:var(--muted)}
+.addcombo{border:0;cursor:pointer}
+.tools{display:flex;flex-wrap:wrap;gap:10px}
+.tools .search{flex:1 1 260px;min-width:0}
+.tools input,.tools select{font:400 1rem var(--body);color:var(--ink);background:var(--surface);border:1.5px solid var(--line);border-radius:999px;padding:10px 16px;width:100%}
+.tools .langsel{flex:0 1 200px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.none{color:var(--muted)}
+.crumb{font-size:.9rem;color:var(--muted);margin-bottom:14px}
+.crumb a{color:inherit}
+.prod{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(20px,4vw,44px);align-items:start}
+.prod img{border-radius:14px;width:100%;height:auto;border:1px solid var(--line)}
+.ptitle{font-size:clamp(1.6rem,4vw,2.4rem)}
+.pprice{font:700 2rem var(--display)}
+.add.big{font-size:1.05rem;padding:13px 22px}
+.specs{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;margin:0;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px}
+.specs dt{font:600 .9rem var(--display);color:var(--muted)}
+.specs dd{margin:0}
+.combo-note{background:var(--yellow-soft);border-radius:10px;padding:10px 12px}
+.prod+h2{margin-top:32px;margin-bottom:12px}
+.co-items .disc{color:var(--green)}
+@media (max-width:760px){.prod,.combo{grid-template-columns:1fr}.combo img{max-width:240px}}
+
+.vlink{display:inline-flex;align-items:center;gap:6px;font:600 .85rem var(--display);color:var(--red);text-decoration:none}
+.vlink:hover{text-decoration:underline}
+.vlink.big{font-size:1rem}
+.video.vert{aspect-ratio:9/16;max-width:360px}
+#video{scroll-margin-top:90px}
+
+.vlink.yt{color:var(--muted);margin-left:10px}
+
+.cart{visibility:hidden}
+.cart.show{visibility:visible}
+label .co-hint{display:block;font-family:var(--body);font-weight:400;font-size:.85rem;margin-top:2px}
+
+.soldbox{background:color-mix(in srgb,var(--red) 14%,var(--surface));border:1.5px solid var(--red);border-radius:12px;padding:12px 16px;margin:6px 0 16px}
+.soldbox a{font-weight:700}
+.prod.sold>img{filter:grayscale(.7);opacity:.6}
+.prod.sold .pprice{text-decoration:line-through;color:var(--muted)}
+
+.rv-band{background:var(--navy);color:var(--chalk);border-block:3px solid var(--yellow)}
+.rv-band h2{color:var(--chalk)}
+.rv-band .eyebrow{color:var(--yellow)}
+.rv-band .lead{color:var(--chalk-dim)}
+.rv-intro{display:flex;flex-direction:column;gap:8px;max-width:70ch;color:var(--chalk-dim)}
+.rv-intro b{color:var(--chalk)}
+.rv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.rv{background:#FFFFFF;color:#16233F;border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:8px;border-top:4px solid var(--yellow);min-width:0}
+.rv[hidden]{display:none}
+.rv-stars{color:#E0A800;font-size:1.15rem;letter-spacing:2px}
+.rv-stars .off{color:#D5D9E3}
+.rv-txt{font-size:.98rem;line-height:1.5}
+.rv-book{font-size:.85rem;color:#56607A}
+.rv-who{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;font-size:.9rem;color:#56607A;margin-top:auto}
+.rv-who b{color:#16233F}
+.rv-ok{background:#E3EDE2;color:#2F6B3E;font:700 .75rem var(--display);border-radius:999px;padding:2px 9px}
+.rv-empty{background:rgba(255,255,255,.07);border:1px dashed var(--yellow);border-radius:14px;padding:16px 18px;color:var(--chalk-dim)}
+.rv-empty b{color:var(--chalk)}
+.rv-more{color:var(--chalk);align-self:flex-start}
+.rv-cta{display:flex;flex-wrap:wrap;gap:12px 18px;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,.15);padding-top:16px}
+.rv-cta p{flex:1 1 300px;color:var(--chalk-dim);min-width:0}
+#rv-form{display:flex;flex-direction:column;gap:12px}
+#rv-form label{display:flex;flex-direction:column;gap:5px;font:600 .88rem var(--display)}
+#rv-form input[type=text],#rv-form input:not([type]),#rv-form textarea{font:400 1rem var(--body);color:var(--ink);background:var(--surface);border:1.5px solid var(--line);border-radius:10px;padding:11px 12px;width:100%}
+#rv-form [aria-invalid="true"]{border-color:var(--red)}
+.rv-rate{border:0;margin:0;padding:0}
+.rv-rate legend{font:600 .88rem var(--display);margin-bottom:4px}
+.rv-pick{display:inline-flex;flex-direction:row-reverse;gap:4px}
+.rv-pick input{position:absolute;opacity:0;width:1px;height:1px}
+.rv-pick label{font-size:2.2rem!important;color:#C9CEDB;cursor:pointer;line-height:1}
+.rv-pick input:checked~label,.rv-pick label:hover,.rv-pick label:hover~label{color:#E0A800}
+.rv-pick input:focus-visible+label{outline:3px solid var(--yellow);outline-offset:2px;border-radius:4px}
+#rv-form .rv-consent{flex-direction:row;align-items:flex-start;gap:10px;font-weight:500}
+.rv-consent input{width:20px;height:20px;margin-top:2px;flex:none;accent-color:var(--navy)}
+.hp{position:absolute!important;left:-9999px;width:1px;height:1px;opacity:0}
+.rv-thanks{background:var(--green-soft);border-radius:12px;padding:16px}
+</style>
+</head>
+<body>
+<header class="nav"><div class="wrap"><a class="logo" href="/"><i>RF</i>Rielson Fragoso</a><nav aria-label="Principal"><ul><li><a href="/">Início</a></li><li><a href="/concursos/">Concursos</a></li><li><a href="/ingles-em-familia/">Inglês em Família</a></li><li><a href="/aulas/">Resoluções</a></li><li><a href="/livros/" aria-current="page">Livros</a></li><li><a href="/#gratis">Grátis</a></li><li><a href="/sobre/">Sobre</a></li></ul></nav></div></header><script>(function(){var a=document.querySelector(".nav [aria-current]");if(a&&a.parentNode){var n=a.closest("nav");n.scrollLeft=Math.max(0,a.offsetLeft-n.clientWidth/2+a.offsetWidth/2);}})();</script>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Product", "name": "O Cálculo com Geometria Analítica · Volume 1", "image": "https://rielsonfragoso.com.br/livros/img/leithold-1.jpg", "description": "Clássico de cálculo usado em cursos de exatas e engenharia: limites, derivadas, integrais e geometria analítica, com muitos exercícios.", "brand": {"@type": "Brand", "name": "Louis Leithold"}, "category": "Graduação", "url": "https://rielsonfragoso.com.br/livros/o-calculo-com-geometria-analitica-volume-1-leithold/", "offers": {"@type": "Offer", "price": "39.90", "priceCurrency": "BRL", "url": "https://rielsonfragoso.com.br/livros/o-calculo-com-geometria-analitica-volume-1-leithold/", "availability": "https://schema.org/InStock", "itemCondition": "https://schema.org/UsedCondition"}, "additionalProperty": [{"@type": "PropertyValue", "name": "Autor", "value": "Louis Leithold"}, {"@type": "PropertyValue", "name": "Idioma", "value": "Português"}, {"@type": "PropertyValue", "name": "Editora/edição", "value": "Harbra"}]}</script>
+<main>
+<section style="padding-top:clamp(24px,5vw,48px)">
+  <div class="wrap">
+    <p class="crumb"><a href="/livros/">Livros usados</a> › Graduação</p>
+    
+    <div class="prod">
+      <img src="/livros/img/leithold-1.jpg" alt="Foto do exemplar de O Cálculo com Geometria Analítica · Volume 1, de Louis Leithold" width="900" height="1200">
+      <div class="stack" style="gap:14px">
+        <h1 class="ptitle">O Cálculo com Geometria Analítica · Volume 1</h1>
+        <p class="au" style="font-size:1.1rem">Louis Leithold</p>
+        <p class="pprice">R$ 39,90</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center"><button type="button" class="btn add big" aria-pressed="false" data-k="o-calculo-com-geometria-analitica-volume-1-leithold">+ Adicionar ao pedido</button></div>
+        
+        <p>Clássico de cálculo usado em cursos de exatas e engenharia: limites, derivadas, integrais e geometria analítica, com muitos exercícios.</p>
+        <dl class="specs"><dt>Autor</dt><dd>Louis Leithold</dd><dt>Idioma</dt><dd>Português</dd><dt>Categoria</dt><dd>Graduação</dd><dt>Editora / edição</dt><dd>Harbra</dd><dt>Medidas (A × L × C)</dt><dd>4 × 22 × 28 cm</dd><dt>Peso</dt><dd>1130 g</dd><dt>Estado</dt><dd>Usado · veja as fotos do exemplar real</dd><dt>Disponibilidade</dt><dd>1 exemplar</dd></dl>
+        <p class="note">Frete fixo de R$ 20 para todo o Brasil; grátis a partir de R$ 100 em livros. Pagamento via Pix, combinado pelo WhatsApp ao finalizar o pedido. Envio pelos Correios em até 2 dias úteis após a confirmação do pagamento.</p>
+        <p><a href="/livros/#catalogo">← Ver todos os livros</a></p>
+      </div>
+    </div>
+    
+  </div>
+</section>
+</main>
+<div class="cart" id="cart" aria-live="polite"><span class="sum" id="csum"></span><span class="cbtns"><button type="button" class="clear" id="cclear">Limpar</button><button type="button" class="btn" id="copen">Finalizar pedido</button></span></div>
+<div class="co" id="checkout" role="dialog" aria-modal="true" aria-labelledby="co-title" hidden>
+  <div class="co-box">
+    <div class="co-head"><h2 id="co-title">Seu pedido</h2><button type="button" class="co-x" id="co-close" aria-label="Fechar">✕</button></div>
+    <ul class="co-items" id="co-items"></ul>
+    <p class="co-empty" id="co-empty" hidden>Nenhum livro escolhido ainda.</p>
+    <dl class="co-tot"><dt>Subtotal dos livros</dt><dd id="co-sub"></dd><dt id="co-dl" hidden>Descontos</dt><dd id="co-desc" class="disc" hidden></dd><dt>Frete</dt><dd id="co-fr"></dd><dt class="big">Total</dt><dd class="big" id="co-tot"></dd></dl>
+    <p class="co-hint" id="co-hint"></p>
+    <p class="co-bulk" id="co-bulk" hidden>🎉 10 livros ou mais: o seu pedido já vai com o pedido de <b>desconto especial</b>. A gente acerta o valor final no WhatsApp.</p>
+    <p class="co-note">Frete fixo de R$ 20 para todo o Brasil. Grátis para compras a partir de R$ 100 (valor dos livros já com descontos). Envio em até 2 dias úteis após a confirmação do pagamento.</p>
+    <form id="co-form" novalidate>
+      <h3>Dados para envio pelos Correios</h3>
+      <label>Nome completo *<input name="nome" autocomplete="name" maxlength="100"></label>
+      <label>CPF *<input name="cpf" inputmode="numeric" autocomplete="off" maxlength="14" placeholder="000.000.000-00"><small class="co-hint">Os Correios pedem o CPF do destinatário na postagem.</small></label>
+      <label>Telefone de contato (WhatsApp) *<input name="tel" type="tel" inputmode="tel" autocomplete="tel" maxlength="20" placeholder="(21) 90000-0000"></label>
+      <div class="f2"><label>CEP *<input name="cep" inputmode="numeric" autocomplete="postal-code" maxlength="9" placeholder="00000-000"></label>
+        <label>Estado (UF) *<input name="uf" autocomplete="address-level1" maxlength="2"></label></div>
+      <div class="f2"><label>Cidade *<input name="cidade" autocomplete="address-level2" maxlength="60"></label><label>Bairro *<input name="bairro" maxlength="60"></label></div>
+      <label>Rua *<input name="rua" autocomplete="address-line1" maxlength="120"></label>
+      <div class="f2"><label>Número *<input name="numero" maxlength="12"></label><label>Complemento<input name="comp" autocomplete="address-line2" maxlength="60" placeholder="apto, bloco… (opcional)"></label></div>
+      <p class="co-note">Ao tocar no botão, o seu WhatsApp abre com o pedido e os dados de envio já escritos: é só enviar. Eu respondo com a chave Pix. O pedido é confirmado após a verificação do pagamento, e o envio pelos Correios acontece em até 2 dias úteis. Seus dados não ficam guardados no site.</p>
+      <p class="co-msg" id="co-msg" role="alert" hidden></p>
+      <button class="btn wabtn co-send" type="submit">Finalizar pedido pelo WhatsApp</button>
+      <p class="co-done" id="co-done" hidden>O WhatsApp não abriu? <a id="co-go" href="#" target="_blank" rel="noopener">Toque aqui para abrir com o pedido</a>.</p>
+    </form>
+  </div>
+</div>
+<script id="lv-data" type="application/json">{"livros": {"encounters-with-einstein-heisenberg": {"t": "Encounters with Einstein: And Other Essays on People, Places, and Particles", "a": "Werner Heisenberg", "p": 49.9, "q": 1, "m": null, "g": null}, "physics-and-philosophy-heisenberg": {"t": "Physics and Philosophy: The Revolution in Modern Science", "a": "Werner Heisenberg", "p": 49.9, "q": 1, "m": null, "g": null}, "the-first-three-minutes-weinberg": {"t": "The First Three Minutes: A Modern View of the Origin of the Universe", "a": "Steven Weinberg", "p": 49.9, "q": 1, "m": null, "g": null}, "my-view-of-the-world-schrodinger": {"t": "My View of the World", "a": "Erwin Schrödinger", "p": 49.9, "q": 1, "m": null, "g": null}, "big-bang-singh": {"t": "Big Bang", "a": "Simon Singh", "p": 39.9, "q": 1, "m": null, "g": null}, "o-universo-numa-casca-de-noz-hawking": {"t": "O Universo numa Casca de Noz", "a": "Stephen Hawking", "p": 21.9, "q": 1, "m": null, "g": null}, "the-character-of-physical-law-feynman": {"t": "The Character of Physical Law", "a": "Richard Feynman", "p": 29.9, "q": 1, "m": null, "g": null}, "sobre-as-leis-da-fisica-feynman": {"t": "Sobre as Leis da Física", "a": "Richard Feynman", "p": 29.9, "q": 1, "m": null, "g": null}, "astronomia-budismo-uma-jornada-rumo-ao-distante-universo": {"t": "Astronomia & Budismo · Uma Jornada Rumo ao Distante Universo", "a": "Ronaldo Rogério de Freitas Mourão e Daisaku Ikeda", "p": 14.9, "q": 1, "m": null, "g": null}, "shakespeare-sonho-de-uma-noite-de-verao": {"t": "Sonho de uma Noite de Verão", "a": "William Shakespeare", "p": 19.9, "q": 1, "m": null, "g": null}, "shakespeare-hamlet": {"t": "Hamlet", "a": "William Shakespeare", "p": 19.9, "q": 1, "m": null, "g": null}, "shakespeare-o-rei-lear": {"t": "O Rei Lear", "a": "William Shakespeare", "p": 19.9, "q": 1, "m": null, "g": null}, "pai-rico-pai-pobre-kiyosaki": {"t": "Pai Rico, Pai Pobre: O que os Ricos Ensinam a Seus Filhos sobre Dinheiro", "a": "Robert T. Kiyosaki", "p": 24.9, "q": 2, "m": null, "g": null}, "principios-de-administracao-financeira-ross": {"t": "Princípios de Administração Financeira", "a": "Ross, Westerfield e Jordan", "p": 19.9, "q": 1, "m": null, "g": null}, "algebra-linear-e-geometria-analitica-machado": {"t": "Álgebra Linear e Geometria Analítica", "a": "Antonio dos Santos Machado", "p": 35.9, "q": 1, "m": null, "g": null}, "o-calculo-com-geometria-analitica-volume-1-leithold": {"t": "O Cálculo com Geometria Analítica · Volume 1", "a": "Louis Leithold", "p": 39.9, "q": 1, "m": [4.0, 22.0, 28.0], "g": 1130}, "calculo-volume-1-stewart": {"t": "Cálculo · Volume 1", "a": "James Stewart", "p": 49.9, "q": 1, "m": null, "g": null}, "calculo-volume-1-thomas": {"t": "Cálculo · Volume 1", "a": "George B. Thomas Jr.", "p": 24.9, "q": 1, "m": null, "g": null}, "calculo-volume-2-thomas": {"t": "Cálculo · Volume 2", "a": "George B. Thomas Jr.", "p": 24.9, "q": 1, "m": null, "g": null}, "calculo-volume-3-thomas": {"t": "Cálculo · Volume 3", "a": "George B. Thomas Jr.", "p": 24.9, "q": 1, "m": null, "g": null}, "matematica-para-os-cursos-de-economia-administracao-e": {"t": "Matemática para os Cursos de Economia, Administração e Ciências Contábeis · Vol. 1", "a": "Medeiros", "p": 22.9, "q": 1, "m": null, "g": null}, "fundamentos-de-matematica-elementar-1-conjuntos-e-funcoes": {"t": "Fundamentos de Matemática Elementar 1 · Conjuntos e Funções", "a": "Iezzi e Murakami", "p": 49.9, "q": 0, "m": null, "g": null}, "fundamentos-de-matematica-elementar-2-logaritmos-iezzi": {"t": "Fundamentos de Matemática Elementar 2 · Logaritmos", "a": "Iezzi, Dolce e Murakami", "p": 49.9, "q": 0, "m": null, "g": null}, "fundamentos-de-matematica-elementar-3-trigonometria-iezzi": {"t": "Fundamentos de Matemática Elementar 3 · Trigonometria", "a": "Gelson Iezzi", "p": 49.9, "q": 0, "m": null, "g": null}, "fme-2-logaritmos-anos-80": {"t": "Fundamentos de Matemática Elementar 2 · Logaritmos", "a": "Iezzi, Dolce e Murakami", "p": 31.9, "q": 0, "m": null, "g": null}, "fme-3-trigonometria-anos-80": {"t": "Fundamentos de Matemática Elementar 3 · Trigonometria", "a": "Gelson Iezzi", "p": 31.9, "q": 0, "m": null, "g": null}, "fme-4-anos-80": {"t": "Fundamentos de Matemática Elementar 4 · Sequências, Matrizes, Determinantes e Sistemas", "a": "Iezzi e Hazzan", "p": 31.9, "q": 0, "m": null, "g": null}, "fme-5-anos-80": {"t": "Fundamentos de Matemática Elementar 5 · Combinatória e Probabilidade", "a": "Samuel Hazzan", "p": 31.9, "q": 0, "m": null, "g": null}, "matematica-segundo-ano-colegial-quintella": {"t": "Matemática · Segundo Ano Colegial", "a": "Ary Quintella", "p": 26.9, "q": 1, "m": null, "g": null}, "matematica-terceiro-ano-colegial-quintella": {"t": "Matemática · Terceiro Ano Colegial", "a": "Ary Quintella", "p": 26.9, "q": 1, "m": null, "g": null}, "matematica-3a-serie-ginasial-quintella": {"t": "Matemática · 3ª Série Ginasial", "a": "Ary Quintella", "p": 26.9, "q": 1, "m": null, "g": null}, "matematica-4a-serie-ginasial-quintella": {"t": "Matemática · 4ª Série Ginasial", "a": "Ary Quintella", "p": 26.9, "q": 1, "m": null, "g": null}, "pitagoras-matematica-ii-livro-i-pitagoras": {"t": "Pitágoras · Matemática II, Livro I: Geometria Plana (1ª parte)", "a": "Coleção Pitágoras", "p": 14.9, "q": 1, "m": null, "g": null}, "matematica-box-moderna-plus-vol-1-completo-paiva": {"t": "Matemática · Box Moderna Plus Vol. 1 (completo)", "a": "Manoel Paiva", "p": 44.9, "q": 1, "m": null, "g": null}, "matematica-box-moderna-plus-vol-2-incompleto-paiva": {"t": "Matemática · Box Moderna Plus Vol. 2 (incompleto)", "a": "Manoel Paiva", "p": 22.9, "q": 1, "m": null, "g": null}, "matematica-box-moderna-plus-vol-3-completo-paiva": {"t": "Matemática · Box Moderna Plus Vol. 3 (completo)", "a": "Manoel Paiva", "p": 44.9, "q": 1, "m": null, "g": null}, "minimanual-compacto-de-matematica-ensino-medio-rideel": {"t": "Minimanual Compacto de Matemática · Ensino Médio", "a": "Editora Rideel", "p": 22.9, "q": 1, "m": null, "g": null}, "novo-praticando-matematica-vol-2-andrini": {"t": "Novo Praticando Matemática · Vol. 2", "a": "Álvaro Andrini e Maria José Vasconcellos", "p": 22.9, "q": 1, "m": null, "g": null}, "novo-praticando-matematica-vol-3-andrini": {"t": "Novo Praticando Matemática · Vol. 3", "a": "Álvaro Andrini e Maria José Vasconcellos", "p": 22.9, "q": 1, "m": null, "g": null}, "novo-praticando-matematica-vol-4-andrini": {"t": "Novo Praticando Matemática · Vol. 4", "a": "Álvaro Andrini e Maria José Vasconcellos", "p": 22.9, "q": 1, "m": null, "g": null}, "vivendo-a-matematica-a-numeracao-indo-arabica-imenes": {"t": "Vivendo a Matemática · A Numeração Indo-Arábica", "a": "Luiz Márcio Imenes", "p": 14.9, "q": 1, "m": null, "g": null}, "experiencias-de-ciencias-para-o-ensino-fundamental-gaspar": {"t": "Experiências de Ciências para o Ensino Fundamental", "a": "Alberto Gaspar", "p": 19.9, "q": 1, "m": null, "g": null}, "matematica-para-concursos-alcantara": {"t": "Matemática para Concursos", "a": "Flávio Alcântara", "p": 22.9, "q": 1, "m": null, "g": null}, "matematica-financeira-serie-provas-e-concursos-cesar": {"t": "Matemática Financeira · Série Provas e Concursos", "a": "Benjamin Cesar", "p": 22.9, "q": 1, "m": null, "g": null}, "matematica-basica-antar": {"t": "Matemática Básica", "a": "Aref Antar Neto", "p": 17.9, "q": 1, "m": null, "g": null}, "matematica-financeira-objetiva-e-aplicada-puccini": {"t": "Matemática Financeira · Objetiva e Aplicada", "a": "Abelardo de Lima Puccini", "p": 22.9, "q": 1, "m": null, "g": null}, "matematica-financeira-mais-de-600-exercicios-resolvidos-e": {"t": "Matemática Financeira · mais de 600 exercícios resolvidos e propostos", "a": "Washington Franco Mathias e José Maria Gomes", "p": 22.9, "q": 1, "m": null, "g": null}, "curso-de-estatistica-elementos-leme": {"t": "Curso de Estatística · Elementos", "a": "Ruy Aguiar da Silva Leme", "p": 17.9, "q": 1, "m": null, "g": null}, "the-feynman-lectures-on-physics-vol-iii-feynman": {"t": "The Feynman Lectures on Physics · Vol. III: Quantum Mechanics", "a": "Feynman, Leighton e Sands", "p": 49.9, "q": 1, "m": null, "g": null}, "os-topicos-da-fisica-2-termologia-ondas-e-optica-gualter": {"t": "Os Tópicos da Física 2 · Termologia, Ondas e Óptica", "a": "Gualter, Newton e Helou Doca", "p": 24.9, "q": 0, "m": null, "g": null}, "os-topicos-da-fisica-3-eletricidade-gualter": {"t": "Os Tópicos da Física 3 · Eletricidade", "a": "Gualter, Newton e Helou Doca", "p": 24.9, "q": 0, "m": null, "g": null}, "fisica-basica-volume-unico-nicolau": {"t": "Física Básica · Volume Único", "a": "Nicolau, Toledo e Ronaldo", "p": 24.9, "q": 1, "m": null, "g": null}, "la-gaceta-de-la-real-sociedad-matematica-espanola-vol-21-no": {"t": "La Gaceta de la Real Sociedad Matemática Española · Vol. 21, nº 3 (2018)", "a": "Real Sociedad Matemática Española", "p": 17.9, "q": 1, "m": null, "g": null}}, "combos": [{"id": "shakespeare", "nome": "Combo Shakespeare", "p": 49.9, "itens": ["shakespeare-sonho-de-uma-noite-de-verao", "shakespeare-hamlet", "shakespeare-o-rei-lear"]}, {"id": "paiva-praticando", "nome": "Combo Matemática Escolar", "p": 159.9, "itens": ["matematica-box-moderna-plus-vol-1-completo-paiva", "matematica-box-moderna-plus-vol-2-incompleto-paiva", "matematica-box-moderna-plus-vol-3-completo-paiva", "novo-praticando-matematica-vol-2-andrini", "novo-praticando-matematica-vol-3-andrini", "novo-praticando-matematica-vol-4-andrini"]}, {"id": "thomas", "nome": "Combo Cálculo Thomas", "p": 59.9, "itens": ["calculo-volume-1-thomas", "calculo-volume-2-thomas", "calculo-volume-3-thomas"]}, {"id": "quintella", "nome": "Combo Ary Quintella", "p": 79.9, "itens": ["matematica-3a-serie-ginasial-quintella", "matematica-4a-serie-ginasial-quintella", "matematica-segundo-ano-colegial-quintella", "matematica-terceiro-ano-colegial-quintella"]}]}</script>
+<script>
+(function(){
+  var DATA=JSON.parse(document.getElementById('lv-data').textContent), D=DATA.livros, C=DATA.combos;
+  var FG=100*100, FRETE=20*100, WA='5521972464789', KEY='lv-cart', sel={};
+  function c(v){return Math.round(v*100);}
+  function brl(cents){return 'R$ '+(cents/100).toFixed(2).replace('.',',');}
+  function $(id){return document.getElementById(id);}
+  function cpfOk(v){v=v.replace(/\D/g,'');if(v.length!==11||/^(\d)\1{10}$/.test(v))return false;
+    for(var t=9;t<11;t++){var s=0;for(var i=0;i<t;i++)s+=(+v[i])*(t+1-i);if(((s*10)%11)%10!==+v[t])return false;}return true;}
+  try{var s=JSON.parse(localStorage.getItem(KEY)||'{}');Object.keys(s).forEach(function(k){if(D[k]&&D[k].q>0)sel[k]=Math.max(1,Math.min(s[k]|0,D[k].q));});}catch(e){}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(sel));}catch(e){}}
+  function totals(){
+    var sub=0,n=0,desc=0,cd=[];
+    Object.keys(sel).forEach(function(k){sub+=c(D[k].p)*sel[k];n+=sel[k];});
+    C.forEach(function(cb){var sets=Math.min.apply(null,cb.itens.map(function(k){return sel[k]||0;}));
+      if(sets>0){var soma=cb.itens.reduce(function(s,k){return s+c(D[k].p);},0);var d=(soma-c(cb.p))*sets;desc+=d;cd.push({nome:cb.nome,sets:sets,d:d});}});
+    var liq=sub-desc, fr=(n&&liq<FG)?FRETE:0;
+    return{sub:sub,desc:desc,cd:cd,liq:liq,fr:fr,tot:liq+fr,n:n};
+  }
+  function syncButtons(){[].forEach.call(document.querySelectorAll('.add'),function(b){var on=!!sel[b.getAttribute('data-k')];
+    b.setAttribute('aria-pressed',on?'true':'false');b.textContent=on?'✓ No pedido':(b.classList.contains('big')?'+ Adicionar ao pedido':'+ Pedido');});}
+  function esc(s){return String(s).replace(/[&<>"]/g,function(m){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m];});}
+  function render(){
+    var t=totals(), cart=$('cart');
+    cart.classList.toggle('show',t.n>0); document.body.classList.toggle('has-cart',t.n>0);
+    var extra=t.liq>=FG?'Frete grátis':'Faltam '+brl(FG-t.liq)+' para o frete grátis';
+    if(t.n>=10)extra+=' · desconto especial liberado'; else if(t.n>=6)extra+=' · faltam '+(10-t.n)+' para o desconto especial';
+    $('csum').innerHTML='<b>'+t.n+(t.n===1?' livro':' livros')+' · '+brl(t.liq)+'</b><small>'+extra+'</small>';
+    var ul=$('co-items'); ul.innerHTML='';
+    Object.keys(sel).forEach(function(k){
+      var d=D[k], li=document.createElement('li');
+      var qty=d.q>1?'<span class="qty"><button type="button" data-k="'+k+'" data-d="-1" aria-label="Diminuir">−</button><b>'+sel[k]+'</b><button type="button" data-k="'+k+'" data-d="1" aria-label="Aumentar"'+(sel[k]>=d.q?' disabled':'')+'>+</button></span>':'';
+      li.innerHTML='<span class="it"><span>'+esc(d.t)+'</span><small>'+esc(d.a)+' · '+brl(c(d.p))+(sel[k]>1?' cada':'')+'</small></span>'+qty+'<span class="lp">'+brl(c(d.p)*sel[k])+'</span><button type="button" class="rm" data-k="'+k+'" aria-label="Remover">✕</button>';
+      ul.appendChild(li);
+    });
+    $('co-empty').hidden=t.n>0;
+    $('co-sub').textContent=brl(t.sub);
+    $('co-dl').hidden=$('co-desc').hidden=!t.desc;
+    $('co-desc').textContent=t.desc?'− '+brl(t.desc)+' ('+t.cd.map(function(x){return x.nome;}).join(', ')+')':'';
+    $('co-fr').textContent=t.n?(t.fr?brl(t.fr):'Grátis'):'–';
+    $('co-tot').textContent=brl(t.tot);
+    $('co-hint').textContent=t.n&&t.liq<FG?'Adicione mais '+brl(FG-t.liq)+' em livros e o frete sai grátis.':'';
+    $('co-bulk').hidden=!(t.n>=10);
+    syncButtons(); save();
+  }
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.add'); if(b){var k=b.getAttribute('data-k');if(sel[k])delete sel[k];else if(D[k]&&D[k].q>0)sel[k]=1;render();return;}
+    var cb=ev.target.closest('.addcombo'); if(cb){var co=C.filter(function(x){return x.id===cb.getAttribute('data-c');})[0];
+      co.itens.forEach(function(k){if(D[k].q>0&&!sel[k])sel[k]=1;}); render(); cb.textContent='✓ Combo no pedido'; return;}
+  });
+  $('co-items').addEventListener('click',function(ev){var b=ev.target.closest('button');if(!b)return;var k=b.getAttribute('data-k');
+    if(b.classList.contains('rm'))delete sel[k];else{var n=sel[k]+parseInt(b.getAttribute('data-d'),10);if(n<1)delete sel[k];else sel[k]=Math.min(n,D[k].q);}render();});
+  $('cclear').addEventListener('click',function(){sel={};render();});
+  var panel=$('checkout');
+  function openCo(){panel.hidden=false;document.body.classList.add('co-open');$('co-close').focus();}
+  function closeCo(){panel.hidden=true;document.body.classList.remove('co-open');}
+  $('copen').addEventListener('click',openCo); $('co-close').addEventListener('click',closeCo);
+  document.addEventListener('keydown',function(ev){if(ev.key==='Escape'&&!panel.hidden)closeCo();});
+  // busca e filtros (só no catálogo)
+  var q=$('q'), lang=$('lang'), grid=$('todos');
+  if(q&&grid){
+    var cat='*', fb=[].slice.call(document.querySelectorAll('.filters button')), cards=[].slice.call(grid.querySelectorAll('.book'));
+    function norm(s){return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');}
+    function apply(){var term=norm(q.value.trim()), l=lang.value, vis=0;
+      cards.forEach(function(cd){var ok=(cat==='*'||cd.getAttribute('data-cat')===cat)&&(l==='*'||cd.getAttribute('data-lang')===l)&&(!term||cd.getAttribute('data-q').indexOf(term)>=0);cd.hidden=!ok;if(ok)vis++;});
+      $('none').hidden=vis>0;}
+    fb.forEach(function(b){b.addEventListener('click',function(){cat=b.getAttribute('data-f');fb.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});apply();});});
+    q.addEventListener('input',apply); lang.addEventListener('change',apply);
+  }
+  var f=$('co-form');
+  f.addEventListener('input',function(ev){if(ev.target.getAttribute('aria-invalid')==='true'&&ev.target.value.trim())ev.target.setAttribute('aria-invalid','false');});
+  f.cpf.addEventListener('input',function(){var v=f.cpf.value.replace(/\D/g,'').slice(0,11);
+    f.cpf.value=v.replace(/(\d{3})(\d)/,'$1.$2').replace(/(\d{3})\.(\d{3})(\d)/,'$1.$2.$3').replace(/\.(\d{3})(\d{1,2})$/,'.$1-$2');});
+  f.cep.addEventListener('input',function(){var v=f.cep.value.replace(/\D/g,'').slice(0,8);f.cep.value=v.length>5?v.slice(0,5)+'-'+v.slice(5):v;
+    if(v.length===8){fetch('https://viacep.com.br/ws/'+v+'/json/').then(function(r){return r.json();}).then(function(j){if(j.erro)return;
+      if(j.logradouro&&!f.rua.value)f.rua.value=j.logradouro; if(j.bairro&&!f.bairro.value)f.bairro.value=j.bairro;
+      if(j.localidade&&!f.cidade.value)f.cidade.value=j.localidade; if(j.uf&&!f.uf.value)f.uf.value=j.uf; f.numero.focus();}).catch(function(){});}});
+  f.addEventListener('submit',function(ev){
+    ev.preventDefault(); var msg=$('co-msg'), t=totals(); msg.hidden=true;
+    if(!t.n){msg.textContent='Escolha pelo menos um livro.';msg.hidden=false;return;}
+    var req=['nome','cpf','tel','cep','uf','cidade','bairro','rua','numero'], bad=null;
+    req.forEach(function(n){var el=f[n],ok=!!el.value.trim();if(n==='cep')ok=el.value.replace(/\D/g,'').length===8;if(n==='tel')ok=el.value.replace(/\D/g,'').length>=10;if(n==='cpf')ok=cpfOk(el.value);
+      el.setAttribute('aria-invalid',ok?'false':'true');if(!ok&&!bad)bad=el;});
+    if(bad){msg.textContent=bad.name==='cpf'?'Confira o CPF (11 números).':bad.name==='cep'?'Confira o CEP.':(bad.name==='tel'?'Confira o telefone com DDD.':'Preencha os campos obrigatórios.');msg.hidden=false;bad.focus();return;}
+    var L=['*Pedido de livros · rielsonfragoso.com.br*','','*Dados do comprador*',
+      'Nome: '+f.nome.value.trim(),'CPF: '+f.cpf.value.trim(),'Telefone: '+f.tel.value.trim(),'CEP: '+f.cep.value.trim(),'Estado: '+f.uf.value.trim().toUpperCase(),
+      'Cidade: '+f.cidade.value.trim(),'Bairro: '+f.bairro.value.trim(),'Rua: '+f.rua.value.trim(),'Número: '+f.numero.value.trim()];
+    if(f.comp.value.trim())L.push('Complemento: '+f.comp.value.trim());
+    L.push('','*Produtos*');
+    Object.keys(sel).forEach(function(k){var d=D[k];L.push('• '+d.t+' – '+d.a+' | '+sel[k]+' x '+brl(c(d.p))+' = '+brl(c(d.p)*sel[k]));});
+    L.push('','*Resumo*','Subtotal dos livros: '+brl(t.sub));
+    L.push('Descontos: '+(t.desc?'− '+brl(t.desc)+' ('+t.cd.map(function(x){return x.nome+(x.sets>1?' x'+x.sets:'');}).join(', ')+')':'nenhum'));
+    L.push('Frete: '+(t.fr?brl(t.fr):'grátis'),'*Total: '+brl(t.tot)+'*');
+    // pacote: livros deitados e empilhados -> soma das alturas, maior largura, maior comprimento, +0,5 cm em cada medida
+    var pa=0,pl=0,pc=0,pg=0,sem=[];
+    Object.keys(sel).forEach(function(k){var d=D[k],q=sel[k];
+      if(d.m){pa+=d.m[0]*q;pl=Math.max(pl,d.m[1]);pc=Math.max(pc,d.m[2]);}else sem.push(d.t);
+      if(d.g)pg+=d.g*q;else if(d.m)sem.push(d.t+' (peso)');});
+    var n1=function(x){return (Math.round(x*10)/10).toString().replace('.',',');};
+    if(pa||pg){L.push('','*Dados para o frete*');
+    if(pa)L.push('Pacote (A x L x C): '+n1(pa+0.5)+' x '+n1(pl+0.5)+' x '+n1(pc+0.5)+' cm'+(sem.length?' (parcial)':''));
+    if(pg)L.push('Peso dos livros: '+pg+' g ('+n1(pg/1000)+' kg)'+(sem.length?' (parcial)':''));
+    if(sem.length)L.push('Sem medidas/peso no site: '+sem.join('; '));}
+    if(t.n>=10)L.push('','Pedido com 10 livros ou mais: gostaria de negociar o desconto especial.');
+    L.push('','Quero confirmar o pedido e receber a chave Pix para pagamento.');
+    var url='https://wa.me/'+WA+'?text='+encodeURIComponent(L.join('\n'));
+    $('co-go').href=url; $('co-done').hidden=false; window.location.href=url;
+  });
+  render();
+})();
+</script>
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div class="stack" style="gap:10px"><a class="logo" href="/"><i>RF</i>Rielson Fragoso</a>
+        <p>Material sério, bem explicado, para quem estuda por conta própria.</p>
+        <p class="hand" style="color:var(--yellow)">Dúvida sobre um material? Me chama.</p></div>
+      <div><h3>Contato</h3><ul>
+        <li><a href="mailto:academiamatematica.rj@gmail.com">E-mail · academiamatematica.rj@gmail.com</a></li>
+        <li><a href="https://t.me/rielsonfragoso" target="_blank" rel="noopener">Telegram · avisos de materiais</a></li>
+        <li><a href="https://www.youtube.com/@AcademiaMatem%C3%A1ticarj" target="_blank" rel="noopener">YouTube · Academia Matemática RJ</a></li>
+        <li><a href="https://linktr.ee/academiamatematicarj" target="_blank" rel="noopener">Todos os links</a></li></ul></div>
+      <div><h3>Materiais</h3><ul>
+        <li><a href="/concursos/">Concursos: e-books e simulados</a></li>
+        <li><a href="/ingles-em-familia/">Inglês em Família</a></li>
+        <li><a href="/aulas/">Resolução de questões em vídeo</a></li>
+        <li><a href="/livros/">Livros usados à venda</a></li>
+        <li><a href="/sobre/">Sobre mim</a></li>
+        <li><a href="/trocas/">Trocas e devoluções</a></li>
+        <li><a href="/privacidade/">Privacidade</a></li></ul></div>
+    </div>
+    <p class="copy">© 2026 Rielson Fragoso · Rio de Janeiro. E-books e simulados: pagamento pela Hotmart. Livros usados e resoluções: pagamento via Pix. · <a href="/trocas/">Trocas, devoluções e envio</a> · <a href="/privacidade/">Privacidade</a></p>
+  </div>
+</footer>
+</body>
+</html>
