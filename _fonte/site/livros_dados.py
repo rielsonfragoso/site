@@ -30,14 +30,14 @@ LIVROS = [
     # ---------- Ciência, Física e Grandes Pensadores (destaque) ----------
     B("Encounters with Einstein: And Other Essays on People, Places, and Particles", "Werner Heisenberg", 49.90, 1, CIENCIA, "heisenberg-encounters",
       idioma="Inglês", editora="Princeton University Press (Princeton Science Library)",
-      desc="Ensaios do Nobel de Física Werner Heisenberg sobre Einstein, outros cientistas, lugares e partículas: a física do século XX contada por um de seus protagonistas.", video="https://youtube.com/shorts/4m-eMMlzePw", video_t=54),
+      desc="Ensaios do Nobel de Física Werner Heisenberg sobre Einstein, outros cientistas, lugares e partículas: a física do século XX contada por um de seus protagonistas.", video="https://youtube.com/shorts/4m-eMMlzePw", video_t=54, medidas="1 x 14 x 21,5", peso=240),
     B("Physics and Philosophy: The Revolution in Modern Science", "Werner Heisenberg", 49.90, 1, CIENCIA, "heisenberg-physics-philosophy",
       idioma="Inglês", editora="Harper Perennial (Modern Thought)",
-      desc="Clássico de Heisenberg sobre as consequências filosóficas da mecânica quântica. Edição com introdução de David Lindley.", video="https://youtube.com/shorts/4m-eMMlzePw", video_t=0),
+      desc="Clássico de Heisenberg sobre as consequências filosóficas da mecânica quântica. Edição com introdução de David Lindley.", video="https://youtube.com/shorts/4m-eMMlzePw", video_t=0, medidas="2 x 13,5 x 20", peso=210),
     B("The First Three Minutes: A Modern View of the Origin of the Universe", "Steven Weinberg", 49.90, 1, CIENCIA, "weinberg",
-      idioma="Inglês", desc="O Nobel de Física de 1979 explica, passo a passo, o que aconteceu nos primeiros minutos do universo. Edição com posfácio do autor.", video="https://youtube.com/shorts/4m-eMMlzePw", video_t=28),
+      idioma="Inglês", desc="O Nobel de Física de 1979 explica, passo a passo, o que aconteceu nos primeiros minutos do universo. Edição com posfácio do autor.", video="https://youtube.com/shorts/4m-eMMlzePw", video_t=28, medidas="2 x 13,5 x 20", peso=230),
     B("My View of the World", "Erwin Schrödinger", 49.90, 1, CIENCIA, "schrodinger",
-      idioma="Inglês", desc="Ensaios filosóficos de Erwin Schrödinger, um dos fundadores da mecânica quântica, sobre consciência, ciência e a natureza da realidade.", video="https://youtube.com/shorts/4m-eMMlzePw", video_t=68),
+      idioma="Inglês", desc="Ensaios filosóficos de Erwin Schrödinger, um dos fundadores da mecânica quântica, sobre consciência, ciência e a natureza da realidade.", video="https://youtube.com/shorts/4m-eMMlzePw", video_t=68, medidas="1 x 14 x 22", peso=185),
     B("As Grandes Equações: A história das fórmulas matemáticas mais importantes e os cientistas que as criaram", "Robert P. Crease", 19.90, 1, CIENCIA, "crease",
       editora="Zahar", desc="Das equações de Newton e Maxwell a E = mc² e à equação de Schrödinger: a história de dez fórmulas que mudaram a ciência e das pessoas por trás delas.",
       medidas="2 x 16 x 23", peso=395),
@@ -54,9 +54,9 @@ LIVROS = [
       desc="Ensaio do filósofo Luiz Sergio Coelho de Sampaio sobre as ideias e o sentido da física moderna.",
       medidas="1,5 x 14 x 21", peso=290),
     B("Big Bang", "Simon Singh", 39.90, 1, CIENCIA, "big-bang",
-      desc="Tudo sobre a mais importante descoberta científica de todos os tempos, pelo autor de O Último Teorema de Fermat e O Livro dos Códigos.", video="https://youtube.com/shorts/4m-eMMlzePw", video_t=100),
+      desc="Tudo sobre a mais importante descoberta científica de todos os tempos, pelo autor de O Último Teorema de Fermat e O Livro dos Códigos.", video="https://youtube.com/shorts/4m-eMMlzePw", video_t=100, medidas="3 x 16 x 23", peso=790),
     B("O Universo numa Casca de Noz", "Stephen Hawking", 21.90, 1, CIENCIA, "hawking-casca-de-noz", editora="ARX",
-      desc="Stephen Hawking apresenta, com muitas ilustrações, as grandes ideias da física moderna: relatividade, buracos negros, tempo e o universo.", video="https://youtube.com/shorts/4m-eMMlzePw", video_t=118),
+      desc="Stephen Hawking apresenta, com muitas ilustrações, as grandes ideias da física moderna: relatividade, buracos negros, tempo e o universo.", video="https://youtube.com/shorts/4m-eMMlzePw", video_t=118, medidas="2 x 19 x 24", peso=630),
     B("The Character of Physical Law", "Richard Feynman", 29.90, 1, CIENCIA, "feynman-leis", idioma="Inglês",
       desc="As famosas palestras de Feynman sobre o que as leis da física têm em comum."),
     B("Sobre as Leis da Física", "Richard Feynman", 29.90, 1, CIENCIA, "feynman-leis", editora="Contraponto / PUC-Rio",
@@ -83,7 +83,7 @@ LIVROS = [
 
     # ---------- Finanças e Negócios ----------
     B("Pai Rico, Pai Pobre: O que os Ricos Ensinam a Seus Filhos sobre Dinheiro", "Robert T. Kiyosaki", 24.90, 2, FIN, "pai-rico",
-      editora="Alta Books · edição atualizada e ampliada", video="https://youtube.com/shorts/4m-eMMlzePw", video_t=76),
+      editora="Alta Books · edição atualizada e ampliada", video="https://youtube.com/shorts/4m-eMMlzePw", video_t=76, medidas="2 x 17,5 x 24", peso=540),
     B("Princípios de Administração Financeira", "Ross, Westerfield e Jordan", 19.90, 1, FIN, "ross-mathias", editora="Atlas"),
 
     # ---------- Catálogo anterior (preservado) ----------
