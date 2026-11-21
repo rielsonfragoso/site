@@ -17,15 +17,15 @@ FIN = "Finanças e Negócios"
 
 LIVROS = [
     # ---------- Ciência, Física e Grandes Pensadores (destaque) ----------
-    B("Encounters with Einstein: And Other Essays on People, Places, and Particles", "Werner Heisenberg", 69.90, 1, CIENCIA, "heisenberg-encounters",
+    B("Encounters with Einstein: And Other Essays on People, Places, and Particles", "Werner Heisenberg", 49.90, 1, CIENCIA, "heisenberg-encounters",
       idioma="Inglês", editora="Princeton University Press (Princeton Science Library)",
       desc="Ensaios do Nobel de Física Werner Heisenberg sobre Einstein, outros cientistas, lugares e partículas: a física do século XX contada por um de seus protagonistas.", video="https://youtube.com/shorts/4m-eMMlzePw", video_t=54),
-    B("Physics and Philosophy: The Revolution in Modern Science", "Werner Heisenberg", 69.90, 1, CIENCIA, "heisenberg-physics-philosophy",
+    B("Physics and Philosophy: The Revolution in Modern Science", "Werner Heisenberg", 49.90, 1, CIENCIA, "heisenberg-physics-philosophy",
       idioma="Inglês", editora="Harper Perennial (Modern Thought)",
       desc="Clássico de Heisenberg sobre as consequências filosóficas da mecânica quântica. Edição com introdução de David Lindley.", video="https://youtube.com/shorts/4m-eMMlzePw", video_t=0),
-    B("The First Three Minutes: A Modern View of the Origin of the Universe", "Steven Weinberg", 59.90, 1, CIENCIA, "weinberg",
+    B("The First Three Minutes: A Modern View of the Origin of the Universe", "Steven Weinberg", 49.90, 1, CIENCIA, "weinberg",
       idioma="Inglês", desc="O Nobel de Física de 1979 explica, passo a passo, o que aconteceu nos primeiros minutos do universo. Edição com posfácio do autor.", video="https://youtube.com/shorts/4m-eMMlzePw", video_t=28),
-    B("My View of the World", "Erwin Schrödinger", 69.90, 1, CIENCIA, "schrodinger",
+    B("My View of the World", "Erwin Schrödinger", 49.90, 1, CIENCIA, "schrodinger",
       idioma="Inglês", desc="Ensaios filosóficos de Erwin Schrödinger, um dos fundadores da mecânica quântica, sobre consciência, ciência e a natureza da realidade.", video="https://youtube.com/shorts/4m-eMMlzePw", video_t=68),
     B("Big Bang", "Simon Singh", 39.90, 1, CIENCIA, "big-bang",
       desc="Tudo sobre a mais importante descoberta científica de todos os tempos, pelo autor de O Último Teorema de Fermat e O Livro dos Códigos.", video="https://youtube.com/shorts/4m-eMMlzePw", video_t=100),
@@ -52,7 +52,7 @@ LIVROS = [
 
     # ---------- Catálogo anterior (preservado) ----------
     B("Álgebra Linear e Geometria Analítica", "Antonio dos Santos Machado", 35.90, 1, "Graduação", "machado"),
-    B("Cálculo · Volume 1", "James Stewart", 53.90, 1, "Graduação", "stewart", editora="Cengage · tradução da 6ª edição"),
+    B("Cálculo · Volume 1", "James Stewart", 49.90, 1, "Graduação", "stewart", editora="Cengage · tradução da 6ª edição"),
     B("Cálculo · Volume 1", "George B. Thomas Jr.", 24.90, 1, "Graduação", "thomas"),
     B("Cálculo · Volume 2", "George B. Thomas Jr.", 24.90, 1, "Graduação", "thomas"),
     B("Cálculo · Volume 3", "George B. Thomas Jr.", 24.90, 1, "Graduação", "thomas"),
@@ -84,7 +84,7 @@ LIVROS = [
     B("Matemática Financeira · Objetiva e Aplicada", "Abelardo de Lima Puccini", 22.90, 1, "Financeira e Estatística", "financeira-puccini-cesar", editora="Saraiva · 6ª edição"),
     B("Matemática Financeira · mais de 600 exercícios resolvidos e propostos", "Washington Franco Mathias e José Maria Gomes", 22.90, 1, "Financeira e Estatística", "ross-mathias", editora="Atlas"),
     B("Curso de Estatística · Elementos", "Ruy Aguiar da Silva Leme", 17.90, 1, "Financeira e Estatística", "estatistica-basica", editora="Ao Livro Técnico"),
-    B("The Feynman Lectures on Physics · Vol. III: Quantum Mechanics", "Feynman, Leighton e Sands", 53.90, 1, "Física", "feynman-lectures", idioma="Inglês", editora="New Millennium Edition"),
+    B("The Feynman Lectures on Physics · Vol. III: Quantum Mechanics", "Feynman, Leighton e Sands", 49.90, 1, "Física", "feynman-lectures", idioma="Inglês", editora="New Millennium Edition"),
     B("Os Tópicos da Física 2 · Termologia, Ondas e Óptica", "Gualter, Newton e Helou Doca", 24.90, 1, "Física", "topicos-fisica", editora="Saraiva", vendido=True),
     B("Os Tópicos da Física 3 · Eletricidade", "Gualter, Newton e Helou Doca", 24.90, 1, "Física", "topicos-fisica", editora="Saraiva", vendido=True),
     B("Física Básica · Volume Único", "Nicolau, Toledo e Ronaldo", 24.90, 1, "Física", "fisica-basica", editora="Atual"),
