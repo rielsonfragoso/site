@@ -92,6 +92,16 @@
     L.push('','*Resumo*','Subtotal dos livros: '+brl(t.sub));
     L.push('Descontos: '+(t.desc?'− '+brl(t.desc)+' ('+t.cd.map(function(x){return x.nome+(x.sets>1?' x'+x.sets:'');}).join(', ')+')':'nenhum'));
     L.push('Frete: '+(t.fr?brl(t.fr):'grátis'),'*Total: '+brl(t.tot)+'*');
+    // pacote: livros deitados e empilhados -> soma das alturas, maior largura, maior comprimento, +0,5 cm em cada medida
+    var pa=0,pl=0,pc=0,pg=0,sem=[];
+    Object.keys(sel).forEach(function(k){var d=D[k],q=sel[k];
+      if(d.m){pa+=d.m[0]*q;pl=Math.max(pl,d.m[1]);pc=Math.max(pc,d.m[2]);}else sem.push(d.t);
+      if(d.g)pg+=d.g*q;else if(d.m)sem.push(d.t+' (peso)');});
+    var n1=function(x){return (Math.round(x*10)/10).toString().replace('.',',');};
+    if(pa||pg){L.push('','*Dados para o frete*');
+    if(pa)L.push('Pacote (A x L x C): '+n1(pa+0.5)+' x '+n1(pl+0.5)+' x '+n1(pc+0.5)+' cm'+(sem.length?' (parcial)':''));
+    if(pg)L.push('Peso dos livros: '+pg+' g ('+n1(pg/1000)+' kg)'+(sem.length?' (parcial)':''));
+    if(sem.length)L.push('Sem medidas/peso no site: '+sem.join('; '));}
     if(t.n>=10)L.push('','Pedido com 10 livros ou mais: gostaria de negociar o desconto especial.');
     L.push('','Quero confirmar o pedido e receber a chave Pix para pagamento.');
     var url='https://wa.me/'+WA+'?text='+encodeURIComponent(L.join('\n'));

@@ -7,9 +7,20 @@ COMO ATUALIZAR:
   • vídeo de combo: preencha video="LINK" no COMBOS; vale para os livros do combo que não tiverem vídeo próprio.
 """
 
-def B(titulo, autor, preco, qtd, cat, foto, vendido=False, idioma="Português", editora="", cond="", desc="", video="", video_t=0, slug=""):
+def _medidas(m):
+    """'altura x largura x comprimento' em cm (altura = grossura do miolo, livro deitado) -> (a, l, c)."""
+    if not m: return None
+    v = [float(x.strip().replace(",", ".")) for x in m.lower().replace("×", "x").split("x")]
+    assert len(v) == 3, f"medidas inválidas: {m!r} (use 'altura x largura x comprimento')"
+    return tuple(v)
+
+def B(titulo, autor, preco, qtd, cat, foto, vendido=False, idioma="Português", editora="", cond="", desc="", video="", video_t=0, slug="",
+      medidas="", peso=0):
+    """medidas: 'A x L x C' em cm (altura = grossura do miolo; largura e comprimento como na foto de referência).
+    peso: em gramas."""
     return dict(titulo=titulo, autor=autor, preco=float(preco), qtd=qtd, cat=cat, foto=foto, vendido=vendido,
-                idioma=idioma, editora=editora, cond=cond, desc=desc, video=video, video_t=video_t, slug=slug)
+                idioma=idioma, editora=editora, cond=cond, desc=desc, video=video, video_t=video_t, slug=slug,
+                medidas=_medidas(medidas), peso=int(peso))
 
 CIENCIA = "Ciência, Física e Grandes Pensadores"
 LIT = "Literatura e Clássicos"

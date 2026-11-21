@@ -87,7 +87,8 @@ def combo_card(c):
             + (f'<a class="vlink" href="/livros/{c["itens"][0]}/#video">▶ Ver vídeo dos exemplares</a>' if c.get("video") else "") + '</div></div></div>')
 
 def dados_js():
-    d = {b["slug"]: {"t": b["titulo"], "a": b["autor"], "p": b["preco"], "q": b["qtd"] if disp(b) else 0} for b in LIVROS}
+    d = {b["slug"]: {"t": b["titulo"], "a": b["autor"], "p": b["preco"], "q": b["qtd"] if disp(b) else 0,
+                     "m": list(b["medidas"]) if b["medidas"] else None, "g": b["peso"] or None} for b in LIVROS}
     c = [{"id": x["id"], "nome": x["nome"], "p": x["preco"], "itens": x["itens"]} for x in COMBOS]
     return json.dumps({"livros": d, "combos": c}, ensure_ascii=False).replace("</", "<\\/")
 
@@ -190,6 +191,9 @@ def product_page(b, head, nav, foot):
     vbtn = ('<a class="vlink big" href="#video">▶ Ver vídeo do exemplar</a>' + (f'<a class="vlink big yt" href="{yt_url(b)}" target="_blank" rel="noopener">Abrir no YouTube ↗</a>' if b["video"] else "")) if vid else ""
     rows = [("Autor", b["autor"]), ("Idioma", b["idioma"]), ("Categoria", b["cat"])]
     if b["editora"]: rows.append(("Editora / edição", b["editora"]))
+    num = lambda x: f"{x:g}".replace(".", ",")
+    if b["medidas"]: rows.append(("Medidas (A × L × C)", " × ".join(num(x) for x in b["medidas"]) + " cm"))
+    if b["peso"]: rows.append(("Peso", f"{b['peso']} g"))
     rows.append(("Estado", "Usado" + (f" · {b['cond']}" if b["cond"] else " · veja as fotos do exemplar real")))
     rows.append(("Disponibilidade", "vendido (indisponível)" if sold else f"{b['qtd']} exemplar{'es' if b['qtd'] > 1 else ''}"))
     dl = "".join(f"<dt>{e(k)}</dt><dd>{e(v)}</dd>" for k, v in rows)
