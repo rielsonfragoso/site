@@ -107,7 +107,7 @@ LIVROS = [
     B("Matemática · Terceiro Ano Colegial", "Ary Quintella", 26.90, 1, "Coleções clássicas", "quintella-3-colegial", editora="Companhia Editora Nacional", medidas="2 x 14 x 19", peso=240),
     B("Matemática · 3ª Série Ginasial", "Ary Quintella", 26.90, 1, "Coleções clássicas", "quintella-3-ginasial", editora="Companhia Editora Nacional", medidas="2 x 14 x 19", peso=275),
     B("Matemática · 4ª Série Ginasial", "Ary Quintella", 26.90, 1, "Coleções clássicas", "quintella-4-ginasial", editora="Companhia Editora Nacional", medidas="2,5 x 13,5 x 19", peso=330),
-    B("Pitágoras · Matemática II, Livro I: Geometria Plana (1ª parte)", "Coleção Pitágoras", 14.90, 1, "Coleções clássicas", "pitagoras-minimanual"),
+    B("Pitágoras · Matemática II, Livro I: Geometria Plana (1ª parte)", "Coleção Pitágoras", 14.90, 1, "Coleções clássicas", "pitagoras-mat2-livro1", medidas="1 x 16 x 23", peso=180),
     B("Matemática · Box Moderna Plus Vol. 1 (completo)", "Manoel Paiva", 44.90, 1, "Ensino médio", "paiva", editora="Moderna"),
     B("Matemática · Box Moderna Plus Vol. 2 (incompleto)", "Manoel Paiva", 22.90, 1, "Ensino médio", "paiva", editora="Moderna"),
     B("Matemática · Box Moderna Plus Vol. 3 (completo)", "Manoel Paiva", 44.90, 1, "Ensino médio", "paiva", editora="Moderna"),
