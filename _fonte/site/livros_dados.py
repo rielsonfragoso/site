@@ -64,6 +64,9 @@ LIVROS = [
     B("Astronomia & Budismo · Uma Jornada Rumo ao Distante Universo", "Ronaldo Rogério de Freitas Mourão e Daisaku Ikeda", 14.90, 1, CIENCIA, "astronomia"),
 
     # ---------- Literatura e Clássicos ----------
+    B("O Estrangeiro", "Albert Camus", 19.90, 1, LIT, "camus-estrangeiro", editora="Record",
+      desc="O romance de estreia de Camus, prêmio Nobel de Literatura: Meursault, um homem indiferente às convenções, e o absurdo da existência.",
+      medidas="1 x 14 x 21", peso=190),
     B("Sonho de uma Noite de Verão", "William Shakespeare", 19.90, 1, LIT, "sonho-noite-verao",
       editora="L&PM Pocket · tradução de Beatriz Viégas-Faria", slug="shakespeare-sonho-de-uma-noite-de-verao"),
     B("Hamlet", "William Shakespeare", 19.90, 1, LIT, "hamlet",
