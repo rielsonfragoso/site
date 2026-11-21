@@ -104,7 +104,7 @@ LIVROS = [
     B("Fundamentos de Matemática Elementar 4 · Sequências, Matrizes, Determinantes e Sistemas", "Iezzi e Hazzan", 31.90, 1, "Coleções clássicas", "fme-antigos", True, editora="Edição antiga (anos 80)", slug="fme-4-anos-80"),
     B("Fundamentos de Matemática Elementar 5 · Combinatória e Probabilidade", "Samuel Hazzan", 31.90, 1, "Coleções clássicas", "fme-antigos", True, editora="Edição antiga (anos 80)", slug="fme-5-anos-80"),
     B("Matemática · Segundo Ano Colegial", "Ary Quintella", 26.90, 1, "Coleções clássicas", "quintella-2-colegial", editora="Companhia Editora Nacional", medidas="2 x 14 x 19", peso=323),
-    B("Matemática · Terceiro Ano Colegial", "Ary Quintella", 26.90, 1, "Coleções clássicas", "quintella", editora="Companhia Editora Nacional"),
+    B("Matemática · Terceiro Ano Colegial", "Ary Quintella", 26.90, 1, "Coleções clássicas", "quintella-3-colegial", editora="Companhia Editora Nacional", medidas="2 x 14 x 19", peso=240),
     B("Matemática · 3ª Série Ginasial", "Ary Quintella", 26.90, 1, "Coleções clássicas", "quintella", editora="Companhia Editora Nacional"),
     B("Matemática · 4ª Série Ginasial", "Ary Quintella", 26.90, 1, "Coleções clássicas", "quintella", editora="Companhia Editora Nacional"),
     B("Pitágoras · Matemática II, Livro I: Geometria Plana (1ª parte)", "Coleção Pitágoras", 14.90, 1, "Coleções clássicas", "pitagoras-minimanual"),
