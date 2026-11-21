@@ -84,7 +84,7 @@ LIVROS = [
     # ---------- Finanças e Negócios ----------
     B("Pai Rico, Pai Pobre: O que os Ricos Ensinam a Seus Filhos sobre Dinheiro", "Robert T. Kiyosaki", 24.90, 2, FIN, "pai-rico",
       editora="Alta Books · edição atualizada e ampliada", video="https://youtube.com/shorts/4m-eMMlzePw", video_t=76, medidas="2 x 17,5 x 24", peso=540),
-    B("Princípios de Administração Financeira", "Ross, Westerfield e Jordan", 19.90, 1, FIN, "ross-mathias", editora="Atlas"),
+    B("Princípios de Administração Financeira", "Ross, Westerfield e Jordan", 17.90, 1, FIN, "ross-adm-financeira", editora="Atlas", medidas="2,5 x 21,5 x 28", peso=1030),
 
     # ---------- Catálogo anterior (preservado) ----------
     B("Álgebra Linear e Geometria Analítica", "Antonio dos Santos Machado", 35.90, 1, "Graduação", "machado", medidas="1 x 15 x 21", peso=240),
