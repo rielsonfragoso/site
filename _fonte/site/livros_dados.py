@@ -118,7 +118,7 @@ LIVROS = [
     B("Vivendo a Matemática · A Numeração Indo-Arábica", "Luiz Márcio Imenes", 14.90, 1, "Ensino fundamental", "imenes", editora="Scipione", medidas="0,5 x 13 x 20", peso=65),
     B("Experiências de Ciências para o Ensino Fundamental", "Alberto Gaspar", 19.90, 1, "Ensino fundamental", "gaspar", editora="Ática"),
     B("Matemática para Concursos", "Flávio Alcântara", 19.90, 1, "Concursos", "alcantara-concursos", editora="Método · teoria e questões comentadas", medidas="2 x 16 x 23", peso=495),
-    B("Matemática Financeira · Série Provas e Concursos", "Benjamin Cesar", 22.90, 1, "Concursos", "financeira-puccini-cesar", editora="Campus/Elsevier · 7ª edição"),
+    B("Matemática Financeira · Série Provas e Concursos", "Benjamin Cesar", 19.90, 1, "Concursos", "benjamin-cesar", editora="Campus/Elsevier · 7ª edição", medidas="2 x 17 x 24", peso=441),
     B("Matemática Básica", "Aref Antar Neto", 17.90, 1, "Concursos", "antar-neto-basica", medidas="2,5 x 16 x 21", peso=482),
     B("Matemática Financeira · Objetiva e Aplicada", "Abelardo de Lima Puccini", 22.90, 1, "Financeira e Estatística", "financeira-puccini-cesar", editora="Saraiva · 6ª edição"),
     B("Matemática Financeira · mais de 600 exercícios resolvidos e propostos", "Washington Franco Mathias e José Maria Gomes", 19.90, 1, "Financeira e Estatística", "mathias-gomes", editora="Atlas", medidas="2 x 14 x 20,5", peso=516),
