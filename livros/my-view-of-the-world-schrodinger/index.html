@@ -151,6 +151,11 @@ body.has-cart{padding-bottom:84px}
 .cart.show{visibility:visible}
 label .co-hint{display:block;font-family:var(--body);font-weight:400;font-size:.85rem;margin-top:2px}
 
+.soldbox{background:color-mix(in srgb,var(--red) 14%,var(--surface));border:1.5px solid var(--red);border-radius:12px;padding:12px 16px;margin:6px 0 16px}
+.soldbox a{font-weight:700}
+.prod.sold>img{filter:grayscale(.7);opacity:.6}
+.prod.sold .pprice{text-decoration:line-through;color:var(--muted)}
+
 .rv-band{background:var(--navy);color:var(--chalk);border-block:3px solid var(--yellow)}
 .rv-band h2{color:var(--chalk)}
 .rv-band .eyebrow{color:var(--yellow)}
@@ -196,9 +201,10 @@ label .co-hint{display:block;font-family:var(--body);font-weight:400;font-size:.
 <main>
 <section style="padding-top:clamp(24px,5vw,48px)">
   <div class="wrap">
-    <p class="crumb"><a href="../">Livros usados</a> › Ciência, Física e Grandes Pensadores</p>
+    <p class="crumb"><a href="/livros/">Livros usados</a> › Ciência, Física e Grandes Pensadores</p>
+    
     <div class="prod">
-      <img src="../img/schrodinger.jpg" alt="Foto do exemplar de My View of the World, de Erwin Schrödinger" width="900" height="1200">
+      <img src="/livros/img/schrodinger.jpg" alt="Foto do exemplar de My View of the World, de Erwin Schrödinger" width="900" height="1200">
       <div class="stack" style="gap:14px">
         <h1 class="ptitle">My View of the World</h1>
         <p class="au" style="font-size:1.1rem">Erwin Schrödinger</p>
@@ -206,9 +212,9 @@ label .co-hint{display:block;font-family:var(--body);font-weight:400;font-size:.
         <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center"><button type="button" class="btn add big" aria-pressed="false" data-k="my-view-of-the-world-schrodinger">+ Adicionar ao pedido</button><a class="vlink big" href="#video">▶ Ver vídeo do exemplar</a><a class="vlink big yt" href="https://www.youtube.com/watch?v=4m-eMMlzePw&t=68s" target="_blank" rel="noopener">Abrir no YouTube ↗</a></div>
         
         <p>Ensaios filosóficos de Erwin Schrödinger, um dos fundadores da mecânica quântica, sobre consciência, ciência e a natureza da realidade.</p>
-        <dl class="specs"><dt>Autor</dt><dd>Erwin Schrödinger</dd><dt>Idioma</dt><dd>Inglês</dd><dt>Categoria</dt><dd>Ciência, Física e Grandes Pensadores</dd><dt>Estado</dt><dd>Usado · veja as fotos do exemplar real</dd><dt>Disponível</dt><dd>1 exemplar</dd></dl>
+        <dl class="specs"><dt>Autor</dt><dd>Erwin Schrödinger</dd><dt>Idioma</dt><dd>Inglês</dd><dt>Categoria</dt><dd>Ciência, Física e Grandes Pensadores</dd><dt>Estado</dt><dd>Usado · veja as fotos do exemplar real</dd><dt>Disponibilidade</dt><dd>1 exemplar</dd></dl>
         <p class="note">Frete fixo de R$ 20 para todo o Brasil; grátis a partir de R$ 100 em livros. Pagamento via Pix, combinado pelo WhatsApp ao finalizar o pedido. Envio pelos Correios em até 2 dias úteis após a confirmação do pagamento.</p>
-        <p><a href="../#catalogo">← Ver todos os livros</a></p>
+        <p><a href="/livros/#catalogo">← Ver todos os livros</a></p>
       </div>
     </div>
     <h2 id="video">Vídeo do exemplar real</h2><p class="note">Veja o estado do livro que você vai receber.</p><div class="video vert"><iframe src="https://www.youtube-nocookie.com/embed/4m-eMMlzePw?start=68" title="Vídeo de My View of the World" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe></div>

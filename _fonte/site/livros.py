@@ -104,8 +104,9 @@ def page(head, nav, foot):
         f'<button type="button" aria-pressed="false" data-f="{e(c)}">{e(c)}</button>' for c in CATS if any(b["cat"] == c for b in LIVROS))
     langs = sorted({b["idioma"] for b in LIVROS}, key=lambda x: (x != "Português", x))
     lopts = '<option value="*">Todos os idiomas</option>' + "".join(f'<option>{e(l)}</option>' for l in langs)
-    destaque = "".join(card(b, i) for i, b in enumerate(LIVROS) if b["cat"] == CIENCIA)
-    todos = "".join(card(b, i) for i, b in enumerate(LIVROS))
+    ordem = sorted(enumerate(LIVROS), key=lambda t: not disp(t[1]))   # vendidos vão para o fim da lista
+    destaque = "".join(card(b, i) for i, b in ordem if b["cat"] == CIENCIA)
+    todos = "".join(card(b, i) for i, b in ordem)
     combos = "".join(combo_card(c) for c in COMBOS)
     return head("Livros usados à venda · Ciência, Literatura e Matemática | Rielson Fragoso",
                 f"Livros usados com preços acessíveis: Heisenberg, Weinberg, Schrödinger, Hawking, Shakespeare, Feynman e livros de matemática. Fotos reais, frete fixo de R$ 20 e grátis a partir de R$ 100.",
@@ -190,7 +191,7 @@ def product_page(b, head, nav, foot):
     rows = [("Autor", b["autor"]), ("Idioma", b["idioma"]), ("Categoria", b["cat"])]
     if b["editora"]: rows.append(("Editora / edição", b["editora"]))
     rows.append(("Estado", "Usado" + (f" · {b['cond']}" if b["cond"] else " · veja as fotos do exemplar real")))
-    rows.append(("Disponível", "vendido" if sold else f"{b['qtd']} exemplar{'es' if b['qtd'] > 1 else ''}"))
+    rows.append(("Disponibilidade", "vendido (indisponível)" if sold else f"{b['qtd']} exemplar{'es' if b['qtd'] > 1 else ''}"))
     dl = "".join(f"<dt>{e(k)}</dt><dd>{e(v)}</dd>" for k, v in rows)
     act = ('<span class="soldtag" style="position:static">Vendido</span>' if sold else
            f'<button type="button" class="btn add big" aria-pressed="false" data-k="{b["slug"]}">+ Adicionar ao pedido</button>')
@@ -203,9 +204,10 @@ def product_page(b, head, nav, foot):
 <main>
 <section style="padding-top:clamp(24px,5vw,48px)">
   <div class="wrap">
-    <p class="crumb"><a href="../">Livros usados</a> › {e(b["cat"])}</p>
-    <div class="prod">
-      <img src="../img/{b["foto"]}.jpg" alt="Foto do exemplar de {e(b["titulo"])}, de {e(b["autor"])}" width="900" height="1200">
+    <p class="crumb"><a href="/livros/">Livros usados</a> › {e(b["cat"])}</p>
+    {'<p class="soldbox"><b>Este exemplar já foi vendido.</b> <a href="/livros/#catalogo">Veja os livros disponíveis</a></p>' if sold else ''}
+    <div class="prod{' sold' if sold else ''}">
+      <img src="/livros/img/{b["foto"]}.jpg" alt="Foto do exemplar de {e(b["titulo"])}, de {e(b["autor"])}" width="900" height="1200">
       <div class="stack" style="gap:14px">
         <h1 class="ptitle">{e(b["titulo"])}</h1>
         <p class="au" style="font-size:1.1rem">{e(b["autor"])}</p>
@@ -215,7 +217,7 @@ def product_page(b, head, nav, foot):
         {f'<p>{e(b["desc"])}</p>' if b["desc"] else ''}
         <dl class="specs">{dl}</dl>
         <p class="note">Frete fixo de R$ 20 para todo o Brasil; grátis a partir de R$ 100 em livros. Pagamento via Pix, combinado pelo WhatsApp ao finalizar o pedido. Envio pelos Correios em até 2 dias úteis após a confirmação do pagamento.</p>
-        <p><a href="../#catalogo">← Ver todos os livros</a></p>
+        <p><a href="/livros/#catalogo">← Ver todos os livros</a></p>
       </div>
     </div>
     {video}
