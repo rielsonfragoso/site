@@ -121,7 +121,7 @@ LIVROS = [
     B("Matemática Financeira · Série Provas e Concursos", "Benjamin Cesar", 22.90, 1, "Concursos", "financeira-puccini-cesar", editora="Campus/Elsevier · 7ª edição"),
     B("Matemática Básica", "Aref Antar Neto", 17.90, 1, "Concursos", "antar-neto-basica", medidas="2,5 x 16 x 21", peso=482),
     B("Matemática Financeira · Objetiva e Aplicada", "Abelardo de Lima Puccini", 22.90, 1, "Financeira e Estatística", "financeira-puccini-cesar", editora="Saraiva · 6ª edição"),
-    B("Matemática Financeira · mais de 600 exercícios resolvidos e propostos", "Washington Franco Mathias e José Maria Gomes", 22.90, 1, "Financeira e Estatística", "ross-mathias", editora="Atlas"),
+    B("Matemática Financeira · mais de 600 exercícios resolvidos e propostos", "Washington Franco Mathias e José Maria Gomes", 19.90, 1, "Financeira e Estatística", "mathias-gomes", editora="Atlas", medidas="2 x 14 x 20,5", peso=516),
     B("Curso de Estatística · Elementos", "Ruy Aguiar da Silva Leme", 17.90, 1, "Financeira e Estatística", "estatistica-leme", editora="Ao Livro Técnico", medidas="2 x 14 x 21", peso=350),
     B("The Feynman Lectures on Physics · Vol. III: Quantum Mechanics", "Feynman, Leighton e Sands", 49.90, 1, "Física", "feynman-lectures", idioma="Inglês", editora="New Millennium Edition"),
     B("Os Tópicos da Física 2 · Termologia, Ondas e Óptica", "Gualter, Newton e Helou Doca", 24.90, 1, "Física", "topicos-fisica", editora="Saraiva", vendido=True),
