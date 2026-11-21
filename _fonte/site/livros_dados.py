@@ -94,7 +94,7 @@ LIVROS = [
     B("Cálculo · Volume 1", "James Stewart", 49.90, 1, "Graduação", "stewart", editora="Cengage · tradução da 6ª edição", medidas="3,5 x 21 x 28", peso=1500),
     B("Cálculo · Volume 1", "George B. Thomas Jr.", 19.90, 1, "Graduação", "thomas"),
     B("Cálculo · Volume 2", "George B. Thomas Jr.", 19.90, 1, "Graduação", "thomas-vol2", medidas="2 x 14 x 20,5", peso=325),
-    B("Cálculo · Volume 3", "George B. Thomas Jr.", 19.90, 1, "Graduação", "thomas"),
+    B("Cálculo · Volume 3", "George B. Thomas Jr.", 19.90, 1, "Graduação", "thomas-vol3", medidas="2,5 x 14 x 21", peso=330),
     B("Matemática para os Cursos de Economia, Administração e Ciências Contábeis · Vol. 1", "Medeiros", 19.90, 1, "Graduação", "medeiros-vol1", editora="Atlas · 3ª edição", medidas="1,5 x 15 x 21", peso=370),
     B("Fundamentos de Matemática Elementar 1 · Conjuntos e Funções", "Iezzi e Murakami", 49.90, 1, "Ensino médio", "fme-novos", True, editora="Atual · edição recente"),
     B("Fundamentos de Matemática Elementar 2 · Logaritmos", "Iezzi, Dolce e Murakami", 49.90, 1, "Ensino médio", "fme-novos", True, editora="Atual · edição recente"),
