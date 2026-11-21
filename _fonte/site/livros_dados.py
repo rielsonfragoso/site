@@ -119,7 +119,7 @@ LIVROS = [
     B("Experiências de Ciências para o Ensino Fundamental", "Alberto Gaspar", 19.90, 1, "Ensino fundamental", "gaspar", editora="Ática"),
     B("Matemática para Concursos", "Flávio Alcântara", 22.90, 1, "Concursos", "medeiros-alcantara", editora="Método · teoria e questões comentadas"),
     B("Matemática Financeira · Série Provas e Concursos", "Benjamin Cesar", 22.90, 1, "Concursos", "financeira-puccini-cesar", editora="Campus/Elsevier · 7ª edição"),
-    B("Matemática Básica", "Aref Antar Neto", 17.90, 1, "Concursos", "estatistica-basica"),
+    B("Matemática Básica", "Aref Antar Neto", 17.90, 1, "Concursos", "antar-neto-basica", medidas="2,5 x 16 x 21", peso=482),
     B("Matemática Financeira · Objetiva e Aplicada", "Abelardo de Lima Puccini", 22.90, 1, "Financeira e Estatística", "financeira-puccini-cesar", editora="Saraiva · 6ª edição"),
     B("Matemática Financeira · mais de 600 exercícios resolvidos e propostos", "Washington Franco Mathias e José Maria Gomes", 22.90, 1, "Financeira e Estatística", "ross-mathias", editora="Atlas"),
     B("Curso de Estatística · Elementos", "Ruy Aguiar da Silva Leme", 17.90, 1, "Financeira e Estatística", "estatistica-leme", editora="Ao Livro Técnico", medidas="2 x 14 x 21", peso=350),
