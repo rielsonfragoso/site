@@ -122,7 +122,7 @@ LIVROS = [
     B("Matemática Básica", "Aref Antar Neto", 17.90, 1, "Concursos", "estatistica-basica"),
     B("Matemática Financeira · Objetiva e Aplicada", "Abelardo de Lima Puccini", 22.90, 1, "Financeira e Estatística", "financeira-puccini-cesar", editora="Saraiva · 6ª edição"),
     B("Matemática Financeira · mais de 600 exercícios resolvidos e propostos", "Washington Franco Mathias e José Maria Gomes", 22.90, 1, "Financeira e Estatística", "ross-mathias", editora="Atlas"),
-    B("Curso de Estatística · Elementos", "Ruy Aguiar da Silva Leme", 17.90, 1, "Financeira e Estatística", "estatistica-basica", editora="Ao Livro Técnico"),
+    B("Curso de Estatística · Elementos", "Ruy Aguiar da Silva Leme", 17.90, 1, "Financeira e Estatística", "estatistica-leme", editora="Ao Livro Técnico", medidas="2 x 14 x 21", peso=350),
     B("The Feynman Lectures on Physics · Vol. III: Quantum Mechanics", "Feynman, Leighton e Sands", 49.90, 1, "Física", "feynman-lectures", idioma="Inglês", editora="New Millennium Edition"),
     B("Os Tópicos da Física 2 · Termologia, Ondas e Óptica", "Gualter, Newton e Helou Doca", 24.90, 1, "Física", "topicos-fisica", editora="Saraiva", vendido=True),
     B("Os Tópicos da Física 3 · Eletricidade", "Gualter, Newton e Helou Doca", 24.90, 1, "Física", "topicos-fisica", editora="Saraiva", vendido=True),
