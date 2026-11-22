@@ -103,10 +103,10 @@ LIVROS = [
     B("Fundamentos de Matemática Elementar 3 · Trigonometria", "Gelson Iezzi", 31.90, 1, "Coleções clássicas", "fme-antigos", True, editora="Edição antiga (anos 80)", slug="fme-3-trigonometria-anos-80"),
     B("Fundamentos de Matemática Elementar 4 · Sequências, Matrizes, Determinantes e Sistemas", "Iezzi e Hazzan", 31.90, 1, "Coleções clássicas", "fme-antigos", True, editora="Edição antiga (anos 80)", slug="fme-4-anos-80"),
     B("Fundamentos de Matemática Elementar 5 · Combinatória e Probabilidade", "Samuel Hazzan", 31.90, 1, "Coleções clássicas", "fme-antigos", True, editora="Edição antiga (anos 80)", slug="fme-5-anos-80"),
-    B("Matemática · Segundo Ano Colegial", "Ary Quintella", 26.90, 1, "Coleções clássicas", "quintella-2-colegial", editora="Companhia Editora Nacional", medidas="2 x 14 x 19", peso=323),
-    B("Matemática · Terceiro Ano Colegial", "Ary Quintella", 26.90, 1, "Coleções clássicas", "quintella-3-colegial", editora="Companhia Editora Nacional", medidas="2 x 14 x 19", peso=240),
-    B("Matemática · 3ª Série Ginasial", "Ary Quintella", 26.90, 1, "Coleções clássicas", "quintella-3-ginasial", editora="Companhia Editora Nacional", medidas="2 x 14 x 19", peso=275),
-    B("Matemática · 4ª Série Ginasial", "Ary Quintella", 26.90, 1, "Coleções clássicas", "quintella-4-ginasial", editora="Companhia Editora Nacional", medidas="2,5 x 13,5 x 19", peso=330),
+    B("Matemática · Segundo Ano Colegial", "Ary Quintella", 26.90, 1, "Coleções clássicas", "quintella-2-colegial", editora="Companhia Editora Nacional", medidas="2 x 14 x 19", peso=323, video="https://youtube.com/shorts/PI5xZFbugYg", video_t=144),
+    B("Matemática · Terceiro Ano Colegial", "Ary Quintella", 26.90, 1, "Coleções clássicas", "quintella-3-colegial", editora="Companhia Editora Nacional", medidas="2 x 14 x 19", peso=240, video="https://youtube.com/shorts/PI5xZFbugYg", video_t=108),
+    B("Matemática · 3ª Série Ginasial", "Ary Quintella", 26.90, 1, "Coleções clássicas", "quintella-3-ginasial", editora="Companhia Editora Nacional", medidas="2 x 14 x 19", peso=275, video="https://youtube.com/shorts/PI5xZFbugYg", video_t=84),
+    B("Matemática · 4ª Série Ginasial", "Ary Quintella", 26.90, 1, "Coleções clássicas", "quintella-4-ginasial", editora="Companhia Editora Nacional", medidas="2,5 x 13,5 x 19", peso=330, video="https://youtube.com/shorts/PI5xZFbugYg", video_t=42),
     B("Pitágoras · Matemática II, Livro I: Geometria Plana (1ª parte)", "Coleção Pitágoras", 14.90, 1, "Coleções clássicas", "pitagoras-mat2-livro1", medidas="1 x 16 x 23", peso=180),
     B("Matemática · Box Moderna Plus Vol. 1 (completo)", "Manoel Paiva", 29.90, 1, "Ensino médio", "paiva-box-1", editora="Moderna", medidas="4 x 21 x 28", peso=2030),
     B("Matemática · Box Moderna Plus Vol. 2 (incompleto)", "Manoel Paiva", 19.90, 1, "Ensino médio", "paiva-box-2", editora="Moderna", medidas="4 x 21 x 28", peso=1000),
@@ -155,4 +155,4 @@ COMBOS = [dict(id="shakespeare", nome="Combo Shakespeare", foto="shakespeare-tri
                itens=["matematica-3a-serie-ginasial-quintella", "matematica-4a-serie-ginasial-quintella",
                       "matematica-segundo-ano-colegial-quintella", "matematica-terceiro-ano-colegial-quintella"],
                desc="Os 4 livros de Matemática de Ary Quintella (Companhia Editora Nacional): 3ª e 4ª séries ginasiais, 2º e 3º anos colegiais. Separados saem R$ 107,60.",
-               video="", alt="Os quatro livros de Matemática de Ary Quintella")]
+               video="https://youtube.com/shorts/PI5xZFbugYg", alt="Os quatro livros de Matemática de Ary Quintella")]
