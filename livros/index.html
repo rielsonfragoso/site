@@ -292,7 +292,7 @@ label .co-hint{display:block;font-family:var(--body);font-weight:400;font-size:.
     fetch('https://formsubmit.co/ajax/academiamatematica.rj@gmail.com',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)})
       .then(function(r){return r.json().then(function(j){if(!r.ok||String(j.success)==='false')throw 0;});})
       .then(function(){try{localStorage.setItem('rv-sent','1');}catch(e){} f.hidden=true; document.getElementById('rv-done').hidden=false;})
-      .catch(function(){msg.textContent='Não foi possível enviar agora. Tente de novo em alguns minutos.';msg.hidden=false;})
+      .catch(function(){var t=['*Avaliação para o site · rielsonfragoso.com.br/livros*','Nome para exibir: '+nome,'Nota: '+nota+' de 5','Livro: '+(livro||'(não informado)'),'Comentário: '+texto,'Autorizo a publicação do meu depoimento na página.'].join('\n');msg.innerHTML='Não consegui enviar por aqui. <a href="https://wa.me/5521972464789?text='+encodeURIComponent(t)+'" target="_blank" rel="noopener">Toque aqui para enviar a avaliação pelo WhatsApp</a> (o texto já vai escrito).';msg.hidden=false;})
       .then(function(){btn.disabled=false;btn.textContent='Enviar avaliação';});
   });
 })();
