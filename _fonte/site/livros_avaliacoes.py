@@ -10,5 +10,6 @@ Campos:
 Para remover uma avaliação publicada, apague a linha.
 """
 AVALIACOES = [
+    dict(nome="Eugênio", nota=5, texto="Excelente experiência! Os livros foram enviados com muito cuidado, bem embalados e em perfeitas condições. A entrega foi rápida e tudo chegou conforme o esperado. Fiquei muito satisfeito com a organização, o compromisso e a qualidade do atendimento. Recomendo!", livro="Fundamentos de Matemática Elementar 4, 5, 9 e 10", data="2026-11-23", confirmada=False),
     # dict(nome="Tiago", nota=5, texto="...", livro="Fundamentos de Matemática Elementar 1, 2 e 3", data="2026-11-18", confirmada=True),
 ]
