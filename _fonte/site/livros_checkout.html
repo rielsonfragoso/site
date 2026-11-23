@@ -25,3 +25,23 @@
     </form>
   </div>
 </div>
+
+<div class="co" id="lote-box" role="dialog" aria-modal="true" aria-labelledby="lote-title" hidden>
+  <div class="co-box">
+    <div class="co-head"><h2 id="lote-title">Proposta pelo lote inteiro</h2><button type="button" class="co-x" id="lote-close" aria-label="Fechar">✕</button></div>
+    <p class="co-note" style="font-size:.95rem">Confira todos os livros disponíveis e quanto o lote sai hoje, já com combos, promoção e frete grátis. Depois é só enviar a sua proposta pelo WhatsApp.</p>
+    <ul class="co-items lote-items" id="lote-items"></ul>
+    <dl class="co-tot"><dt>Soma dos preços individuais</dt><dd id="lt-sub"></dd><dt>Descontos de combo</dt><dd id="lt-cb" class="disc"></dd><dt id="lt-pl">Promoção</dt><dd id="lt-pq" class="disc"></dd><dt>Frete</dt><dd>Grátis</dd><dt class="big">Lote pelas condições do site</dt><dd class="big" id="lt-tot"></dd></dl>
+    <form id="lote-form" novalidate>
+      <h3>Sua proposta</h3>
+      <label>Seu nome *<input name="nome" autocomplete="name" maxlength="100"></label>
+      <div class="f2"><label>Cidade *<input name="cidade" autocomplete="address-level2" maxlength="60"></label><label>Estado (UF) *<input name="uf" autocomplete="address-level1" maxlength="2"></label></div>
+      <label>Valor da sua oferta (R$)<input name="oferta" inputmode="decimal" maxlength="12" placeholder="ex.: 900,00"><small class="co-hint">Opcional: se preferir, faça a proposta na conversa.</small></label>
+      <label>Mensagem<textarea name="obs" rows="2" maxlength="400" placeholder="Forma de pagamento, retirada, dúvidas… (opcional)"></textarea></label>
+      <p class="co-msg" id="lote-msg" role="alert" hidden></p>
+      <button class="btn wabtn co-send" type="submit">Enviar minha proposta pelo WhatsApp</button>
+      <p class="co-note">A proposta chega identificada como oferta pelo lote inteiro. Eu respondo pelo WhatsApp; nada é cobrado até combinarmos o valor.</p>
+      <p class="co-done" id="lote-done" hidden>O WhatsApp não abriu? <a id="lote-go" href="#" target="_blank" rel="noopener">Toque aqui para abrir com a proposta</a>.</p>
+    </form>
+  </div>
+</div>

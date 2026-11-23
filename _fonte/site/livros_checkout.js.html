@@ -4,16 +4,16 @@
   var DATA=JSON.parse(document.getElementById('lv-data').textContent), D=DATA.livros, C=DATA.combos;
   var FG=__FG__*100, FRETE=__FRETE__*100, WA='__WA__', KEY='lv-cart', sel={};
   function c(v){return Math.round(v*100);}
-  function brl(cents){return 'R$ '+(cents/100).toFixed(2).replace('.',',');}
+  function brl(cents){var s=(cents/100).toFixed(2).split('.');return 'R$ '+s[0].replace(/\B(?=(\d{3})+(?!\d))/g,'.')+','+s[1];}
   function $(id){return document.getElementById(id);}
   function cpfOk(v){v=v.replace(/\D/g,'');if(v.length!==11||/^(\d)\1{10}$/.test(v))return false;
     for(var t=9;t<11;t++){var s=0;for(var i=0;i<t;i++)s+=(+v[i])*(t+1-i);if(((s*10)%11)%10!==+v[t])return false;}return true;}
   try{var s=JSON.parse(localStorage.getItem(KEY)||'{}');Object.keys(s).forEach(function(k){if(D[k]&&D[k].q>0)sel[k]=Math.max(1,Math.min(s[k]|0,D[k].q));});}catch(e){}
   function save(){try{localStorage.setItem(KEY,JSON.stringify(sel));}catch(e){}}
-  function totals(){
+  function totals(S){S=S||sel;
     var sub=0,n=0,desc=0,cd=[];
-    Object.keys(sel).forEach(function(k){sub+=c(D[k].p)*sel[k];n+=sel[k];});
-    C.forEach(function(cb){var sets=Math.min.apply(null,cb.itens.map(function(k){return sel[k]||0;}));
+    Object.keys(S).forEach(function(k){sub+=c(D[k].p)*S[k];n+=S[k];});
+    C.forEach(function(cb){var sets=Math.min.apply(null,cb.itens.map(function(k){return S[k]||0;}));
       if(sets>0){var soma=cb.itens.reduce(function(s,k){return s+c(D[k].p);},0);var d=(soma-c(cb.p))*sets;desc+=d;cd.push({nome:cb.nome,sets:sets,d:d});}});
     // promoção por quantidade, cumulativa com os combos: 10% a partir de 3 livros, 20% a partir de 10
     var pct=n>=10?20:(n>=3?10:0), dq=Math.round((sub-desc)*pct/100);
@@ -60,6 +60,39 @@
   function closeCo(){panel.hidden=true;document.body.classList.remove('co-open');}
   $('copen').addEventListener('click',openCo); $('co-close').addEventListener('click',closeCo);
   document.addEventListener('keydown',function(ev){if(ev.key==='Escape'&&!panel.hidden)closeCo();});
+  // lote inteiro: todos os exemplares disponíveis, pelas condições atuais do site
+  var LOTE={}; Object.keys(D).forEach(function(k){if(D[k].q>0)LOTE[k]=D[k].q;});
+  var lt=totals(LOTE), lbox=$('lote-box');
+  if($('lote-tot')){$('lote-n').textContent=lt.n; $('lote-tot').textContent=brl(lt.tot);
+    $('lote-sub').textContent='(em vez de '+brl(lt.sub)+' somando os preços individuais)';}
+  if(lbox){
+    var lu=$('lote-items');
+    Object.keys(LOTE).sort(function(a,b){return D[a].t.localeCompare(D[b].t,'pt');}).forEach(function(k){var d=D[k],li=document.createElement('li');
+      li.innerHTML='<span class="it"><span>'+esc(d.t)+'</span><small>'+esc(d.a)+(LOTE[k]>1?' · '+LOTE[k]+' exemplares':'')+'</small></span><span class="lp">'+brl(c(d.p)*LOTE[k])+'</span>';lu.appendChild(li);});
+    $('lt-sub').textContent=brl(lt.sub); $('lt-cb').textContent=lt.desc?'− '+brl(lt.desc):'–';
+    $('lt-pl').textContent='Promoção '+lt.pct+'% ('+lt.n+' livros)'; $('lt-pq').textContent='− '+brl(lt.dq); $('lt-tot').textContent=brl(lt.tot);
+    function openL(){lbox.hidden=false;document.body.classList.add('co-open');$('lote-close').focus();}
+    function closeL(){lbox.hidden=true;document.body.classList.remove('co-open');}
+    $('lote-open').addEventListener('click',openL); $('lote-close').addEventListener('click',closeL);
+    document.addEventListener('keydown',function(ev){if(ev.key==='Escape'&&!lbox.hidden)closeL();});
+    lbox.addEventListener('click',function(ev){if(ev.target===lbox)closeL();});
+    $('lote-form').addEventListener('submit',function(ev){ev.preventDefault();
+      var f=ev.target,m=$('lote-msg'),bad=null;
+      ['nome','cidade','uf'].forEach(function(n){var ok=!!f[n].value.trim();f[n].setAttribute('aria-invalid',ok?'false':'true');if(!ok&&!bad)bad=f[n];});
+      if(bad){m.textContent='Preencha nome, cidade e estado.';m.hidden=false;bad.focus();return;} m.hidden=true;
+      var of=f.oferta.value.trim(), ov=parseFloat(of.replace(/[^\d,\.]/g,'').replace(/\.(?=\d{3}(\D|$))/g,'').replace(',','.'));
+      var L=['*PROPOSTA PELO LOTE INTEIRO · rielsonfragoso.com.br*','',
+        'Nome: '+f.nome.value.trim(),'Cidade: '+f.cidade.value.trim()+' / '+f.uf.value.trim().toUpperCase(),'',
+        '*Lote:* todos os '+lt.n+' livros disponíveis no site ('+Object.keys(LOTE).length+' títulos)',
+        'Soma dos preços individuais: '+brl(lt.sub),
+        'Com combos, promoção de '+lt.pct+'% e frete grátis: '+brl(lt.tot),'',
+        '*Minha oferta:* '+(isFinite(ov)&&ov>0?brl(Math.round(ov*100)):'quero conversar sobre o valor')];
+      if(f.obs.value.trim())L.push('Mensagem: '+f.obs.value.trim());
+      L.push('','Gostaria de fazer uma oferta pelo lote inteiro de livros.');
+      var url='https://wa.me/'+WA+'?text='+encodeURIComponent(L.join('\n'));
+      $('lote-go').href=url; $('lote-done').hidden=false; window.location.href=url;
+    });
+  }
   // busca e filtros (só no catálogo)
   var q=$('q'), lang=$('lang'), grid=$('todos');
   if(q&&grid){

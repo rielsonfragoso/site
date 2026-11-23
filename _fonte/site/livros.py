@@ -152,6 +152,19 @@ def page(head, nav, foot):
     {combos}
   </div>
 </section>
+<section id="lote" style="padding-top:12px;padding-bottom:20px;scroll-margin-top:80px">
+  <div class="wrap">
+    <div class="lote">
+      <div class="stack" style="gap:10px">
+        <span class="eyebrow">Lote inteiro</span>
+        <h2>Quer arrematar todos os livros? Faça sua oferta</h2>
+        <p>Os livros já estão com preço justo, mas para quem quiser levar <b>o lote inteiro</b> (todos os <b id="lote-n">…</b> exemplares disponíveis) eu aceito propostas. Veja quanto sai tudo pelas condições atuais do site, com combos e promoção, e me envie a sua oferta.</p>
+        <p class="lote-val">Pelas condições do site, o lote sai por <b id="lote-tot">…</b> <small id="lote-sub"></small></p>
+      </div>
+      <button type="button" class="btn" id="lote-open">Quero fazer uma oferta</button>
+    </div>
+  </div>
+</section>
 <section id="catalogo" style="padding-top:24px;scroll-margin-top:80px">
   <div class="wrap stack" style="gap:18px">
     <h2>Catálogo completo</h2>
