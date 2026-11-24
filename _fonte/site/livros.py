@@ -193,9 +193,20 @@ def product_page(b, head, nav, foot):
           "category": b["cat"], "url": url,
           "offers": {"@type": "Offer", "price": f"{b['preco']:.2f}", "priceCurrency": "BRL", "url": url,
                      "availability": "https://schema.org/SoldOut" if sold else "https://schema.org/InStock",
-                     "itemCondition": "https://schema.org/UsedCondition"},
+                     "itemCondition": "https://schema.org/UsedCondition",
+                     "shippingDetails": {"@type": "OfferShippingDetails",
+                         "shippingRate": {"@type": "MonetaryAmount", "value": "20.00", "currency": "BRL"},
+                         "shippingDestination": {"@type": "DefinedRegion", "addressCountry": "BR"},
+                         "deliveryTime": {"@type": "ShippingDeliveryTime",
+                             "handlingTime": {"@type": "QuantitativeValue", "minValue": 0, "maxValue": 2, "unitCode": "DAY"},
+                             "transitTime": {"@type": "QuantitativeValue", "minValue": 2, "maxValue": 12, "unitCode": "DAY"}}},
+                     "hasMerchantReturnPolicy": {"@type": "MerchantReturnPolicy", "applicableCountry": "BR",
+                         "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                         "merchantReturnDays": 7, "returnMethod": "https://schema.org/ReturnByMail",
+                         "merchantReturnLink": f"{SITE}/trocas/"}},
           "additionalProperty": [{"@type": "PropertyValue", "name": "Autor", "value": b["autor"]},
                                  {"@type": "PropertyValue", "name": "Idioma", "value": b["idioma"]}]}
+    if b.get("peso"): ld["weight"] = {"@type": "QuantitativeValue", "value": b["peso"], "unitCode": "GRM"}
     if b["editora"]: ld["additionalProperty"].append({"@type": "PropertyValue", "name": "Editora/edição", "value": b["editora"]})
     vid, vert = yt(b["video"] or (combo or {}).get("video", ""))
     vstart = f"?start={b['video_t']}" if b["video"] and b.get("video_t") else ""
