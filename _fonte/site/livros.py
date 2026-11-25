@@ -120,7 +120,7 @@ def page(head, nav, foot):
       <h1>Livros usados, preços acessíveis e oportunidades de leitura</h1>
       <p class="lead">Os livros são usados e, por isso, custam menos do que exemplares novos. Todas as fotos são dos exemplares reais. Monte seu pedido, preencha os dados de envio e finalize pelo WhatsApp.</p>
       <div class="facts"><span>{n_disp} títulos disponíveis</span><span>Frete fixo de R$ 20 para todo o Brasil</span><span>Frete grátis a partir de R$ 100</span><span>Envio em até 2 dias úteis após o pagamento</span><span>3 livros ou mais: 10% off</span><span>10 livros ou mais: 20% off</span></div>
-      <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="#catalogo">Montar meu pedido ↓</a></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="#catalogo">Montar meu pedido ↓</a><a class="btn line" href="#procuro">Procuro um livro</a></div>
     </div>
     <img src="/livros/img/capa.jpg" alt="Rielson ao lado de uma pilha de livros de matemática e física" width="1400" height="788">
   </div>
@@ -179,6 +179,33 @@ def page(head, nav, foot):
     <h2 style="margin-top:12px">Veja os livros no vídeo</h2>
     <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/{VIDEO_ID}" title="Vídeo mostrando livros à venda" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
     <p class="meta" style="color:var(--muted)">Também anunciei no Facebook: <a href="https://www.facebook.com/share/p/1A1cEqjhG5/" target="_blank" rel="noopener">ver a publicação</a>.</p>
+  </div>
+</section>
+<section id="procuro" style="padding-top:12px;scroll-margin-top:80px">
+  <div class="wrap">
+    <div class="procuro">
+      <div class="stack" style="gap:10px">
+        <span class="eyebrow">Encomenda</span>
+        <h2>Não achou o livro que procura? Me conta</h2>
+        <p>Diga qual livro você procura: um título específico, qualquer livro de um autor ou um volume de uma coleção, até numa edição específica. Eu procuro nas minhas fontes de livros usados e te aviso pelo WhatsApp se encontrar, com fotos e preço. <b>Sem compromisso:</b> você só decide depois de ver o exemplar.</p>
+      </div>
+      <form id="pq-form" novalidate>
+        <fieldset class="pq-tipo"><legend>O que você procura? *</legend>
+          <label><input type="radio" name="tipo" value="Um título específico" checked> Um título específico</label>
+          <label><input type="radio" name="tipo" value="Qualquer livro de um autor"> Qualquer livro de um autor</label>
+          <label><input type="radio" name="tipo" value="Volume(s) de uma coleção"> Volume(s) de uma coleção</label>
+        </fieldset>
+        <div class="f2"><label><span id="pq-tl">Título *</span><input name="titulo" maxlength="150"></label><label><span id="pq-al">Autor</span><input name="autor" maxlength="100"></label></div>
+        <div class="f2"><label>Editora / edição / ano<input name="edicao" maxlength="120" placeholder="ex.: Atual Editora, 8ª edição, 2004"></label><label>Precisa ser essa edição?<select name="exata"><option>Tanto faz a edição</option><option>Prefiro essa edição</option><option>Só serve essa edição</option></select></label></div>
+        <label>Mais detalhes<textarea name="obs" rows="3" maxlength="600" placeholder="Volume, ISBN, estado aceitável (pode ter grifos?), outros livros que você procura…"></textarea></label>
+        <div class="f2"><label>Quanto pretende pagar (até)<input name="preco" inputmode="decimal" maxlength="10" placeholder="opcional"></label><label>Seu nome *<input name="nome" autocomplete="name" maxlength="100"></label></div>
+        <label class="ck"><input type="checkbox" name="fotos"> Tenho foto da capa ou da edição para mostrar</label>
+        <p class="co-msg" id="pq-msg" role="alert" hidden></p>
+        <button class="btn wabtn" type="submit">Enviar pelo WhatsApp</button>
+        <p class="co-note">A mensagem chega pronta no meu WhatsApp. Se tiver fotos, é só anexar na mesma conversa logo depois.</p>
+        <p class="co-done" id="pq-done" hidden>O WhatsApp não abriu? <a id="pq-go" href="#" target="_blank" rel="noopener">Toque aqui para abrir com a mensagem</a>.</p>
+      </form>
+    </div>
   </div>
 </section>
 </main>

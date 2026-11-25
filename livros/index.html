@@ -166,6 +166,20 @@ label .co-hint{display:block;font-family:var(--body);font-weight:400;font-size:.
 .lote-items li{grid-template-columns:1fr auto}
 #lote-form textarea{resize:vertical}
 
+.procuro{display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(18px,4vw,40px);background:var(--surface);border:2px dashed var(--yellow);border-radius:var(--r);padding:clamp(18px,4vw,32px)}
+.procuro>*{min-width:0}
+@media (max-width:760px){.procuro{grid-template-columns:1fr}}
+#pq-form{display:flex;flex-direction:column;gap:12px}
+#pq-form label{display:flex;flex-direction:column;gap:4px;font:600 .9rem var(--display)}
+#pq-form input:not([type=radio]):not([type=checkbox]),#pq-form select,#pq-form textarea{font:inherit;font-weight:400;font-size:1rem;border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--bg);color:var(--ink);width:100%}
+#pq-form textarea{resize:vertical}
+#pq-form [aria-invalid=true]{border-color:var(--red)}
+#pq-form .f2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:520px){#pq-form .f2{grid-template-columns:1fr}}
+.pq-tipo{border:0;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px 16px}
+.pq-tipo legend{font:600 .9rem var(--display);margin-bottom:6px}
+#pq-form .pq-tipo label,#pq-form label.ck{flex-direction:row;align-items:center;gap:8px;font:400 .98rem var(--body)}
+
 .rv-band{background:var(--navy);color:var(--chalk);border-block:3px solid var(--yellow)}
 .rv-band h2{color:var(--chalk)}
 .rv-band .eyebrow{color:var(--yellow)}
@@ -215,7 +229,7 @@ label .co-hint{display:block;font-family:var(--body);font-weight:400;font-size:.
       <h1>Livros usados, preços acessíveis e oportunidades de leitura</h1>
       <p class="lead">Os livros são usados e, por isso, custam menos do que exemplares novos. Todas as fotos são dos exemplares reais. Monte seu pedido, preencha os dados de envio e finalize pelo WhatsApp.</p>
       <div class="facts"><span>44 títulos disponíveis</span><span>Frete fixo de R$ 20 para todo o Brasil</span><span>Frete grátis a partir de R$ 100</span><span>Envio em até 2 dias úteis após o pagamento</span><span>3 livros ou mais: 10% off</span><span>10 livros ou mais: 20% off</span></div>
-      <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="#catalogo">Montar meu pedido ↓</a></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="#catalogo">Montar meu pedido ↓</a><a class="btn line" href="#procuro">Procuro um livro</a></div>
     </div>
     <img src="/livros/img/capa.jpg" alt="Rielson ao lado de uma pilha de livros de matemática e física" width="1400" height="788">
   </div>
@@ -340,6 +354,33 @@ label .co-hint{display:block;font-family:var(--body);font-weight:400;font-size:.
     <h2 style="margin-top:12px">Veja os livros no vídeo</h2>
     <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/d3m-W96kx5c" title="Vídeo mostrando livros à venda" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
     <p class="meta" style="color:var(--muted)">Também anunciei no Facebook: <a href="https://www.facebook.com/share/p/1A1cEqjhG5/" target="_blank" rel="noopener">ver a publicação</a>.</p>
+  </div>
+</section>
+<section id="procuro" style="padding-top:12px;scroll-margin-top:80px">
+  <div class="wrap">
+    <div class="procuro">
+      <div class="stack" style="gap:10px">
+        <span class="eyebrow">Encomenda</span>
+        <h2>Não achou o livro que procura? Me conta</h2>
+        <p>Diga qual livro você procura: um título específico, qualquer livro de um autor ou um volume de uma coleção, até numa edição específica. Eu procuro nas minhas fontes de livros usados e te aviso pelo WhatsApp se encontrar, com fotos e preço. <b>Sem compromisso:</b> você só decide depois de ver o exemplar.</p>
+      </div>
+      <form id="pq-form" novalidate>
+        <fieldset class="pq-tipo"><legend>O que você procura? *</legend>
+          <label><input type="radio" name="tipo" value="Um título específico" checked> Um título específico</label>
+          <label><input type="radio" name="tipo" value="Qualquer livro de um autor"> Qualquer livro de um autor</label>
+          <label><input type="radio" name="tipo" value="Volume(s) de uma coleção"> Volume(s) de uma coleção</label>
+        </fieldset>
+        <div class="f2"><label><span id="pq-tl">Título *</span><input name="titulo" maxlength="150"></label><label><span id="pq-al">Autor</span><input name="autor" maxlength="100"></label></div>
+        <div class="f2"><label>Editora / edição / ano<input name="edicao" maxlength="120" placeholder="ex.: Atual Editora, 8ª edição, 2004"></label><label>Precisa ser essa edição?<select name="exata"><option>Tanto faz a edição</option><option>Prefiro essa edição</option><option>Só serve essa edição</option></select></label></div>
+        <label>Mais detalhes<textarea name="obs" rows="3" maxlength="600" placeholder="Volume, ISBN, estado aceitável (pode ter grifos?), outros livros que você procura…"></textarea></label>
+        <div class="f2"><label>Quanto pretende pagar (até)<input name="preco" inputmode="decimal" maxlength="10" placeholder="opcional"></label><label>Seu nome *<input name="nome" autocomplete="name" maxlength="100"></label></div>
+        <label class="ck"><input type="checkbox" name="fotos"> Tenho foto da capa ou da edição para mostrar</label>
+        <p class="co-msg" id="pq-msg" role="alert" hidden></p>
+        <button class="btn wabtn" type="submit">Enviar pelo WhatsApp</button>
+        <p class="co-note">A mensagem chega pronta no meu WhatsApp. Se tiver fotos, é só anexar na mesma conversa logo depois.</p>
+        <p class="co-done" id="pq-done" hidden>O WhatsApp não abriu? <a id="pq-go" href="#" target="_blank" rel="noopener">Toque aqui para abrir com a mensagem</a>.</p>
+      </form>
+    </div>
   </div>
 </section>
 </main>
@@ -483,6 +524,29 @@ label .co-hint{display:block;font-family:var(--body);font-weight:400;font-size:.
       L.push('','Gostaria de fazer uma oferta pelo lote inteiro de livros.');
       var url='https://wa.me/'+WA+'?text='+encodeURIComponent(L.join('\n'));
       $('lote-go').href=url; $('lote-done').hidden=false; window.location.href=url;
+    });
+  }
+  // encomenda: livro que a pessoa procura
+  var pq=$('pq-form');
+  if(pq){
+    pq.addEventListener('change',function(ev){if(ev.target.name==='tipo'){var v=ev.target.value;
+      $('pq-tl').textContent=v.indexOf('autor')>-1?'Título (se tiver um preferido)':v.indexOf('coleção')>-1?'Coleção e volume(s) *':'Título *';
+      $('pq-al').textContent=v.indexOf('autor')>-1?'Autor *':'Autor';}});
+    pq.addEventListener('submit',function(ev){ev.preventDefault();
+      var f=pq,m=$('pq-msg'),tipo=f.querySelector('input[name=tipo]:checked').value,porAutor=tipo.indexOf('autor')>-1;
+      var bad=null;
+      [porAutor?f.autor:f.titulo,f.nome].forEach(function(el){var ok=!!el.value.trim();el.setAttribute('aria-invalid',ok?'false':'true');if(!ok&&!bad)bad=el;});
+      if(bad){m.textContent=porAutor?'Preencha o autor e o seu nome.':'Preencha o título e o seu nome.';m.hidden=false;bad.focus();return;} m.hidden=true;
+      var v=function(n){return f[n].value.trim();};
+      var L=['*Procuro um livro · rielsonfragoso.com.br*','','Nome: '+v('nome'),'Tipo de busca: '+tipo];
+      if(v('titulo'))L.push((tipo.indexOf('coleção')>-1?'Coleção/volume: ':'Título: ')+v('titulo'));
+      if(v('autor'))L.push('Autor: '+v('autor'));
+      if(v('edicao'))L.push('Editora/edição/ano: '+v('edicao')+' ('+f.exata.value.toLowerCase()+')');
+      if(v('preco'))L.push('Pretendo pagar até: R$ '+v('preco').replace(/^R\$\s*/i,''));
+      if(v('obs'))L.push('Detalhes: '+v('obs'));
+      L.push('', f.fotos.checked?'Vou enviar fotos da capa/edição em seguida.':'Pode me avisar se encontrar?');
+      var url='https://wa.me/'+WA+'?text='+encodeURIComponent(L.join('\n'));
+      $('pq-go').href=url; $('pq-done').hidden=false; window.location.href=url;
     });
   }
   // busca e filtros (só no catálogo)

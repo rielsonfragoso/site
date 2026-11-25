@@ -93,6 +93,29 @@
       $('lote-go').href=url; $('lote-done').hidden=false; window.location.href=url;
     });
   }
+  // encomenda: livro que a pessoa procura
+  var pq=$('pq-form');
+  if(pq){
+    pq.addEventListener('change',function(ev){if(ev.target.name==='tipo'){var v=ev.target.value;
+      $('pq-tl').textContent=v.indexOf('autor')>-1?'Título (se tiver um preferido)':v.indexOf('coleção')>-1?'Coleção e volume(s) *':'Título *';
+      $('pq-al').textContent=v.indexOf('autor')>-1?'Autor *':'Autor';}});
+    pq.addEventListener('submit',function(ev){ev.preventDefault();
+      var f=pq,m=$('pq-msg'),tipo=f.querySelector('input[name=tipo]:checked').value,porAutor=tipo.indexOf('autor')>-1;
+      var bad=null;
+      [porAutor?f.autor:f.titulo,f.nome].forEach(function(el){var ok=!!el.value.trim();el.setAttribute('aria-invalid',ok?'false':'true');if(!ok&&!bad)bad=el;});
+      if(bad){m.textContent=porAutor?'Preencha o autor e o seu nome.':'Preencha o título e o seu nome.';m.hidden=false;bad.focus();return;} m.hidden=true;
+      var v=function(n){return f[n].value.trim();};
+      var L=['*Procuro um livro · rielsonfragoso.com.br*','','Nome: '+v('nome'),'Tipo de busca: '+tipo];
+      if(v('titulo'))L.push((tipo.indexOf('coleção')>-1?'Coleção/volume: ':'Título: ')+v('titulo'));
+      if(v('autor'))L.push('Autor: '+v('autor'));
+      if(v('edicao'))L.push('Editora/edição/ano: '+v('edicao')+' ('+f.exata.value.toLowerCase()+')');
+      if(v('preco'))L.push('Pretendo pagar até: R$ '+v('preco').replace(/^R\$\s*/i,''));
+      if(v('obs'))L.push('Detalhes: '+v('obs'));
+      L.push('', f.fotos.checked?'Vou enviar fotos da capa/edição em seguida.':'Pode me avisar se encontrar?');
+      var url='https://wa.me/'+WA+'?text='+encodeURIComponent(L.join('\n'));
+      $('pq-go').href=url; $('pq-done').hidden=false; window.location.href=url;
+    });
+  }
   // busca e filtros (só no catálogo)
   var q=$('q'), lang=$('lang'), grid=$('todos');
   if(q&&grid){

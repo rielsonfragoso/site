@@ -146,3 +146,17 @@ label .co-hint{display:block;font-family:var(--body);font-weight:400;font-size:.
 .lote-items{max-height:42vh;overflow:auto;padding-right:4px}
 .lote-items li{grid-template-columns:1fr auto}
 #lote-form textarea{resize:vertical}
+
+.procuro{display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(18px,4vw,40px);background:var(--surface);border:2px dashed var(--yellow);border-radius:var(--r);padding:clamp(18px,4vw,32px)}
+.procuro>*{min-width:0}
+@media (max-width:760px){.procuro{grid-template-columns:1fr}}
+#pq-form{display:flex;flex-direction:column;gap:12px}
+#pq-form label{display:flex;flex-direction:column;gap:4px;font:600 .9rem var(--display)}
+#pq-form input:not([type=radio]):not([type=checkbox]),#pq-form select,#pq-form textarea{font:inherit;font-weight:400;font-size:1rem;border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--bg);color:var(--ink);width:100%}
+#pq-form textarea{resize:vertical}
+#pq-form [aria-invalid=true]{border-color:var(--red)}
+#pq-form .f2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:520px){#pq-form .f2{grid-template-columns:1fr}}
+.pq-tipo{border:0;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px 16px}
+.pq-tipo legend{font:600 .9rem var(--display);margin-bottom:6px}
+#pq-form .pq-tipo label,#pq-form label.ck{flex-direction:row;align-items:center;gap:8px;font:400 .98rem var(--body)}
