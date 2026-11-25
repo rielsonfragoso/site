@@ -230,6 +230,7 @@ def product_page(b, head, nav, foot):
                      "hasMerchantReturnPolicy": {"@type": "MerchantReturnPolicy", "applicableCountry": "BR",
                          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
                          "merchantReturnDays": 7, "returnMethod": "https://schema.org/ReturnByMail",
+                         "returnFees": "https://schema.org/FreeReturn",
                          "merchantReturnLink": f"{SITE}/trocas/"}},
           "additionalProperty": [{"@type": "PropertyValue", "name": "Autor", "value": b["autor"]},
                                  {"@type": "PropertyValue", "name": "Idioma", "value": b["idioma"]}]}
