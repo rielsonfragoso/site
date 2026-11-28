@@ -88,6 +88,9 @@ LIVROS = [
 
     # ---------- Catálogo anterior (preservado) ----------
     B("Álgebra Linear e Geometria Analítica", "Antonio dos Santos Machado", 35.90, 1, "Graduação", "machado", medidas="1 x 15 x 21", peso=240),
+    B("Curso de Álgebra · Volume 1", "Abramo Hefez", 39.90, 1, "Graduação", "hefez-algebra-1",
+      editora="IMPA · Coleção Matemática Universitária",
+      desc="Clássico do IMPA para a graduação em matemática: números inteiros, divisibilidade, congruências, anéis e polinômios, com muitos exercícios."),
     B("O Cálculo com Geometria Analítica · Volume 1", "Louis Leithold", 39.90, 1, "Graduação", "leithold-1", editora="Harbra",
       desc="Clássico de cálculo usado em cursos de exatas e engenharia: limites, derivadas, integrais e geometria analítica, com muitos exercícios.",
       medidas="4 x 22 x 28", peso=1130, video="https://youtube.com/shorts/UYsHKHS4F2k", video_t=45),
